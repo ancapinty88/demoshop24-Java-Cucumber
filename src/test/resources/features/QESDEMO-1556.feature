@@ -18,4 +18,4 @@ Feature: New user is able to register successfully
   | Jonas Petras | Jonaitis Petraitis | jj@testmail.test.com | +370123456789	| abcd	| abcd |
   | Jonas-Petras | Jonaitis-Petraitis | j.j@testmail.test | +370(123)456789	| 123456789012345abcde | 123456789012345abcde |
   | J	         | J	              | jj2@testmail.com	    | 123(456)789012345678901234567890 | Test Pass | Test Pass |
-  | Jonas Petras Jonas Petras JonasP | Jonas Petras Jonas Petras JonasP	| jj3@testmail.com | 123 | TestPass_1 | TestPass_1 |
+  | Jonas Petras Jonas Petras JonasP | Jonas Petras Jonas Petras JonasP	| jj3@testmail.com | 1234567 | TestPass_1 | TestPass_1 |
