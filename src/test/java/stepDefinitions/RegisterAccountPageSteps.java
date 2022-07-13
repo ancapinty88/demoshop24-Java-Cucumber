@@ -93,62 +93,26 @@ public class RegisterAccountPageSteps {
         }
     }
 
-    @Then("^\"([^\"]*)\" warning message is not displayed$")
-    public void WarningMessageIsNotDisplayed (String warning) {
+    @Then("^\"([^\"]*)\" warning message is displayed$")
+    public void WarningMessageIsDisplayed (String warning) {
         switch (warning) {
             case "First Name" :
-                assertFalse(RegAccountPO.FirstNameWarning.isDisplayed());
+                assertTrue(RegAccountPO.FirstNameWarning.isDisplayed());
                 break;
             case "Last Name" :
-                assertFalse(RegAccountPO.LastNameWarning.isDisplayed());
+                assertTrue(RegAccountPO.LastNameWarning.isDisplayed());
                 break;
             case "Email" :
-                assertFalse(RegAccountPO.EmailWarning.isDisplayed());
+                assertTrue(RegAccountPO.EmailWarning.isDisplayed());
                 break;
             case "Telephone" :
-                assertFalse(RegAccountPO.TelephoneWarning.isDisplayed());
+                assertTrue(RegAccountPO.TelephoneWarning.isDisplayed());
                 break;
             case "Password" :
-                assertFalse(RegAccountPO.PasswordWarning.isDisplayed());
+                assertTrue(RegAccountPO.PasswordWarning.isDisplayed());
                 break;
             case "Password Confirm" :
-                assertFalse(RegAccountPO.PassConfirmWarning.isDisplayed());
-                break;
-        }
-    }
-
-    @Then("^\"([^\"]*)\" value field has grey borders$")
-    public void ValueFieldHasGreyBorders (String warning) {
-        switch (warning) {
-            case "First Name" :
-                assertEquals(
-                        "rgba(204, 204, 204, 1)",
-                        RegAccountPO.FirstName.getCssValue("border-top-color"));
-                break;
-            case "Last Name" :
-                assertEquals(
-                        "rgba(204, 204, 204, 1)",
-                        RegAccountPO.LastName.getCssValue("border-top-color"));
-                break;
-            case "Email" :
-                assertEquals(
-                        "rgba(204, 204, 204, 1)",
-                        RegAccountPO.Email.getCssValue("border-top-color"));
-                break;
-            case "Telephone" :
-                assertEquals(
-                        "rgba(204, 204, 204, 1)",
-                        RegAccountPO.Telephone.getCssValue("border-top-color"));
-                break;
-            case "Password" :
-                assertEquals(
-                        "rgba(204, 204, 204, 1)",
-                        RegAccountPO.Password.getCssValue("border-top-color"));
-                break;
-            case "Password Confirm" :
-                assertEquals(
-                        "rgba(204, 204, 204, 1)",
-                        RegAccountPO.PassConfirm.getCssValue("border-top-color"));
+                assertTrue(RegAccountPO.PassConfirmWarning.isDisplayed());
                 break;
         }
     }
