@@ -3,6 +3,7 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pages_sample.RegisterAccount_PO;
@@ -160,5 +161,32 @@ public class RegisterAccountPageSteps {
     @Then("^Email field type=email$")
     public void EmailFieldTypeEqualsEmail () {
         assertEquals("email", RegAccountPO.Email.getAttribute("type"));
+    }
+
+    @When("^User enters whitespace$")
+    public void UserEntersWhitespace (List<String> fields) {
+        for (String field : fields) {
+            switch (field) {
+                case "First Name" :
+                    RegAccountPO.FirstName.sendKeys(Keys.SPACE);
+                    break;
+                case "Last Name" :
+                    RegAccountPO.LastName.sendKeys(Keys.SPACE);
+                    break;
+                case "Email" :
+                    RegAccountPO.Email.sendKeys(Keys.SPACE);
+                    break;
+                case "Telephone" :
+                    RegAccountPO.Telephone.sendKeys(Keys.SPACE);
+                    break;
+                case "Password" :
+                    RegAccountPO.Password.sendKeys(Keys.SPACE);
+                    break;
+                case "Password Confirm" :
+                    RegAccountPO.PassConfirm.sendKeys(Keys.SPACE);
+                    break;
+            }
+        }
+
     }
 }
