@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pages_sample.RegisterAccount_PO;
 
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -93,27 +94,61 @@ public class RegisterAccountPageSteps {
         }
     }
 
-    @Then("^\"([^\"]*)\" warning message is displayed$")
-    public void WarningMessageIsDisplayed (String warning) {
-        switch (warning) {
-            case "First Name" :
-                assertTrue(RegAccountPO.FirstNameWarning.isDisplayed());
-                break;
-            case "Last Name" :
-                assertTrue(RegAccountPO.LastNameWarning.isDisplayed());
-                break;
-            case "Email" :
-                assertTrue(RegAccountPO.EmailWarning.isDisplayed());
-                break;
-            case "Telephone" :
-                assertTrue(RegAccountPO.TelephoneWarning.isDisplayed());
-                break;
-            case "Password" :
-                assertTrue(RegAccountPO.PasswordWarning.isDisplayed());
-                break;
-            case "Password Confirm" :
-                assertTrue(RegAccountPO.PassConfirmWarning.isDisplayed());
-                break;
+    @Then("^Warning message is displayed$")
+    public void WarningMessageIsDisplayed (List<String> warnings) {
+        for (String warning : warnings) {
+            switch (warning) {
+                case "First Name" :
+                    assertTrue(RegAccountPO.FirstNameWarning.isDisplayed());
+                    break;
+                case "Last Name" :
+                    assertTrue(RegAccountPO.LastNameWarning.isDisplayed());
+                    break;
+                case "Email" :
+                    assertTrue(RegAccountPO.EmailWarning.isDisplayed());
+                    break;
+                case "Telephone" :
+                    assertTrue(RegAccountPO.TelephoneWarning.isDisplayed());
+                    break;
+                case "Password" :
+                    assertTrue(RegAccountPO.PasswordWarning.isDisplayed());
+                    break;
+                case "Password Confirm" :
+                    assertTrue(RegAccountPO.PassConfirmWarning.isDisplayed());
+                    break;
+                case "Policy" :
+                    assertTrue(RegAccountPO.PolicyWarning.isDisplayed());
+                    break;
+            }
+        }
+    }
+
+    @Then("^Field is marked with asterisk$")
+    public void FieldIsMarkedWithAsterisk (List<String> fields) {
+        for (String field : fields) {
+            switch (field) {
+                    case "First Name" :
+                        assertTrue(RegAccountPO.FirstNameWarning.isDisplayed());
+                        break;
+                    case "Last Name" :
+                        assertTrue(RegAccountPO.LastNameWarning.isDisplayed());
+                        break;
+                    case "Email" :
+                        assertTrue(RegAccountPO.EmailWarning.isDisplayed());
+                        break;
+                    case "Telephone" :
+                        assertTrue(RegAccountPO.TelephoneWarning.isDisplayed());
+                        break;
+                    case "Password" :
+                        assertTrue(RegAccountPO.PasswordWarning.isDisplayed());
+                        break;
+                    case "Password Confirm" :
+                        assertTrue(RegAccountPO.PassConfirmWarning.isDisplayed());
+                        break;
+                    case "Policy" :
+                        assertTrue(RegAccountPO.PolicyWarning.isDisplayed());
+                        break;
+                }
         }
     }
 

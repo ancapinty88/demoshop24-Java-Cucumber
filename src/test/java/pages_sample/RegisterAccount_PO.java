@@ -43,6 +43,9 @@ public class RegisterAccount_PO {
     public WebElement PasswordWarning;
     @FindBy(how = How.XPATH, using = "//*[@class='text-danger' and contains(text(), 'Password conf')]")
     public WebElement PassConfirmWarning;
+    @FindBy(how = How.XPATH, using = "//*[contains(@class,'alert-danger')]")
+    public WebElement PolicyWarning;
+
 
 
     public String RegistrationConfirmPage() {
