@@ -187,6 +187,16 @@ public class RegisterAccountPageSteps {
                     break;
             }
         }
-
     }
+
+    @Then("^User selects Subscribe option \"([^\"]*)\"$")
+    public void UserSelectsSubscribeOption (String option) {
+        if (option.equals("yes")) {
+            System.out.println(option);
+            RegAccountPO.SubscribeYes.click();
+        } else if (option.equals("no")) {
+            RegAccountPO.SubscribeNo.click();
+        }
+    }
+
 }
