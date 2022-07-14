@@ -11,7 +11,7 @@ import pages_sample.RegisterAccount_PO;
 
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LoginPageSteps {
     private WebDriver driver;
@@ -37,5 +37,14 @@ public class LoginPageSteps {
         assertEquals(LoginPO.MyAccountPage(), driver.getCurrentUrl());
     }
 
+    @Then("^User is not redirected to User personal page$")
+    public void UserIsNotRedirectedToUserPersonalPage () {
+        assertNotEquals(LoginPO.MyAccountPage(), driver.getCurrentUrl());
+    }
+
+    @Then("^Login warning is displayed$")
+    public void LoginWarningIsDisplayed () {
+        assertTrue(LoginPO.LoginWarning.isDisplayed());
+    }
 
 }

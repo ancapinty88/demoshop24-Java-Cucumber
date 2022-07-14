@@ -11,6 +11,8 @@ public class LoginPage_PO {
     private WebElement Password;
     @FindBy(how = How.XPATH, using = "//*[@type='submit' and @value='Login']")
     private WebElement LoginButton;
+    @FindBy(how = How.XPATH, using = "//*[contains(@class,'alert-danger')]")
+    public WebElement LoginWarning;
 
 
     public String MyAccountPage() {
