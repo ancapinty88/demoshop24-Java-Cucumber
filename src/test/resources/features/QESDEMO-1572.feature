@@ -5,7 +5,7 @@ Feature: Validate First name and Last name fields, incorrect input
     When User enters First Name "<First Name>"
     And User enters Last Name "<Last Name>"
     And User clicks Continue button
-    Then Warning message is displayed
+    Then A message is displayed
       | First Name  |
       | Last Name   |
     Examples:
@@ -21,6 +21,6 @@ Feature: Validate First name and Last name fields, incorrect input
       | First Name  |
       | Last Name   |
     And User clicks Continue button
-    Then Warning message is displayed
+    Then A message is displayed
       | First Name  |
       | Last Name   |

@@ -5,5 +5,5 @@ Feature: Validate Password Confirm, different input than Password
     When User enters Password "test1"
     And User enters Password Confirm "test2"
     And User clicks Continue button
-    Then Warning message is displayed
+    Then A message is displayed
       | Password Confirm |

@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +10,7 @@ import pages_sample.LoginPage_PO;
 import pages_sample.MyAccountPage_PO;
 import pages_sample.RegisterAccount_PO;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -45,6 +47,15 @@ public class LoginPageSteps {
     @Then("^Login warning is displayed$")
     public void LoginWarningIsDisplayed () {
         assertTrue(LoginPO.LoginWarning.isDisplayed());
+    }
+
+    @Given("^User is logged in$")
+    public void UserIsLoggedIn () throws Throwable {
+        Map<String, String> loginData = new HashMap<>();
+        loginData.put("E-Mail Address", "jonjon@testmail.test");
+        loginData.put("Password", "TestPass_1");
+        UserEntersLoginData(loginData);
+        UserClicksLoginButton();
     }
 
 }

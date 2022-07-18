@@ -1,5 +1,6 @@
 Feature: New user is able to register successfully
   # to successfully run this test change email
+  @register
   Scenario Outline: New user registration
     Given User is on Register Account page
     When User enters First Name "<First Name>"
