@@ -9,6 +9,7 @@ import pages_sample.EditAccount_PO;
 import pages_sample.General_PO;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -51,5 +52,42 @@ public class EditAccountSteps {
                     break;
             }
         }
+    }
+
+    @And("^User clicks Back button$")
+    public void UserClicksBackButton () {
+        EditAccountPO.clickBackButton();
+    }
+
+    @And("^Data is not entered$")
+    public void DataIsNotEntered (Map<String, String> editInput) {
+        String FirstNameEntered = editInput.get("First Name");
+        String FirstNameActual = GeneralPO.FirstName.getAttribute("value");
+        assertNotEquals(FirstNameEntered, FirstNameActual);
+        String LastNameEntered = editInput.get("Last Name");
+        String LastNameActual = GeneralPO.LastName.getAttribute("value");
+        assertNotEquals(LastNameEntered, LastNameActual);
+        String EmailEntered = editInput.get("E-Mail");
+        String EmailActual = GeneralPO.Email.getAttribute("value");
+        assertNotEquals(EmailEntered, EmailActual);
+        String TelephoneEntered = editInput.get("Telephone");
+        String TelephoneActual = GeneralPO.Telephone.getAttribute("value");
+        assertNotEquals(TelephoneEntered, TelephoneActual);
+    }
+
+    @And("^Data is entered$")
+    public void DataIsEntered (Map<String, String> editInput) {
+        String FirstNameEntered = editInput.get("First Name");
+        String FirstNameActual = GeneralPO.FirstName.getAttribute("value");
+        assertEquals(FirstNameEntered, FirstNameActual);
+        String LastNameEntered = editInput.get("Last Name");
+        String LastNameActual = GeneralPO.LastName.getAttribute("value");
+        assertEquals(LastNameEntered, LastNameActual);
+        //String EmailEntered = editInput.get("E-Mail");
+        //String EmailActual = GeneralPO.Email.getAttribute("value");
+        //assertEquals(EmailEntered, EmailActual);
+        String TelephoneEntered = editInput.get("Telephone");
+        String TelephoneActual = GeneralPO.Telephone.getAttribute("value");
+        assertEquals(TelephoneEntered, TelephoneActual);
     }
 }

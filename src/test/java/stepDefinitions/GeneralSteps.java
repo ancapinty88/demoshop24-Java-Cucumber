@@ -35,8 +35,6 @@ public class GeneralSteps {
             String actualWarning = GeneralPO.readMessageText(warning);
             String expectedWarning = WarningMessages.getExpectedMessage(warning);
             assertEquals(expectedWarning, actualWarning);
-            System.out.println(expectedWarning);
-            System.out.println(actualWarning);
         }
     }
 
