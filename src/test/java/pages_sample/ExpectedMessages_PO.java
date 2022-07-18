@@ -35,7 +35,7 @@ public class ExpectedMessages_PO {
             case "Policy" :
                 message = PrivacyPolicy;
                 break;
-            case "EmailAlreadyRegistered" :
+            case "Email Already Registered" :
                 message = EmailAlreadyRegistered;
                 break;
             case "Success Update" :

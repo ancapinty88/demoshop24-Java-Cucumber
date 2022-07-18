@@ -97,6 +97,7 @@ public class General_PO {
                 message = PassConfirmWarning.getText();
                 break;
             case "Policy" :
+            case "Email Already Registered" :
                 message = GlobalWarning.getText();
                 break;
             case "Success Update" :

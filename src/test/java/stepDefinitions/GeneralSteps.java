@@ -43,21 +43,27 @@ public class GeneralSteps {
         for (String field : fields) {
             switch (field) {
                 case "First Name" :
+                    GeneralPO.FirstName.clear();
                     GeneralPO.FirstName.sendKeys(Keys.SPACE);
                     break;
                 case "Last Name" :
+                    GeneralPO.LastName.clear();
                     GeneralPO.LastName.sendKeys(Keys.SPACE);
                     break;
                 case "Email" :
+                    GeneralPO.Email.clear();
                     GeneralPO.Email.sendKeys(Keys.SPACE);
                     break;
                 case "Telephone" :
+                    GeneralPO.Telephone.clear();
                     GeneralPO.Telephone.sendKeys(Keys.SPACE);
                     break;
                 case "Password" :
+                    GeneralPO.Password.clear();
                     GeneralPO.Password.sendKeys(Keys.SPACE);
                     break;
                 case "Password Confirm" :
+                    GeneralPO.PassConfirm.clear();
                     GeneralPO.PassConfirm.sendKeys(Keys.SPACE);
                     break;
             }
