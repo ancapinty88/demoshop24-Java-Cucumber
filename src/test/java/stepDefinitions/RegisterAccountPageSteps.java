@@ -52,11 +52,6 @@ public class RegisterAccountPageSteps {
         }
     }
 
-    @Then("^Email tooltip is displayed$")
-    public void EmailTooltipIsDisplayed () {
-        assertFalse(GeneralPO.Email.getAttribute("validationMessage").isEmpty());
-    }
-
     @Then("^Email field type=email$")
     public void EmailFieldTypeEqualsEmail () {
         assertEquals("email", GeneralPO.Email.getAttribute("type"));

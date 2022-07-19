@@ -13,16 +13,17 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class GeneralSteps {
     private WebDriver driver;
     static General_PO GeneralPO;
-    static ExpectedMessages_PO WarningMessages;
+    static ExpectedMessages_PO ExpectedMessages;
 
     public GeneralSteps () {
         this.driver = Hooks.driver;
         GeneralPO = PageFactory.initElements(Hooks.driver, General_PO.class);
-        WarningMessages = PageFactory.initElements(Hooks.driver, ExpectedMessages_PO.class);
+        ExpectedMessages = PageFactory.initElements(Hooks.driver, ExpectedMessages_PO.class);
     }
     @And("^User clicks Continue button$")
     public void UserClicksContinueButton () {
@@ -33,7 +34,7 @@ public class GeneralSteps {
     public void AMessageIsDisplayed (List<String> warnings) {
         for (String warning : warnings) {
             String actualWarning = GeneralPO.readMessageText(warning);
-            String expectedWarning = WarningMessages.getExpectedMessage(warning);
+            String expectedWarning = ExpectedMessages.getExpectedMessage(warning);
             assertEquals(expectedWarning, actualWarning);
         }
     }
@@ -107,5 +108,14 @@ public class GeneralSteps {
     @When("^User enters Password Confirm \"([^\"]*)\"$")
     public void UserEntersPasswordConfirm (String input) throws Throwable {
         GeneralPO.enterPassConfirm(input);
+    }
+
+    @Then("^Tooltip \"([^\"]*)\" for email \"([^\"]*)\" is displayed$")
+    public void TooltipForEmailIsDisplayed (String tooltip, String email) {
+        String expectedMessage = ExpectedMessages.getTooltipMessage(tooltip, email);
+        String actualMessage = GeneralPO.Email.getAttribute("validationMessage");
+        assertEquals(expectedMessage, actualMessage);
+        System.out.println(expectedMessage);
+        System.out.println(actualMessage);
     }
 }
