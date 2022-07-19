@@ -1,20 +1,26 @@
 Feature: Validate E-Mail field, incorrect input
 
   Scenario:
-    Given User is on Register Account page
+    Given User is on Login page
+    And User is logged in
+    When User clicks Edit Account link
     Then Email field type=email
 
   Scenario:
-    Given User is on Register Account page
-    When User enters whitespace
+    Given User is on Login page
+    And User is logged in
+    When User clicks Edit Account link
+    And User enters whitespace
       | Email  |
     And User clicks Continue button
     Then Tooltip "missing eta" for email " " is displayed
   # fails because instead of tooltip, a warning is displayed - defect, inconsistent with other cases
 
   Scenario Outline: E-Mail field does not accept invalid values
-    Given User is on Register Account page
-    When User enters E-Mail "<Email>"
+    Given User is on Login page
+    And User is logged in
+    When User clicks Edit Account link
+    And User enters E-Mail "<Email>"
     And User clicks Continue button
     Then Tooltip "<tooltip>" for email "<Email>" is displayed
     Examples:
