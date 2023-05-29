@@ -50,7 +50,7 @@ Feature: EPIC-01 Registration
       | 88a                               | Telephone must be between 3 and 32 characters! |
 
   Scenario Outline: Registration form: Email field validation (QESDEMO-2260)
-# Bug: "email@email.b" should not be accepted, error message should be displayed, but it's not
+# Bug: "email@email.b" should not be accepted, error message should be displayed, but it isn't
     When user enters email "<email>"
     And user clicks Continue button below Registration form
     Then email "<email>" should be valid and error message "<errorMessage>" is shown if it is invalid
