@@ -68,3 +68,19 @@ Feature: EPIC-01 Registration
       | email()@email.com    | A part followed by '@' should not contain the symbol '('.                        |
       | email@email().com    | A part following '@' should not contain the symbol '('.                          |
 
+  Scenario Outline: Password field validation (QESDEMO-2288)
+# Bug: password length = 21 is accepted, but should not be accepted; actual upper boundary value = 40, and not 20 as it should be,
+#  so I included the password length = 41 as well to get the error message according to the actual website behaviour
+    When user enters password "<password>"
+    And user clicks Continue button below Registration form
+    Then password "<password>" should be valid and error message "<errorMessage>" is shown if it is invalid
+    Examples:
+      | password                                  | errorMessage                                  |
+      |                                           | Password must be between 4 and 20 characters! |
+      | aaa                                       | Password must be between 4 and 20 characters! |
+      | aaaa                                      |                                               |
+      | aaaaaaaaaaaaaaaaaaaa                      |                                               |
+      | aaaaaaaaaaaaaaaaaaaaa                     | Password must be between 4 and 20 characters! |
+      | aaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbb | Password must be between 4 and 20 characters! |
+
+

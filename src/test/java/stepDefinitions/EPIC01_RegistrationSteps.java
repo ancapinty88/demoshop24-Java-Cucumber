@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class EPIC01_RegistrationSteps {
     private static final Pattern FIRST_NAME_PATTERN = Pattern.compile("[a-zA-Z0-9]{1,32}");
+    private static final Pattern PASSWORD_PATTERN = Pattern.compile(".{4,20}");
     private static final Pattern TELEPHONE_PATTERN = Pattern.compile("[0-9]{3,32}");
     private static final Pattern EMAIL_PATTERN = Pattern.compile("[a-zA-Z0-9._%+#$^*~/|?!{}]+@[a-zA-Z0-9._-]+\\.[a-zA-Z]{2,4}");
     private static final String VALID_SYMBOLS_BEFORE_AT = "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]*[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]$";
@@ -171,7 +172,19 @@ public class EPIC01_RegistrationSteps {
         }
     }
 
+    @When("user enters password {string}")
+    public void userEntersPassword(String password) {
+        EPIC01RegistrationPage.enterPasswordAtRegistrationForm(password);
+    }
 
+    @Then("password {string} should be valid and error message {string} is shown if it is invalid")
+    public void passwordShouldBeValidAndErrorMessageIsShownIfItIsInvalid(String password, String errorMessage) {
+        if (PASSWORD_PATTERN.matcher(password).matches()) {
+            assertTrue(EPIC01RegistrationPage.PasswordErrorMessages.isEmpty());
+        } else {
+            assertEquals(errorMessage, EPIC01RegistrationPage.PasswordErrorMessage.getText());
+        }
+    }
 }
 
 

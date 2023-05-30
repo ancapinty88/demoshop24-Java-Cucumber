@@ -44,6 +44,10 @@ public class EPIC01RegistrationPage {
     public List<WebElement> EmailErrorMessages;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'E-Mail Address does not')]")
     public WebElement EmailErrorMessage;
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Password must be between')]")
+    public List<WebElement> PasswordErrorMessages;
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Password must be between')]")
+    public WebElement PasswordErrorMessage;
 
     public String getPageUrl() {return "http://www.demoshop24.com/";}
 
