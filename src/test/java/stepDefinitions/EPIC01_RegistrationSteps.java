@@ -203,17 +203,11 @@ public class EPIC01_RegistrationSteps {
     @Then("Privacy Policy warning is displayed")
     public void privacyPolicyWarningIsDisplayed() {
         assertTrue(EPIC01RegistrationPage.PrivacyPolicyWarning.isDisplayed());
-        System.out.println(EPIC01RegistrationPage.PrivacyPolicyWarning.getText());
     }
 
     @Then("Privacy Policy warning is not displayed")
     public void privacyPolicyWarningIsNotDisplayed() {
         assertTrue(EPIC01RegistrationPage.PrivacyPolicyWarnings.isEmpty());
-    }
-
-    @When("user unchecks Privacy Policy checkbox")
-    public void userUnchecksPrivacyPolicyCheckbox() {
-        EPIC01RegistrationPage.clickPrivacyPolicyCheckbox();
     }
 
 }
