@@ -52,6 +52,10 @@ public class EPIC01RegistrationPage {
     public List<WebElement> PasswordConfirmErrorMessages;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Password confirmation does not')]")
     public WebElement PasswordConfirmErrorMessage;
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Warning:')]")
+    public WebElement PrivacyPolicyWarning;
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Warning:')]")
+    public List<WebElement>  PrivacyPolicyWarnings;
 
     public String getPageUrl() {return "http://www.demoshop24.com/";}
 

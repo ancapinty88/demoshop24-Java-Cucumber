@@ -94,4 +94,18 @@ Feature: EPIC-01 Registration
       | passwordConfirm | errorMessage                                   |
       | aaab            | Password confirmation does not match password! |
       | aaaa            |                                                |
-    
+
+  Scenario: Privacy policy checkbox validation (QESDEMO-2292)
+# Bug: Privacy Policy error message is not shown when unchecked and Continue button is clicked under this condition:
+#  when validation message of another incorrect field is shown, for example, email
+    When user clicks Continue button below Registration form
+    Then Privacy Policy warning is displayed
+
+    When user checks Privacy Policy checkbox
+    And user clicks Continue button below Registration form
+    Then Privacy Policy warning is not displayed
+
+    When user unchecks Privacy Policy checkbox
+    And user enters email "@mail.com"
+    And user clicks Continue button below Registration form
+    Then Privacy Policy warning is displayed
