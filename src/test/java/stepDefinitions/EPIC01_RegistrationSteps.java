@@ -185,6 +185,11 @@ public class EPIC01_RegistrationSteps {
             assertEquals(errorMessage, EPIC01RegistrationPage.PasswordErrorMessage.getText());
         }
     }
+
+    @And("user enters password confirm {string}")
+    public void userEntersPasswordConfirm(String passwordConfirm) {
+        EPIC01RegistrationPage.enterPasswordConfirmAtRegistrationForm(passwordConfirm);
+    }
 }
 
 

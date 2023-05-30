@@ -83,4 +83,16 @@ Feature: EPIC-01 Registration
       | aaaaaaaaaaaaaaaaaaaaa                     | Password must be between 4 and 20 characters! |
       | aaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbb | Password must be between 4 and 20 characters! |
 
+  Scenario Outline: Password confirm field validation (QESDEMO-2289)
+# Bug: password length = 21 is accepted, but should not be accepted; actual upper boundary value = 40, and not 20 as it should be,
+#  so I included the password length = 41 as well to get the error message according to the actual website behaviour
+    When user enters password "aaaa"
+    And user enters password confirm "<passwordConfirm>"
+    And user clicks Continue button below Registration form
+    Then password "<passwordConfirm>" should be valid and error message "<errorMessage>" is shown if it is invalid
+    Examples:
+      | passwordConfirm | errorMessage                                   |
+      | aaab            | Password confirmation does not match password! |
+      | aaaa            |                                                |
+
 
