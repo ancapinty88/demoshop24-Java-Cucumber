@@ -89,10 +89,9 @@ Feature: EPIC-01 Registration
     When user enters password "aaaa"
     And user enters password confirm "<passwordConfirm>"
     And user clicks Continue button below Registration form
-    Then password "<passwordConfirm>" should be valid and error message "<errorMessage>" is shown if it is invalid
+    Then password confirm "<passwordConfirm>" should be valid and error message "<errorMessage>" is shown if it is invalid
     Examples:
       | passwordConfirm | errorMessage                                   |
       | aaab            | Password confirmation does not match password! |
       | aaaa            |                                                |
-
-
+    

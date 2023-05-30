@@ -25,9 +25,9 @@ public class EPIC01RegistrationPage {
     @FindBy(how = How.ID, using = "input-telephone")
     public WebElement telephoneAtRegistrationForm;
     @FindBy(how = How.ID, using = "input-password")
-    private WebElement passwordAtRegistrationForm;
+    public WebElement passwordAtRegistrationForm;
     @FindBy(how = How.ID, using = "input-confirm")
-    private WebElement passwordConfirmAtRegistrationForm;
+    public WebElement passwordConfirmAtRegistrationForm;
     @FindBy(how = How.NAME, using = "agree")
     private WebElement PrivacyPolicyCheckbox;
     @FindBy(how = How.CLASS_NAME, using = "btn-primary")
@@ -48,6 +48,10 @@ public class EPIC01RegistrationPage {
     public List<WebElement> PasswordErrorMessages;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Password must be between')]")
     public WebElement PasswordErrorMessage;
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Password confirmation does not')]")
+    public List<WebElement> PasswordConfirmErrorMessages;
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Password confirmation does not')]")
+    public WebElement PasswordConfirmErrorMessage;
 
     public String getPageUrl() {return "http://www.demoshop24.com/";}
 

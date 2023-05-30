@@ -190,7 +190,13 @@ public class EPIC01_RegistrationSteps {
     public void userEntersPasswordConfirm(String passwordConfirm) {
         EPIC01RegistrationPage.enterPasswordConfirmAtRegistrationForm(passwordConfirm);
     }
+
+    @Then("password confirm {string} should be valid and error message {string} is shown if it is invalid")
+    public void passwordConfirmShouldBeValidAndErrorMessageIsShownIfItIsInvalid(String passwordConfirm, String errorMessage) {
+        if (Objects.equals(passwordConfirm, EPIC01RegistrationPage.passwordAtRegistrationForm.getAttribute("value"))) {
+            assertTrue(EPIC01RegistrationPage.PasswordConfirmErrorMessages.isEmpty());
+        } else {
+            assertEquals(errorMessage, EPIC01RegistrationPage.PasswordConfirmErrorMessage.getText());
+        }
+    }
 }
-
-
-
