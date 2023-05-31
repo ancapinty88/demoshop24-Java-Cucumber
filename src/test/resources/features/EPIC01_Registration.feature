@@ -110,3 +110,13 @@ Feature: EPIC-01 Registration
     When user enters email "@mail.com"
     And user clicks Continue button below Registration form
     Then Privacy Policy warning is displayed
+
+  Scenario Outline: Last Name field validation (QESDEMO-2290)
+    When user enters last name "<lastName>"
+    And user clicks Continue button below Registration form
+    Then last name "<lastName>" should be valid and error message "<errorMessage>" is shown if it is invalid
+    Examples:
+      | lastName                          | errorMessage                                   |
+      |                                   | Last Name must be between 1 and 32 characters! |
+      | a                                 |                                                |
+      | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | Last Name must be between 1 and 32 characters! |

@@ -56,6 +56,10 @@ public class EPIC01RegistrationPage {
     public WebElement PrivacyPolicyWarning;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Warning:')]")
     public List<WebElement>  PrivacyPolicyWarnings;
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Last Name must')]")
+    public List<WebElement> lastNameErrorMessages;
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Last Name must')]")
+    public WebElement lastNameErrorMessage;
 
     public String getPageUrl() {return "http://www.demoshop24.com/";}
 

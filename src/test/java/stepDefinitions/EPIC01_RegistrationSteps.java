@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class EPIC01_RegistrationSteps {
     private static final Pattern FIRST_NAME_PATTERN = Pattern.compile("[a-zA-Z0-9]{1,32}");
+    private static final Pattern LAST_NAME_PATTERN = Pattern.compile(".{1,32}");
     private static final Pattern PASSWORD_PATTERN = Pattern.compile(".{4,20}");
     private static final Pattern TELEPHONE_PATTERN = Pattern.compile("[0-9]{3,32}");
     private static final Pattern EMAIL_PATTERN = Pattern.compile("[a-zA-Z0-9._%+#$^*~/|?!{}]+@[a-zA-Z0-9._-]+\\.[a-zA-Z]{2,4}");
@@ -210,4 +211,17 @@ public class EPIC01_RegistrationSteps {
         assertTrue(EPIC01RegistrationPage.PrivacyPolicyWarnings.isEmpty());
     }
 
+    @When("user enters last name {string}")
+    public void userEntersLastName(String lastName) {
+        EPIC01RegistrationPage.enterLastNameAtRegistrationForm(lastName);
+    }
+
+    @Then("last name {string} should be valid and error message {string} is shown if it is invalid")
+    public void lastNameShouldBeValidAndErrorMessageIsShownIfItIsInvalid(String lastName, String errorMessage) {
+        if (LAST_NAME_PATTERN.matcher(lastName).matches()) {
+            assertTrue(EPIC01RegistrationPage.lastNameErrorMessages.isEmpty());
+        } else {
+            assertEquals(errorMessage, EPIC01RegistrationPage.lastNameErrorMessage.getText());
+        }
+    }
 }
