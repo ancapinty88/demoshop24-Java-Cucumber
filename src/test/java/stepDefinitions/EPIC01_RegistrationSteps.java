@@ -28,10 +28,12 @@ public class EPIC01_RegistrationSteps {
     private WebDriver driver;
 
     static EPIC01RegistrationPage EPIC01RegistrationPage;
+    static EPIC01PersonalPage EPIC01PersonalPage;
 
     public EPIC01_RegistrationSteps() {
         this.driver = Hooks.driver;
         EPIC01RegistrationPage = PageFactory.initElements(Hooks.driver, EPIC01RegistrationPage.class);
+        EPIC01PersonalPage = PageFactory.initElements(Hooks.driver, EPIC01PersonalPage.class);
     }
 
     @Given("user is at DemoShop start page")
@@ -223,5 +225,45 @@ public class EPIC01_RegistrationSteps {
         } else {
             assertEquals(errorMessage, EPIC01RegistrationPage.lastNameErrorMessage.getText());
         }
+    }
+
+    @And("user clicks Login at header dropdown")
+        public void userClicksLoginAtHeaderDropdown() {
+            EPIC01PersonalPage.clickLoginAtHeader();
+        }
+
+    @And("user enters email {string} under returning customer")
+    public void userEntersEmailUnderReturningCustomer(String email) {
+        EPIC01PersonalPage.enterEmailToLogin(email);
+    }
+
+    @And("user enters password {string} under returning customer")
+    public void userEntersPasswordUnderReturningCustomer(String password) {
+        EPIC01PersonalPage.enterPasswordToLogin(password);
+    }
+
+    @Then("user is redirected to Personal Account page")
+    public void userIsRedirectedToPersonalAccountPage() {
+        assertEquals("https://www.demoshop24.com/index.php?route=account/account", driver.getCurrentUrl());
+    }
+
+    @And("user clicks Login button under returning customer")
+    public void userClicksLoginButtonUnderReturningCustomer() {
+        EPIC01PersonalPage.clickLoginButtonUnderReturningCustomer();
+    }
+
+    @When("user sees My Account block")
+    public void userSeesMyAccountBlock() {
+        assertTrue(EPIC01PersonalPage.MyAccountBlock.isDisplayed());
+    }
+
+    @And("user sees My Orders block")
+    public void userSeesMyOrdersBlock() {
+        assertTrue(EPIC01PersonalPage.MyOrdersBlock.isDisplayed());
+    }
+
+    @Then("user sees Edit Account link")
+    public void userSeesEditAccountLink() {
+        assertTrue(EPIC01PersonalPage.EditAccountInfoLink.isDisplayed());
     }
 }
