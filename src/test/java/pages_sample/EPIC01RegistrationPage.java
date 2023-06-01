@@ -81,7 +81,7 @@ public class EPIC01RegistrationPage {
     public List<WebElement> fieldsList;
     @FindBy(how = How.NAME, using = "agree")
     public List<WebElement> privacyPolicyCheckboxesList;
-    @FindBy(how = How.CSS, using = ("input[type='radio'][name='newsletter']"))
+    @FindBy(how = How.CSS, using = (".form-group:not([style*='display:  none ;']) input[type=radio]"))
     public List<WebElement> radioButtonsList;
 
     public Map<String, WebElement> getFieldsLocated () {
