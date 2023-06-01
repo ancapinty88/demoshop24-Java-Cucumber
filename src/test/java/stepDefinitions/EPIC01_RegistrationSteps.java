@@ -268,7 +268,7 @@ public class EPIC01_RegistrationSteps {
         assertTrue(EPIC01PersonalPage.EditAccountInfoLink.isDisplayed());
     }
 
-    @Then("user can see all the fields")
+    @And("user can see all the fields")
     public void userCanSeeAllTheFields(List<String> elements) {
         for (String element : elements) {
             WebElement fieldElement = EPIC01RegistrationPage.getFieldsLocated().get(element);
@@ -292,4 +292,20 @@ public class EPIC01_RegistrationSteps {
     public void radioButtonSubscribeIsNoByDefault() {
         EPIC01RegistrationPage.radioButtonSubscribeNoAtRegistrationForm.isSelected();
     }
+
+    @Then("user can see that there are <{int}> fields")
+    public void userCanSeeThatThereAreFields(int count) {
+        assertEquals(count,EPIC01RegistrationPage.fieldsList.size());
+    }
+
+    @And("user can see that there is <{int}> checkbox")
+    public void userCanSeeThatThereIsCheckbox(int count) {
+        assertEquals(count,EPIC01RegistrationPage.privacyPolicyCheckboxesList.size());
+    }
+
+    @And("user can see that there are <{int}> radio buttons")
+    public void userCanSeeThatThereAreRadioButtons(int count) {
+        assertEquals(count,EPIC01RegistrationPage.radioButtonsList.size());
+    }
+
 }

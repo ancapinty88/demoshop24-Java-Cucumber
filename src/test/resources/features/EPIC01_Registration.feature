@@ -123,7 +123,10 @@ Feature: EPIC-01 Registration
 
   Scenario: Registration form fields visibility and defaults check (QESDEMO-2277)
 #    Mandatoriness of the fields was verified in previous TCs when leaving the fields/checkbox empty
-    Then user can see all the fields
+    Then user can see that there are <6> fields
+    And user can see that there is <1> checkbox
+    And user can see that there are <2> radio buttons
+    And user can see all the fields
       | firstName              |
       | lastName               |
       | email                  |

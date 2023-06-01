@@ -32,7 +32,7 @@ public class EPIC01RegistrationPage {
     @FindBy(how = How.ID, using = "input-confirm")
     public WebElement passwordConfirmAtRegistrationForm;
     @FindBy(how = How.NAME, using = "agree")
-    private WebElement PrivacyPolicyCheckbox;
+    public WebElement PrivacyPolicyCheckbox;
     @FindBy(how = How.CLASS_NAME, using = "btn-primary")
     private WebElement ContinueBtnAtRegistrationForm;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'First Name must')]")
@@ -77,6 +77,12 @@ public class EPIC01RegistrationPage {
     public WebElement passwordConfirmForAsterisk;
     @FindBy(how = How.CSS, using = ("input[type='radio'][value='0']"))
     public WebElement radioButtonSubscribeNoAtRegistrationForm;
+    @FindBy(how = How.CSS, using = ".form-group.required:not([style*='display:  none ;'")
+    public List<WebElement> fieldsList;
+    @FindBy(how = How.NAME, using = "agree")
+    public List<WebElement> privacyPolicyCheckboxesList;
+    @FindBy(how = How.CSS, using = ("input[type='radio'][name='newsletter']"))
+    public List<WebElement> radioButtonsList;
 
     public Map<String, WebElement> getFieldsLocated () {
         Map<String, WebElement>fieldsLocated = new HashMap<>();
