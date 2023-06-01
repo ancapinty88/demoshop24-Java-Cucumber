@@ -290,7 +290,7 @@ public class EPIC01_RegistrationSteps {
 
     @And("radio button Subscribe is No by default")
     public void radioButtonSubscribeIsNoByDefault() {
-        EPIC01RegistrationPage.radioButtonSubscribeNoAtRegistrationForm.isSelected();
+        assertTrue(EPIC01RegistrationPage.radioButtonSubscribeNoAtRegistrationForm.isSelected());
     }
 
     @Then("user can see that there are <{int}> fields")
