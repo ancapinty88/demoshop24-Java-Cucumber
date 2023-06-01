@@ -4,15 +4,16 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages_sample.*;
 
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,8 +26,8 @@ public class EPIC01_RegistrationSteps {
     private static final Pattern EMAIL_PATTERN = Pattern.compile("[a-zA-Z0-9._%+#$^*~/|?!{}]+@[a-zA-Z0-9._-]+\\.[a-zA-Z]{2,4}");
     private static final String VALID_SYMBOLS_BEFORE_AT = "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]*[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]$";
     private static final String VALID_SYMBOLS_AFTER_AT = "^[A-Za-z0-9._-]*[A-Za-z0-9._-]$";
-    private WebDriver driver;
 
+    private WebDriver driver;
     static EPIC01RegistrationPage EPIC01RegistrationPage;
     static EPIC01PersonalPage EPIC01PersonalPage;
 
@@ -265,5 +266,30 @@ public class EPIC01_RegistrationSteps {
     @Then("user sees Edit Account link")
     public void userSeesEditAccountLink() {
         assertTrue(EPIC01PersonalPage.EditAccountInfoLink.isDisplayed());
+    }
+
+    @Then("user can see all the fields")
+    public void userCanSeeAllTheFields(List<String> elements) {
+        for (String element : elements) {
+            WebElement fieldElement = EPIC01RegistrationPage.getFieldsLocated().get(element);
+            assertTrue(fieldElement.isDisplayed());
+        }
+    }
+
+    @And("user can see asterisks {string} next to the mandatory fields at registration page")
+    public void userCanSeeAsterisksNextToTheMandatoryFieldsAtRegistrationPage(String asterisk, List<String> elements) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        for (String element : elements) {
+            WebElement asteriskLocator = EPIC01RegistrationPage.getAsteriskLocators().get(element);
+            String asteriskContent = (String) js.executeScript(
+                    "return window.getComputedStyle(arguments[0], '::before').getPropertyValue('content');", asteriskLocator
+            );
+            assertEquals(asterisk,asteriskContent);
+        }
+    }
+
+    @And("radio button Subscribe is No by default")
+    public void radioButtonSubscribeIsNoByDefault() {
+        EPIC01RegistrationPage.radioButtonSubscribeNoAtRegistrationForm.isSelected();
     }
 }

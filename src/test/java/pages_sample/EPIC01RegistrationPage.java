@@ -1,12 +1,15 @@
 package pages_sample;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import stepDefinitions.EPIC01_RegistrationSteps;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import static stepDefinitions.Hooks.driver;
@@ -60,6 +63,44 @@ public class EPIC01RegistrationPage {
     public List<WebElement> lastNameErrorMessages;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Last Name must')]")
     public WebElement lastNameErrorMessage;
+    @FindBy(how = How.CSS, using = "div.form-group.required label[for='input-firstname']")
+    public WebElement firstNameForAsterisk;
+    @FindBy(how = How.CSS, using = "div.form-group.required label[for='input-lastname']")
+    public WebElement lastNameForAsterisk;
+    @FindBy(how = How.CSS, using = "div.form-group.required label[for='input-email']")
+    public WebElement emailForAsterisk;
+    @FindBy(how = How.CSS, using = "div.form-group.required label[for='input-telephone']")
+    public WebElement telephoneForAsterisk;
+    @FindBy(how = How.CSS, using = "div.form-group.required label[for='input-password']")
+    public WebElement passwordForAsterisk;
+    @FindBy(how = How.CSS, using = "div.form-group.required label[for='input-confirm']")
+    public WebElement passwordConfirmForAsterisk;
+    @FindBy(how = How.CSS, using = ("input[type='radio'][value='0']"))
+    public WebElement radioButtonSubscribeNoAtRegistrationForm;
+
+    public Map<String, WebElement> getFieldsLocated () {
+        Map<String, WebElement>fieldsLocated = new HashMap<>();
+        fieldsLocated.put("firstName", firstNameAtRegistrationForm);
+        fieldsLocated.put("lastName", lastNameAtRegistrationForm);
+        fieldsLocated.put("email", emailAtRegistrationForm);
+        fieldsLocated.put("telephone", telephoneAtRegistrationForm);
+        fieldsLocated.put("password", passwordAtRegistrationForm);
+        fieldsLocated.put("passwordConfirm", passwordConfirmAtRegistrationForm);
+        fieldsLocated.put("privacyPolicyCheckbox", PrivacyPolicyCheckbox);
+        fieldsLocated.put("radioButtonSubscribeNo", radioButtonSubscribeNoAtRegistrationForm);
+        return fieldsLocated;
+    }
+
+    public Map<String, WebElement> getAsteriskLocators () {
+        Map<String, WebElement>asteriskLocators = new HashMap<>();
+        asteriskLocators.put("firstName", firstNameForAsterisk);
+        asteriskLocators.put("lastName", lastNameForAsterisk);
+        asteriskLocators.put("email", emailForAsterisk);
+        asteriskLocators.put("telephone", telephoneForAsterisk);
+        asteriskLocators.put("password", passwordForAsterisk);
+        asteriskLocators.put("passwordConfirm", passwordConfirmForAsterisk);
+        return asteriskLocators;
+    }
 
     public String getPageUrl() {return "http://www.demoshop24.com/";}
 
@@ -100,5 +141,7 @@ public class EPIC01RegistrationPage {
     public void clickPrivacyPolicyCheckbox() {PrivacyPolicyCheckbox.click();}
 
     public void clickContinueAtRegistrationForm () {ContinueBtnAtRegistrationForm.click();}
+
+
 
 }

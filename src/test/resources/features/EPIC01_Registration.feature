@@ -120,3 +120,24 @@ Feature: EPIC-01 Registration
       |                                   | Last Name must be between 1 and 32 characters! |
       | a                                 |                                                |
       | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | Last Name must be between 1 and 32 characters! |
+
+  Scenario: Registration form fields visibility and defaults check (QESDEMO-2277)
+#    Mandatoriness of the fields was verified in previous TCs when leaving the fields/checkbox empty
+    Then user can see all the fields
+      | firstName              |
+      | lastName               |
+      | email                  |
+      | telephone              |
+      | password               |
+      | passwordConfirm        |
+      | privacyPolicyCheckbox  |
+      | radioButtonSubscribeNo |
+    And user can see asterisks "\"* \"" next to the mandatory fields at registration page
+      | firstName       |
+      | lastName        |
+      | email           |
+      | telephone       |
+      | password        |
+      | passwordConfirm |
+#      | privacyPolicy   | this is a bug - it does not have the asterisk, but it should!
+    And radio button Subscribe is No by default
