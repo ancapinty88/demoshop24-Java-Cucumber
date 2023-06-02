@@ -6,7 +6,7 @@ import org.openqa.selenium.support.How;
 
 import java.util.List;
 
-public class EPIC01PersonalPage {
+public class EPIC02MyAccountPage {
 
     @FindBy(how = How.CSS, using = "#top-links [href*='route=account/login']")
     private WebElement LoginAtHeader;
@@ -22,6 +22,14 @@ public class EPIC01PersonalPage {
     public WebElement MyOrdersBlock;
     @FindBy(how = How.CSS, using = ".list-unstyled [href*='route=account/edit']")
     public WebElement EditAccountInfoLink;
+    @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'My Account')]/following-sibling::ul[1]//a[@href]")
+    public List<WebElement> MyAccountLinks;
+    @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'My Orders')]/following-sibling::ul[1]//a[@href]")
+    public List<WebElement> MyOrdersLinks;
+    @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'My Affiliate Account')]/following-sibling::ul[1]//a[@href]")
+    public List<WebElement> MyAffiliateAccountLinks;
+    @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'Newsletter')]/following-sibling::ul[1]//a[@href]")
+    public List<WebElement> NewsletterLinks;
 
 
     public void clickLoginAtHeader() {
