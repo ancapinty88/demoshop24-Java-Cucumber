@@ -1,22 +1,14 @@
 package pages_sample;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import stepDefinitions.EPIC01_RegistrationSteps;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
-import static stepDefinitions.Hooks.driver;
-
-public class EPIC01RegistrationPage {
-    @FindBy(how = How.CSS, using = "#top-links [href*='route=account/account']")
-    private WebElement headerAccountDropdown;
+public class EPIC01RegistrationPage extends BasePage {
     @FindBy(how = How.CSS, using = "#top-links [href*='route=account/register']")
     private WebElement RegisterAtHeader;
     @FindBy(how = How.ID, using = "input-firstname")
@@ -107,10 +99,6 @@ public class EPIC01RegistrationPage {
         asteriskLocators.put("passwordConfirm", passwordConfirmForAsterisk);
         return asteriskLocators;
     }
-
-    public String getPageUrl() {return "http://www.demoshop24.com/";}
-
-    public void clickAccountIcon () {headerAccountDropdown.click();}
 
     public void clickRegisterAtHeader () {RegisterAtHeader.click();}
 

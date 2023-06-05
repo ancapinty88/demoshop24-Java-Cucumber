@@ -6,16 +6,7 @@ import org.openqa.selenium.support.How;
 
 import java.util.List;
 
-public class EPIC02MyAccountPage {
-
-    @FindBy(how = How.CSS, using = "#top-links [href*='route=account/login']")
-    private WebElement LoginAtHeader;
-    @FindBy(how = How.ID, using = "input-email")
-    private WebElement EmailToLogin;
-    @FindBy(how = How.ID, using = "input-password")
-    private WebElement PasswordToLogin;
-    @FindBy(how = How.XPATH, using = "//input[@value='Login']")
-    private WebElement LoginBtnUnderReturningCustomer;
+public class EPIC02MyAccountPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'My Account')]/following-sibling::ul[1]")
     public WebElement MyAccountBlock;
     @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'My Orders')]/following-sibling::ul[1]")
@@ -23,32 +14,12 @@ public class EPIC02MyAccountPage {
     @FindBy(how = How.CSS, using = ".list-unstyled [href*='route=account/edit']")
     public WebElement EditAccountInfoLink;
     @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'My Account')]/following-sibling::ul[1]//a[@href]")
-    public List<WebElement> MyAccountLinks;
+    public static List<WebElement> MyAccountLinks;
     @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'My Orders')]/following-sibling::ul[1]//a[@href]")
-    public List<WebElement> MyOrdersLinks;
+    public static List<WebElement> MyOrdersLinks;
     @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'My Affiliate Account')]/following-sibling::ul[1]//a[@href]")
-    public List<WebElement> MyAffiliateAccountLinks;
+    public static List<WebElement> MyAffiliateAccountLinks;
     @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'Newsletter')]/following-sibling::ul[1]//a[@href]")
-    public List<WebElement> NewsletterLinks;
-
-
-    public void clickLoginAtHeader() {
-        LoginAtHeader.click();
-    }
-
-    public void enterEmailToLogin(String email) {
-        EmailToLogin.clear();
-        EmailToLogin.sendKeys(email);
-    }
-
-    public void enterPasswordToLogin(String password) {
-        PasswordToLogin.clear();
-        PasswordToLogin.sendKeys(password);
-    }
-
-    public void clickLoginButtonUnderReturningCustomer() {
-        LoginBtnUnderReturningCustomer.click();
-    }
-
+    public static List<WebElement> NewsletterLinks;
 
 }

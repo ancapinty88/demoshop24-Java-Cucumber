@@ -1,16 +1,12 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages_sample.*;
 
 import java.util.*;
 import java.util.regex.Pattern;
@@ -25,111 +21,96 @@ public class EPIC01_RegistrationSteps {
     private static final Pattern EMAIL_PATTERN = Pattern.compile("[a-zA-Z0-9._%+#$^*~/|?!{}]+@[a-zA-Z0-9._-]+\\.[a-zA-Z]{2,4}");
     private static final String VALID_SYMBOLS_BEFORE_AT = "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]*[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]$";
     private static final String VALID_SYMBOLS_AFTER_AT = "^[A-Za-z0-9._-]*[A-Za-z0-9._-]$";
+    private final BaseSteps steps;
 
-    private WebDriver driver;
-    static EPIC01RegistrationPage EPIC01RegistrationPage;
-    static EPIC02MyAccountPage EPIC02MyAccountPage;
-
-    public EPIC01_RegistrationSteps() {
-        this.driver = Hooks.driver;
-        EPIC01RegistrationPage = PageFactory.initElements(Hooks.driver, EPIC01RegistrationPage.class);
-        EPIC02MyAccountPage = PageFactory.initElements(Hooks.driver, EPIC02MyAccountPage.class);
-    }
-
-    @Given("user is at DemoShop start page")
-    public void userIsAtDEmoShopStartPage() {
-        driver.get(EPIC01RegistrationPage.getPageUrl());
-    }
-
-    @And("user clicks Account icon at header top menu")
-    public void userClicksAccountIconAtHeaderTopMenu() {
-        EPIC01RegistrationPage.clickAccountIcon();
+    public EPIC01_RegistrationSteps(BaseSteps steps) {
+        this.steps = new BaseSteps();
     }
 
     @And("user clicks Register at header dropdown")
     public void userClicksRegisterAtHeaderDropdown() {
-        EPIC01RegistrationPage.clickRegisterAtHeader();
+        BaseSteps.EPIC01RegistrationPage.clickRegisterAtHeader();
     }
 
     @Then("user is redirected to Register Account page")
     public void userIsRedirectedToRegisterAccountPage() {
-        assertEquals("https://www.demoshop24.com/index.php?route=account/register", driver.getCurrentUrl());
+        assertEquals("https://www.demoshop24.com/index.php?route=account/register", steps.driver.getCurrentUrl());
     }
 
     public static String makeEmailUnique() {
-        String uniqueEmail = UUID.randomUUID().toString() + "@mail.com";
+        String uniqueEmail = UUID.randomUUID() + "@mail.com";
         return uniqueEmail;
     }
 
     @When("user fills in registration form with valid credentials")
     public void userFillsInRegistrationFormWithValidCredentials(Map<String, String> valuesToEnter) {
-        EPIC01RegistrationPage.enterFirstNameAtRegistrationForm(valuesToEnter.get("firstName"));
-        EPIC01RegistrationPage.enterLastNameAtRegistrationForm(valuesToEnter.get("lastName"));
+        BaseSteps.EPIC01RegistrationPage.enterFirstNameAtRegistrationForm(valuesToEnter.get("firstName"));
+        BaseSteps.EPIC01RegistrationPage.enterLastNameAtRegistrationForm(valuesToEnter.get("lastName"));
         String email;
         if (Objects.equals(valuesToEnter.get("email"), "randomEmail")) {
             email = makeEmailUnique();
         } else {
             email = valuesToEnter.get("email");
         }
-        EPIC01RegistrationPage.enterEmailAtRegistrationForm(email);
-        EPIC01RegistrationPage.enterTelephoneAtRegistrationForm(valuesToEnter.get("telephone"));
-        EPIC01RegistrationPage.enterPasswordAtRegistrationForm(valuesToEnter.get("password"));
-        EPIC01RegistrationPage.enterPasswordConfirmAtRegistrationForm(valuesToEnter.get("passwordConfirm"));
+        BaseSteps.EPIC01RegistrationPage.enterEmailAtRegistrationForm(email);
+        BaseSteps.EPIC01RegistrationPage.enterTelephoneAtRegistrationForm(valuesToEnter.get("telephone"));
+        BaseSteps.EPIC01RegistrationPage.enterPasswordAtRegistrationForm(valuesToEnter.get("password"));
+        BaseSteps.EPIC01RegistrationPage.enterPasswordConfirmAtRegistrationForm(valuesToEnter.get("passwordConfirm"));
     }
 
     @And("user checks Privacy Policy checkbox")
     public void userChecksPrivacyPolicyCheckbox() {
-        EPIC01RegistrationPage.clickPrivacyPolicyCheckbox();
+        BaseSteps.EPIC01RegistrationPage.clickPrivacyPolicyCheckbox();
     }
 
     @And("user clicks Continue button below Registration form")
     public void userClicksContinueButtonBelowRegistrationForm() {
-        EPIC01RegistrationPage.clickContinueAtRegistrationForm();
+        BaseSteps.EPIC01RegistrationPage.clickContinueAtRegistrationForm();
     }
 
     @Then("user is navigated to confirmation page with title: {string}")
     public void userIsNavigatedToConfirmationPageWithTitle(String expectedTitle) {
-        String actualTitle = driver.getTitle();
+        String actualTitle = steps.driver.getTitle();
         assertEquals(expectedTitle, actualTitle);
     }
 
     @When("user enters first name {string}")
     public void userEntersFirstName(String firstName) {
-        EPIC01RegistrationPage.enterFirstNameAtRegistrationForm(firstName);
+        BaseSteps.EPIC01RegistrationPage.enterFirstNameAtRegistrationForm(firstName);
     }
 
     @Then("first name {string} should be valid and error message {string} is shown if it is invalid")
     public void firstNameShouldBeValidAndErrorMessageIsShownIfItIsInvalid(String firstName, String errorMessage) {
         if (FIRST_NAME_PATTERN.matcher(firstName).matches()) {
-            assertTrue(EPIC01RegistrationPage.firstNameErrorMessages.isEmpty());
+            assertTrue(BaseSteps.EPIC01RegistrationPage.firstNameErrorMessages.isEmpty());
         } else {
-            assertEquals(errorMessage, EPIC01RegistrationPage.firstNameErrorMessage.getText());
+            assertEquals(errorMessage, BaseSteps.EPIC01RegistrationPage.firstNameErrorMessage.getText());
         }
     }
 
     @When("user enters telephone {string}")
     public void userEntersTelephone(String telephone) {
-        EPIC01RegistrationPage.enterTelephoneAtRegistrationForm(telephone);
+        BaseSteps.EPIC01RegistrationPage.enterTelephoneAtRegistrationForm(telephone);
     }
 
     @Then("telephone {string} should be valid and error message {string} is shown if it is invalid")
     public void telephoneShouldBeValidAndErrorMessageIsShownIfItIsInvalid(String telephone, String errorMessage) {
         if (TELEPHONE_PATTERN.matcher(telephone).matches()) {
-            assertTrue(EPIC01RegistrationPage.TelephoneErrorMessages.isEmpty());
+            assertTrue(BaseSteps.EPIC01RegistrationPage.TelephoneErrorMessages.isEmpty());
         } else {
-            assertEquals(errorMessage, EPIC01RegistrationPage.TelephoneErrorMessage.getText());
+            assertEquals(errorMessage, BaseSteps.EPIC01RegistrationPage.TelephoneErrorMessage.getText());
         }
     }
 
     @When("user enters email {string}")
     public void userEntersEmail(String email) {
-        EPIC01RegistrationPage.enterEmailAtRegistrationForm(email);
+        BaseSteps.EPIC01RegistrationPage.enterEmailAtRegistrationForm(email);
     }
 
     public String getInvalidEmailAlert(WebDriverWait wait) {
         String alertText = "";
         try {
-            alertText = wait.until(ExpectedConditions.elementToBeClickable(EPIC01RegistrationPage.emailAtRegistrationForm)).getAttribute("validationMessage");
+            alertText = wait.until(ExpectedConditions.elementToBeClickable(BaseSteps.EPIC01RegistrationPage.emailAtRegistrationForm)).getAttribute("validationMessage");
         } catch (Exception e) {
         }
         return alertText;
@@ -141,11 +122,11 @@ public class EPIC01_RegistrationSteps {
 
     @Then("email {string} should be valid and error message {string} is shown if it is invalid")
     public void emailShouldBeValidAndErrorMessageIsShownIfItIsInvalid(String email, String errorMessage) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(steps.driver, 10);
         if ((EMAIL_PATTERN.matcher(email).matches()) && (!email.startsWith(".")) && (!email.contains(".."))) {
-            assertTrue(EPIC01RegistrationPage.EmailErrorMessages.isEmpty());
+            assertTrue(BaseSteps.EPIC01RegistrationPage.EmailErrorMessages.isEmpty());
         } else if ((email.isBlank()) || (email.startsWith(".")) || (email.contains(".."))) {
-            assertEquals(errorMessage, EPIC01RegistrationPage.EmailErrorMessage.getText());
+            assertEquals(errorMessage, BaseSteps.EPIC01RegistrationPage.EmailErrorMessage.getText());
         } else if (!email.contains("@")) {
             String alertText = getInvalidEmailAlert(wait);
             assertEquals(errorMessage, alertText);
@@ -170,91 +151,91 @@ public class EPIC01_RegistrationSteps {
             assertEquals(errorMessage, alertText);
                 }
             else {
-            assertEquals(errorMessage, EPIC01RegistrationPage.EmailErrorMessage.getText());
+            assertEquals(errorMessage, BaseSteps.EPIC01RegistrationPage.EmailErrorMessage.getText());
             }
         }
     }
 
     @When("user enters password {string}")
     public void userEntersPassword(String password) {
-        EPIC01RegistrationPage.enterPasswordAtRegistrationForm(password);
+        BaseSteps.EPIC01RegistrationPage.enterPasswordAtRegistrationForm(password);
     }
 
     @Then("password {string} should be valid and error message {string} is shown if it is invalid")
     public void passwordShouldBeValidAndErrorMessageIsShownIfItIsInvalid(String password, String errorMessage) {
         if (PASSWORD_PATTERN.matcher(password).matches()) {
-            assertTrue(EPIC01RegistrationPage.PasswordErrorMessages.isEmpty());
+            assertTrue(BaseSteps.EPIC01RegistrationPage.PasswordErrorMessages.isEmpty());
         } else {
-            assertEquals(errorMessage, EPIC01RegistrationPage.PasswordErrorMessage.getText());
+            assertEquals(errorMessage, BaseSteps.EPIC01RegistrationPage.PasswordErrorMessage.getText());
         }
     }
 
     @And("user enters password confirm {string}")
     public void userEntersPasswordConfirm(String passwordConfirm) {
-        EPIC01RegistrationPage.enterPasswordConfirmAtRegistrationForm(passwordConfirm);
+        BaseSteps.EPIC01RegistrationPage.enterPasswordConfirmAtRegistrationForm(passwordConfirm);
     }
 
     @Then("password confirm {string} should be valid and error message {string} is shown if it is invalid")
     public void passwordConfirmShouldBeValidAndErrorMessageIsShownIfItIsInvalid(String passwordConfirm, String errorMessage) {
-        if (Objects.equals(passwordConfirm, EPIC01RegistrationPage.passwordAtRegistrationForm.getAttribute("value"))) {
-            assertTrue(EPIC01RegistrationPage.PasswordConfirmErrorMessages.isEmpty());
+        if (Objects.equals(passwordConfirm, BaseSteps.EPIC01RegistrationPage.passwordAtRegistrationForm.getAttribute("value"))) {
+            assertTrue(BaseSteps.EPIC01RegistrationPage.PasswordConfirmErrorMessages.isEmpty());
         } else {
-            assertEquals(errorMessage, EPIC01RegistrationPage.PasswordConfirmErrorMessage.getText());
+            assertEquals(errorMessage, BaseSteps.EPIC01RegistrationPage.PasswordConfirmErrorMessage.getText());
         }
     }
 
     @Then("Privacy Policy warning is displayed")
     public void privacyPolicyWarningIsDisplayed() {
-        assertTrue(EPIC01RegistrationPage.PrivacyPolicyWarning.isDisplayed());
+        assertTrue(BaseSteps.EPIC01RegistrationPage.PrivacyPolicyWarning.isDisplayed());
     }
 
     @Then("Privacy Policy warning is not displayed")
     public void privacyPolicyWarningIsNotDisplayed() {
-        assertTrue(EPIC01RegistrationPage.PrivacyPolicyWarnings.isEmpty());
+        assertTrue(BaseSteps.EPIC01RegistrationPage.PrivacyPolicyWarnings.isEmpty());
     }
 
     @When("user enters last name {string}")
     public void userEntersLastName(String lastName) {
-        EPIC01RegistrationPage.enterLastNameAtRegistrationForm(lastName);
+        BaseSteps.EPIC01RegistrationPage.enterLastNameAtRegistrationForm(lastName);
     }
 
     @Then("last name {string} should be valid and error message {string} is shown if it is invalid")
     public void lastNameShouldBeValidAndErrorMessageIsShownIfItIsInvalid(String lastName, String errorMessage) {
         if (LAST_NAME_PATTERN.matcher(lastName).matches()) {
-            assertTrue(EPIC01RegistrationPage.lastNameErrorMessages.isEmpty());
+            assertTrue(BaseSteps.EPIC01RegistrationPage.lastNameErrorMessages.isEmpty());
         } else {
-            assertEquals(errorMessage, EPIC01RegistrationPage.lastNameErrorMessage.getText());
+            assertEquals(errorMessage, BaseSteps.EPIC01RegistrationPage.lastNameErrorMessage.getText());
         }
     }
 
     @When("user sees My Account block")
     public void userSeesMyAccountBlock() {
-        assertTrue(EPIC02MyAccountPage.MyAccountBlock.isDisplayed());
+        assertTrue(BaseSteps.EPIC02MyAccountPage.MyAccountBlock.isDisplayed());
     }
 
     @And("user sees My Orders block")
     public void userSeesMyOrdersBlock() {
-        assertTrue(EPIC02MyAccountPage.MyOrdersBlock.isDisplayed());
+        assertTrue(BaseSteps.EPIC02MyAccountPage.MyOrdersBlock.isDisplayed());
     }
 
     @Then("user sees Edit Account link")
     public void userSeesEditAccountLink() {
-        assertTrue(EPIC02MyAccountPage.EditAccountInfoLink.isDisplayed());
+        assertTrue(BaseSteps.EPIC02MyAccountPage.EditAccountInfoLink.isDisplayed());
     }
 
     @And("user can see all the fields")
     public void userCanSeeAllTheFields(List<String> elements) {
         for (String element : elements) {
-            WebElement fieldElement = EPIC01RegistrationPage.getFieldsLocated().get(element);
+            WebElement fieldElement = BaseSteps.EPIC01RegistrationPage.getFieldsLocated().get(element);
             assertTrue(fieldElement.isDisplayed());
         }
     }
 
     @And("user can see asterisks {string} next to the mandatory fields at registration page")
     public void userCanSeeAsterisksNextToTheMandatoryFieldsAtRegistrationPage(String asterisk, List<String> elements) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) steps.driver;
         for (String element : elements) {
-            WebElement asteriskLocator = EPIC01RegistrationPage.getAsteriskLocators().get(element);
+            WebElement asteriskLocator = BaseSteps.EPIC01RegistrationPage.getAsteriskLocators().get(element);
             String asteriskContent = (String) js.executeScript(
                     "return window.getComputedStyle(arguments[0], '::before').getPropertyValue('content');", asteriskLocator
             );
@@ -264,21 +245,21 @@ public class EPIC01_RegistrationSteps {
 
     @And("radio button Subscribe is No by default")
     public void radioButtonSubscribeIsNoByDefault() {
-        assertTrue(EPIC01RegistrationPage.radioButtonSubscribeNoAtRegistrationForm.isSelected());
+        assertTrue(BaseSteps.EPIC01RegistrationPage.radioButtonSubscribeNoAtRegistrationForm.isSelected());
     }
 
     @Then("user can see that there are <{int}> fields")
     public void userCanSeeThatThereAreFields(int count) {
-        assertEquals(count,EPIC01RegistrationPage.fieldsList.size());
+        assertEquals(count, BaseSteps.EPIC01RegistrationPage.fieldsList.size());
     }
 
     @And("user can see that there is <{int}> checkbox")
     public void userCanSeeThatThereIsCheckbox(int count) {
-        assertEquals(count,EPIC01RegistrationPage.privacyPolicyCheckboxesList.size());
+        assertEquals(count, BaseSteps.EPIC01RegistrationPage.privacyPolicyCheckboxesList.size());
     }
 
     @And("user can see that there are <{int}> radio buttons")
     public void userCanSeeThatThereAreRadioButtons(int count) {
-        assertEquals(count,EPIC01RegistrationPage.radioButtonsList.size());
+        assertEquals(count, BaseSteps.EPIC01RegistrationPage.radioButtonsList.size());
     }
 }
