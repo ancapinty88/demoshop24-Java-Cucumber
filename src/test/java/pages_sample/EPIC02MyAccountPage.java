@@ -21,5 +21,7 @@ public class EPIC02MyAccountPage extends BasePage {
     public static List<WebElement> myAffiliateAccountLinks;
     @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'Newsletter')]/following-sibling::ul[1]//a[@href]")
     public static List<WebElement> newsletterLinks;
+    @FindBy(how = How.CSS, using = "#column-right .list-group a")
+    public static List<WebElement> rightMenuLinks;
 
 }

@@ -37,4 +37,11 @@ public class EPIC02_MyAccountSteps extends CommonSteps {
             assertEquals(links.get(i), EPIC02MyAccountPage.newsletterLinks.get(i).getText());
         }
     }
+
+    @Then("user sees menu links on the right side")
+    public void userSeesMenuLinksOnTheRightSide(List<String> links) {
+        for (int i = 0; i <= (EPIC02MyAccountPage.rightMenuLinks.size()-1); i++) {
+            assertEquals(links.get(i), EPIC02MyAccountPage.rightMenuLinks.get(i).getText());
+        }
+    }
 }

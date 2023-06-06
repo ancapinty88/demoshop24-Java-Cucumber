@@ -38,6 +38,18 @@ Feature: EPIC-02 My Account
     And user sees Newsletter links
       | Subscribe / unsubscribe to newsletter |
 
-
-
-
+  Scenario: Menu links on the right side: validation (QESDEMO-2450)
+    Then user sees menu links on the right side
+      | My Account         |
+      | Edit Account       |
+      | Password           |
+      | Address Book       |
+      | Wish List          |
+      | Order History      |
+      | Downloads          |
+      | Recurring payments |
+      | Reward Points      |
+      | Returns            |
+      | Transactions       |
+      | Newsletter         |
+      | Logout             |
