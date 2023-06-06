@@ -38,7 +38,7 @@ Feature: EPIC-02 My Account
     And user sees Newsletter links
       | Subscribe / unsubscribe to newsletter |
 
-  Scenario: Menu links on the right side: validation (QESDEMO-2450)
+  Scenario: Menu links on the right side: validation (QESDEMO-2447)
     Then user sees menu links on the right side
       | My Account         |
       | Edit Account       |
