@@ -8,18 +8,18 @@ import java.util.List;
 
 public class EPIC02MyAccountPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'My Account')]/following-sibling::ul[1]")
-    public WebElement MyAccountBlock;
+    public WebElement myAccountBlock;
     @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'My Orders')]/following-sibling::ul[1]")
-    public WebElement MyOrdersBlock;
+    public WebElement myOrdersBlock;
     @FindBy(how = How.CSS, using = ".list-unstyled [href*='route=account/edit']")
-    public WebElement EditAccountInfoLink;
+    public WebElement editAccountInfoLink;
     @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'My Account')]/following-sibling::ul[1]//a[@href]")
-    public static List<WebElement> MyAccountLinks;
+    public static List<WebElement> myAccountLinks;
     @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'My Orders')]/following-sibling::ul[1]//a[@href]")
-    public static List<WebElement> MyOrdersLinks;
+    public static List<WebElement> myOrdersLinks;
     @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'My Affiliate Account')]/following-sibling::ul[1]//a[@href]")
-    public static List<WebElement> MyAffiliateAccountLinks;
+    public static List<WebElement> myAffiliateAccountLinks;
     @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'Newsletter')]/following-sibling::ul[1]//a[@href]")
-    public static List<WebElement> NewsletterLinks;
+    public static List<WebElement> newsletterLinks;
 
 }

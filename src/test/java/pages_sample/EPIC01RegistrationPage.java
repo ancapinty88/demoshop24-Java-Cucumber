@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class EPIC01RegistrationPage extends BasePage {
     @FindBy(how = How.CSS, using = "#top-links [href*='route=account/register']")
-    private WebElement RegisterAtHeader;
+    private WebElement registerAtHeader;
     @FindBy(how = How.ID, using = "input-firstname")
     public WebElement firstNameAtRegistrationForm;
     @FindBy(how = How.ID, using = "input-lastname")
@@ -24,33 +24,33 @@ public class EPIC01RegistrationPage extends BasePage {
     @FindBy(how = How.ID, using = "input-confirm")
     public WebElement passwordConfirmAtRegistrationForm;
     @FindBy(how = How.NAME, using = "agree")
-    public WebElement PrivacyPolicyCheckbox;
+    public WebElement privacyPolicyCheckbox;
     @FindBy(how = How.CLASS_NAME, using = "btn-primary")
-    private WebElement ContinueBtnAtRegistrationForm;
+    private WebElement continueBtnAtRegistrationForm;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'First Name must')]")
     public List<WebElement> firstNameErrorMessages;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'First Name must')]")
     public WebElement firstNameErrorMessage;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Telephone must')]")
-    public List<WebElement> TelephoneErrorMessages;
+    public List<WebElement> telephoneErrorMessages;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Telephone must')]")
-    public WebElement TelephoneErrorMessage;
+    public WebElement telephoneErrorMessage;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'E-Mail Address does not')]")
-    public List<WebElement> EmailErrorMessages;
+    public List<WebElement> emailErrorMessages;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'E-Mail Address does not')]")
-    public WebElement EmailErrorMessage;
+    public WebElement emailErrorMessage;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Password must be between')]")
-    public List<WebElement> PasswordErrorMessages;
+    public List<WebElement> passwordErrorMessages;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Password must be between')]")
-    public WebElement PasswordErrorMessage;
+    public WebElement passwordErrorMessage;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Password confirmation does not')]")
-    public List<WebElement> PasswordConfirmErrorMessages;
+    public List<WebElement> passwordConfirmErrorMessages;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Password confirmation does not')]")
-    public WebElement PasswordConfirmErrorMessage;
+    public WebElement passwordConfirmErrorMessage;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Warning:')]")
-    public WebElement PrivacyPolicyWarning;
+    public WebElement privacyPolicyWarning;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Warning:')]")
-    public List<WebElement>  PrivacyPolicyWarnings;
+    public List<WebElement> privacyPolicyWarnings;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Last Name must')]")
     public List<WebElement> lastNameErrorMessages;
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Last Name must')]")
@@ -84,7 +84,7 @@ public class EPIC01RegistrationPage extends BasePage {
         fieldsLocated.put("telephone", telephoneAtRegistrationForm);
         fieldsLocated.put("password", passwordAtRegistrationForm);
         fieldsLocated.put("passwordConfirm", passwordConfirmAtRegistrationForm);
-        fieldsLocated.put("privacyPolicyCheckbox", PrivacyPolicyCheckbox);
+        fieldsLocated.put("privacyPolicyCheckbox", privacyPolicyCheckbox);
         fieldsLocated.put("radioButtonSubscribeNo", radioButtonSubscribeNoAtRegistrationForm);
         return fieldsLocated;
     }
@@ -100,7 +100,8 @@ public class EPIC01RegistrationPage extends BasePage {
         return asteriskLocators;
     }
 
-    public void clickRegisterAtHeader () {RegisterAtHeader.click();}
+    public void clickRegisterAtHeader () {
+        registerAtHeader.click();}
 
     public void enterFirstNameAtRegistrationForm(String firstName) {
         firstNameAtRegistrationForm.clear();
@@ -132,9 +133,11 @@ public class EPIC01RegistrationPage extends BasePage {
         passwordConfirmAtRegistrationForm.sendKeys(passwordConfirm);
     }
 
-    public void clickPrivacyPolicyCheckbox() {PrivacyPolicyCheckbox.click();}
+    public void clickPrivacyPolicyCheckbox() {
+        privacyPolicyCheckbox.click();}
 
-    public void clickContinueAtRegistrationForm () {ContinueBtnAtRegistrationForm.click();}
+    public void clickContinueAtRegistrationForm () {
+        continueBtnAtRegistrationForm.click();}
 
 
 
