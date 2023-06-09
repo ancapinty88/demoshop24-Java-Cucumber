@@ -91,6 +91,6 @@ public class EPIC02_MyAccountSteps extends CommonSteps {
 
     @And("message {string} is shown")
     public void messageIsShown(String message) {
-        assertTrue(epic02MyAccountPage.successfulAccountUpdateMessage.isDisplayed());
+        assertEquals(message,epic02MyAccountPage.successfulAccountUpdateMessage.getText());
     }
 }

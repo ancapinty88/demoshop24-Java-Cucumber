@@ -96,7 +96,7 @@ Feature: EPIC-02 My Account
     When user changes first name to "<firstName>"
     And user clicks Continue button below Edit Account form
     Then user is redirected to Personal Account page
-    And message " Success: Your account has been successfully updated." is shown
+    And message "Success: Your account has been successfully updated." is shown
     Examples:
       | firstName                        |
       | LadyLadyLadyLadyLadyLadyLadyLady |
