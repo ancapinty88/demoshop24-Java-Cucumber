@@ -103,9 +103,7 @@ Feature: EPIC-02 My Account
       | L                                |
 
   Scenario Outline: Validation of the Last Name field in My Account Information (QESDEMO-2475): invalid data
-# Bug1: AC do not mention that the name must be between between 1 and 32 characters
-# Bug2: AC upon registration required First Name input to be alpha-numeric,
-# but not when editing My Account Information (inconsistent requirements)
+# Bug: AC do not mention that the last name must be between between 1 and 32 characters
     When user clicks Edit Account menu item
     When user changes last name to "<lastName>"
     And user clicks Continue button below Edit Account form
@@ -116,9 +114,7 @@ Feature: EPIC-02 My Account
       |                                   | Last Name must be between 1 and 32 characters! |
 
   Scenario Outline: Validation of the Last Name field in My Account Information (QESDEMO-2475): valid data
-# Bug1: AC do not mention that the name must be between between 1 and 32 characters
-# Bug2: AC upon registration required First Name input to be alpha-numeric,
-# but not when editing My Account Information (inconsistent requirements)
+# Bug: AC do not mention that the last name must be between between 1 and 32 characters
     When user clicks Edit Account menu item
     When user changes last name to "<lastName>"
     And user clicks Continue button below Edit Account form
