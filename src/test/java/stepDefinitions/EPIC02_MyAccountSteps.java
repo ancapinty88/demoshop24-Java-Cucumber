@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pages_sample.EPIC02MyAccountPage;
 
 import java.util.List;
@@ -43,5 +44,15 @@ public class EPIC02_MyAccountSteps extends CommonSteps {
         for (int i = 0; i <= (EPIC02MyAccountPage.rightMenuLinks.size()-1); i++) {
             assertEquals(links.get(i), EPIC02MyAccountPage.rightMenuLinks.get(i).getText());
         }
+    }
+
+    @When("user clicks Edit Account menu item")
+    public void userClicksEditAccountMenuItem() {
+        EPIC02MyAccountPage.clickEditAccountBtnMenuRight();
+    }
+
+    @And("user is navigated to page with subtitle {string}")
+    public void userIsNavigatedToPageWithSubtitle(String subtitle) {
+        assertEquals(subtitle, EPIC02MyAccountPage.myAccountPageSubtitle.getText());
     }
 }

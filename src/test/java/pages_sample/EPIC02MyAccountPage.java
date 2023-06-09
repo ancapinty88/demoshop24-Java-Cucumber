@@ -23,5 +23,14 @@ public class EPIC02MyAccountPage extends BasePage {
     public static List<WebElement> newsletterLinks;
     @FindBy(how = How.CSS, using = "#column-right .list-group a")
     public static List<WebElement> rightMenuLinks;
+    @FindBy(how = How.CSS, using = "#column-right .list-group [href*='route=account/edit']")
+    public static WebElement editAccountBtnMenuRight;
+    @FindBy(how = How.TAG_NAME, using = "legend")
+    public static WebElement myAccountPageSubtitle;
+
+    public static void clickEditAccountBtnMenuRight() {
+        editAccountBtnMenuRight.click();
+    }
+
 
 }
