@@ -84,4 +84,9 @@ public class EPIC02MyAccountPage extends BasePage {
     public void clickContinueAtEditAccount() {
         buttonContinueAtEditAccount.click();
     }
+
+    public void changeLastNameAtEditAccount(String lastName) {
+        lastNameAtEditAccount.clear();
+        lastNameAtEditAccount.sendKeys(lastName);
+    }
 }

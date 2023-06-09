@@ -93,4 +93,9 @@ public class EPIC02_MyAccountSteps extends CommonSteps {
     public void messageIsShown(String message) {
         assertEquals(message,epic02MyAccountPage.successfulAccountUpdateMessage.getText());
     }
+
+    @When("user changes last name to {string}")
+    public void userChangesLastNameTo(String lastName) {
+        epic02MyAccountPage.changeLastNameAtEditAccount(lastName);
+    }
 }
