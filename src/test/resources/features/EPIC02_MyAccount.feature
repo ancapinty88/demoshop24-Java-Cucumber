@@ -54,7 +54,23 @@ Feature: EPIC-02 My Account
       | Newsletter         |
       | Logout             |
 
-    Scenario: Check that "Edit Account" menu item contains specific title and sub-title (QESDEMO-2468)
-      When user clicks Edit Account menu item
-      Then user is navigated to confirmation page with title: "My Account Information"
-      And user is navigated to page with subtitle "Your Personal Details"
+  Scenario: Check that "Edit Account" menu item contains specific title and sub-title (QESDEMO-2468)
+    When user clicks Edit Account menu item
+    Then user is navigated to confirmation page with title: "My Account Information"
+    And user is navigated to page with subtitle "Your Personal Details"
+
+  Scenario: "Edit Account" menu item fields visibility and defaults check (QESDEMO-2469)
+#    Mandatoriness of the fields is verified in other TCs when leaving the fields empty
+    When user clicks Edit Account menu item
+    Then user can see all the fields and buttons under Edit Account
+      | firstName      |
+      | lastName       |
+      | email          |
+      | telephone      |
+      | buttonContinue |
+      | buttonBack     |
+    And user can see asterisks "\"* \"" next to the mandatory fields at Edit Account form
+      | firstName |
+      | lastName  |
+      | email     |
+      | telephone |

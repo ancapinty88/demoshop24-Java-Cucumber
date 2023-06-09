@@ -3,11 +3,14 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import pages_sample.EPIC02MyAccountPage;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class EPIC02_MyAccountSteps extends CommonSteps {
 
@@ -54,5 +57,25 @@ public class EPIC02_MyAccountSteps extends CommonSteps {
     @And("user is navigated to page with subtitle {string}")
     public void userIsNavigatedToPageWithSubtitle(String subtitle) {
         assertEquals(subtitle, EPIC02MyAccountPage.myAccountPageSubtitle.getText());
+    }
+
+    @When("user can see all the fields and buttons under Edit Account")
+    public void userCanSeeAllTheFieldsAndButtonsUnderEditAccount(List<String> elements) {
+        for (String element : elements) {
+            WebElement fieldButtonElement = epic02MyAccountPage.getFieldsButtonsLocatedWhenEditAccount().get(element);
+            assertTrue(fieldButtonElement.isDisplayed());
+        }
+    }
+
+    @And("user can see asterisks {string} next to the mandatory fields at Edit Account form")
+    public void userCanSeeAsterisksNextToTheMandatoryFieldsAtEditAccountForm(String asterisk, List<String> elements) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        for (String element : elements) {
+            WebElement asteriskLocator = epic02MyAccountPage.getAsteriskLocators().get(element);
+            String asteriskContent = (String) js.executeScript(
+                    "return window.getComputedStyle(arguments[0], '::before').getPropertyValue('content');", asteriskLocator
+            );
+            assertEquals(asterisk,asteriskContent);
+        }
     }
 }
