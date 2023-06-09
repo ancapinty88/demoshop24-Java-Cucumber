@@ -74,3 +74,30 @@ Feature: EPIC-02 My Account
       | lastName  |
       | email     |
       | telephone |
+
+  Scenario Outline: Validation of the First Name field in My Account Information (QESDEMO-2473): invalid data
+# Bug1: AC do not mention that the name must be between between 1 and 32 characters
+# Bug2: AC upon registration required First Name input to be alpha-numeric,
+# but not when editing My Account Information (inconsistent requirements)
+    When user clicks Edit Account menu item
+    When user changes first name to "<firstName>"
+    And user clicks Continue button below Edit Account form
+    Then first name "<firstName>" should be valid and error message "<errorMessage>" is shown if it is invalid
+    Examples:
+      | firstName                         | errorMessage                                    |
+      | LadyLadyLadyLadyLadyLadyLadyLadyB | First Name must be between 1 and 32 characters! |
+      |                                   | First Name must be between 1 and 32 characters! |
+
+  Scenario Outline: Validation of the First Name field in My Account Information (QESDEMO-2473): valid data
+# Bug1: AC do not mention that the name must be between between 1 and 32 characters
+# Bug2: AC upon registration required First Name input to be alpha-numeric,
+# but not when editing My Account Information (inconsistent requirements)
+    When user clicks Edit Account menu item
+    When user changes first name to "<firstName>"
+    And user clicks Continue button below Edit Account form
+    Then user is redirected to Personal Account page
+    And message " Success: Your account has been successfully updated." is shown
+    Examples:
+      | firstName                        |
+      | LadyLadyLadyLadyLadyLadyLadyLady |
+      | L                                |

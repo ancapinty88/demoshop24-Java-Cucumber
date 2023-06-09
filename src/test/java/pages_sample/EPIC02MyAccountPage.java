@@ -49,6 +49,8 @@ public class EPIC02MyAccountPage extends BasePage {
     public WebElement emailForAsteriskAtEdit;
     @FindBy(how = How.CSS, using = "div.form-group.required label[for='input-telephone']")
     public WebElement telephoneForAsteriskAtEdit;
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),' Success: Your account has been successfully updated.')]")
+    public WebElement successfulAccountUpdateMessage;
 
     public Map<String, WebElement> getFieldsButtonsLocatedWhenEditAccount () {
         Map<String, WebElement>fieldsButtonsLocated = new HashMap<>();
@@ -74,5 +76,12 @@ public class EPIC02MyAccountPage extends BasePage {
         return asteriskLocators;
     }
 
+    public void changeFirstNameAtEditAccount(String firstName) {
+        firstNameAtEditAccount.clear();
+        firstNameAtEditAccount.sendKeys(firstName);
+    }
 
+    public void clickContinueAtEditAccount() {
+        buttonContinueAtEditAccount.click();
+    }
 }

@@ -78,4 +78,19 @@ public class EPIC02_MyAccountSteps extends CommonSteps {
             assertEquals(asterisk,asteriskContent);
         }
     }
+
+    @When("user changes first name to {string}")
+    public void userChangesFirstNameTo(String firstName) {
+        epic02MyAccountPage.changeFirstNameAtEditAccount(firstName);
+    }
+
+    @And("user clicks Continue button below Edit Account form")
+    public void userClicksContinueButtonBelowEditAccountForm() {
+        epic02MyAccountPage.clickContinueAtEditAccount();
+    }
+
+    @And("message {string} is shown")
+    public void messageIsShown(String message) {
+        assertTrue(epic02MyAccountPage.successfulAccountUpdateMessage.isDisplayed());
+    }
 }
