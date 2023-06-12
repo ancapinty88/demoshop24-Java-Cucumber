@@ -98,4 +98,9 @@ public class EPIC02_MyAccountSteps extends CommonSteps {
     public void userChangesLastNameTo(String lastName) {
         epic02MyAccountPage.changeLastNameAtEditAccount(lastName);
     }
+
+    @When("user changes telephone to {string}")
+    public void userChangesTelephoneTo(String telephone) {
+        epic02MyAccountPage.changeTelephoneAtEditAccount(telephone);
+    }
 }

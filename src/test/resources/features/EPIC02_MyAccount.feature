@@ -124,3 +124,27 @@ Feature: EPIC-02 My Account
       | lastName                         |
       | BugBugBugBugBugBugBugBugBugBugBB |
       | B                                |
+
+  Scenario Outline: Validation of the Telephone field in My Account Information (QESDEMO-2478): invalid data
+# Bug: AC do not mention that the last name must be between between 1 and 32 characters
+    When user clicks Edit Account menu item
+    When user changes telephone to "<telephone>"
+    And user clicks Continue button below Edit Account form
+    Then telephone "<telephone>" should be valid and error message "<errorMessage>" is shown if it is invalid
+    Examples:
+      | telephone                         | errorMessage                                   |
+      |                                   | Telephone must be between 3 and 32 characters! |
+      | 12                                | Telephone must be between 3 and 32 characters! |
+      | 123456789123456789123456789000000 | Telephone must be between 3 and 32 characters! |
+
+  Scenario Outline: Validation of the Telephone field in My Account Information (QESDEMO-2478): valid data
+# Bug: AC do not mention that the last name must be between between 1 and 32 characters
+    When user clicks Edit Account menu item
+    When user changes telephone to "<telephone>"
+    And user clicks Continue button below Edit Account form
+    Then user is redirected to Personal Account page
+    And message "Success: Your account has been successfully updated." is shown
+    Examples:
+      | telephone                        |
+      | 12345678912345678912345678900000 |
+      | 123                              |
