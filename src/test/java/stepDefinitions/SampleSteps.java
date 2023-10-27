@@ -26,6 +26,6 @@ public class SampleSteps {
     @And("I see {string} title")
     public void iSeeTitle(String titleExpected) {
         String titleActual = driver.getTitle();
-        assertEquals(titleExpected, titleActual);
+        assertEquals(titleExpected,titleActual);
     }
 }

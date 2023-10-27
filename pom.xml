@@ -15,8 +15,12 @@
         <cucumber.version>7.2.1</cucumber.version>
         <junit5.version>5.8.2</junit5.version>
         <junit-platform-suite.version>1.8.2</junit-platform-suite.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <checkstyle.version>10.12.3</checkstyle.version>
+        <checkstyle.plugin.version>3.2.0</checkstyle.plugin.version>
+        <sevntu.checkstyle.plugin.version>1.44.1</sevntu.checkstyle.plugin.version>
     </properties>
 
     <dependencies>
@@ -76,21 +80,59 @@
     </dependencies>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.22.2</version>
-                    <configuration>
-                        <includes>
-                            <include>**/CucumberRunner.java</include>
-                        </includes>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle.plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${checkstyle.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.github.sevntu-checkstyle</groupId>
+                        <artifactId>sevntu-checks</artifactId>
+                        <version>${sevntu.checkstyle.plugin.version}</version>
+                    </dependency>
+                </dependencies>
+                <!-- https://maven.apache.org/plugins/maven-checkstyle-plugin/checkstyle-mojo.html -->
+                <!-- Properties for "mvn checkstyle:checkstyle" to execute without mvn build -->
+                <configuration>
+                    <configLocation>checkstyle.xml</configLocation>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <consoleOutput>true</consoleOutput>
+                    <failOnViolation>true</failOnViolation>
+                    <failsOnError>true</failsOnError>
+                    <!-- linkXRef=false to avoid WARNING 'Unable to locate Source XRef to link to' -->
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <!-- https://maven.apache.org/plugins/maven-checkstyle-plugin/check-mojo.html -->
+                <!-- Properties for "mvn checkstyle:check" to execute as part of maven build
+                     They are conflicting with properties of checkstyle:checkstyle
+                     so only one set should be used
+                -->
+                <!--
+                <configuration>
+                    <configLocation>checkstyle.xml</configLocation>
+                    <logViolationsToConsole>true</logViolationsToConsole>
+                    <consoleOutput>true</consoleOutput>
+                    <failOnViolation>true</failOnViolation>
+                    <failsOnError>false</failsOnError>
+                </configuration>
+                -->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <includes>
+                        <include>**/CucumberRunner.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -99,7 +141,26 @@
                     <target>11</target>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
+    <reporting>
+        <plugins>
+            <!-- Specifying configuration here will take effect
+                 on the execution of "mvn site",
+                 but will NOT take effect on the execution of "mvn checkstyle:check"
+                 or "mvn checkstyle:checkstyle"
+             -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle.plugin.version}</version>
+                <configuration>
+                    <configLocation>checkstyle.xml</configLocation>
+                    <failOnViolation>true</failOnViolation>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>
