@@ -11,7 +11,7 @@ Feature: Login
   Scenario Outline: Login into system
     When Fill input "<email>" and "<password>" fields in the Returning Customer section
     Then Click on the Login button
-    Then Check that all sections are visible on page
+    And Check that all sections are visible on page
 
     Examples:
       | email               | password        |

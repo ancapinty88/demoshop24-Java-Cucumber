@@ -81,6 +81,10 @@ public class RegistrationPage {
     @FindBy(how = How.CSS, using = "input[value='Continue']")
     private WebElement continueElement;
 
+    @FindBy(how = How.CSS, using = "#account-register > div.alert.alert-danger.alert-dismissible")
+    private WebElement warningRegMsg;
+
+
 
 
 
@@ -109,6 +113,7 @@ public class RegistrationPage {
 
     public static WebDriverWait wait;
     public static void clickElement(WebElement element) {
+        wait = new WebDriverWait(driver,  Duration.ofMillis(500L));
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
@@ -190,7 +195,7 @@ public class RegistrationPage {
     }
     public void assertEmailError() {
         assertEquals("Warning: E-Mail Address is already registered!",
-                driver.findElement(By.xpath("//*[@id=\"account-register\"]/div[1]")).getText());
+                driver.findElement(By.cssSelector("#account-register > div.alert.alert-danger.alert-dismissible")).getText());
     }
 
     public void assertPasswordError() {

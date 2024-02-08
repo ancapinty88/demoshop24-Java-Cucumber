@@ -23,10 +23,11 @@ Scenario Outline: User is able to register a new account
 
   #QESDEMO-2753
 Scenario Outline: E-mail address field validation
-  Then Fill all input fields in register account page "<FirstName>" "<LastName>" "<Email>""<Telephone>" "<Password>" "<PasswordConfirm>" "<Subscribe>":
+  Then Fill all input fields in register account page, existing email address "<FirstName>" "<LastName>" "<Email>""<Telephone>" "<Password>" "<PasswordConfirm>" "<Subscribe>":
   #but fill e-mail input field with an existing e-mail address in the Register Account page
   And Click on I have read and agree to the Privacy Policy checkbox
   Then Click the Continue button
+  Then Check warning message
   Examples:
     | FirstName | LastName |  Email              | Telephone | Password   | PasswordConfirm | Subscribe |
     | Ank       | Pin      |  ank@gmail33.com    | 145265542 | 1Password7 | 1Password7      | No        |

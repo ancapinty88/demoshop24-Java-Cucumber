@@ -56,8 +56,8 @@ public class RegistrationSteps {
                                                         String telephone, String password, String confirmpassword, String subscribe) throws InterruptedException{
         registrationPage.enterFirstName(firstname);
         registrationPage.enterLastName(lastname);
-        registrationPage.enterEmail(email);
-        //registrationPage.enterEmail("testuser" + System.currentTimeMillis() + "@example.com");
+        //registrationPage.enterEmail(email);
+        registrationPage.enterEmail("testuser" + System.currentTimeMillis() + "@example.com");
         registrationPage.enterTelephone(telephone);
         driver.findElement(By.id("input-password")).sendKeys(password);
         registrationPage.enterPassword(password);
@@ -68,6 +68,7 @@ public class RegistrationSteps {
         registrationPage.radiobuttonsubscribe(subscribe);
         Thread.sleep(1000);
     }
+
     @And("Click on I have read and agree to the Privacy Policy checkbox")
     public void clickOnIHaveReadAndAgreeToThePrivacyPolicyCheckbox() {
         registrationPage.checkboxAgree();
@@ -86,5 +87,27 @@ public class RegistrationSteps {
     }
 
 
+    @Then("Fill all input fields in register account page, existing email address {string} {string} {string}{string} {string} {string} {string}:")
+    public void fillAllInputFieldsInRegisterAccountPageExistingEmailAddress(String firstname , String lastname, String email,
+                                                                            String telephone, String password, String confirmpassword, String subscribe) throws InterruptedException {
 
+        registrationPage.enterFirstName(firstname);
+        registrationPage.enterLastName(lastname);
+        registrationPage.enterEmail(email);
+        //registrationPage.enterEmail("testuser" + System.currentTimeMillis() + "@example.com");
+        registrationPage.enterTelephone(telephone);
+        driver.findElement(By.id("input-password")).sendKeys(password);
+        registrationPage.enterPassword(password);
+        Thread.sleep(1000);
+        driver.findElement(By.id("input-confirm")).sendKeys(confirmpassword);
+        registrationPage.confirmPassword(confirmpassword);
+        Thread.sleep(1000);
+        registrationPage.radiobuttonsubscribe(subscribe);
+        Thread.sleep(1000);
+    }
+
+    @Then("Check warning message")
+    public void checkWarningMessage() {
+        registrationPage.assertEmailError();
+    }
 }
