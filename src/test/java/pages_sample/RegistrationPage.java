@@ -70,10 +70,8 @@ public class RegistrationPage {
     @FindBy(how = How.XPATH, using = "//*[@id=\"content\"]/form/fieldset[3]/div/div/label[1]/input")
     private WebElement subscribeYesLocator;
 
-
     @FindBy(how = How.XPATH, using = "//*[@id=\"content\"]/form/fieldset[3]/div/div/label[1]/input")
     private WebElement subscribeNoLocator;
-
 
     @FindBy(how = How.NAME, using = "agree")
     private WebElement checkBoxElement;
@@ -83,9 +81,6 @@ public class RegistrationPage {
 
     @FindBy(how = How.CSS, using = "#account-register > div.alert.alert-danger.alert-dismissible")
     private WebElement warningRegMsg;
-
-
-
 
 
     public void navigationHeaderBarIsVisible(){
@@ -130,8 +125,6 @@ public class RegistrationPage {
         clickElement(registerOption);
     }
 
-
-
     private void waitForElementToBePresent(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(element));
@@ -164,9 +157,6 @@ public class RegistrationPage {
         confirmPasswordElement.clear();
         confirmPasswordElement.sendKeys(confirmpassword);
     }
-
-
-
 
     public void radiobuttonsubscribe(String subscribe) {
         WebElement subscribeYesRadio = driver.findElement(By.xpath("//*[@id=\"content\"]/form/fieldset[3]/div/div/label[1]/input"));
@@ -240,7 +230,6 @@ public class RegistrationPage {
 
 
     }
-
     public void uncheckprivacypolicy() {
         checkBoxElement.click();
     }

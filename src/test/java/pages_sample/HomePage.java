@@ -9,10 +9,10 @@ import static stepDefinitions.Hooks.driver;
 
 public class HomePage {
 
-    @FindBy(how = How.ID, using = "")
-    private WebElement elem1;
-    @FindBy(how = How.NAME, using = "")
-    private WebElement elem2;
+//    @FindBy(how = How.ID, using = "")
+//    private WebElement elem1;
+//    @FindBy(how = How.NAME, using = "")
+//    private WebElement elem2;
 
     public String getHomePageUrl() {
         return "https://www.demoshop24.com/index.php?route=common/home";
