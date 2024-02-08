@@ -3,11 +3,11 @@ package stepDefinitions;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -17,16 +17,44 @@ public class Hooks {
     public static WebDriver driver;
     static String libWithDriversLocation = System.getProperty("user.dir") + File.separator + "lib" + File.separator;
 
+
     @Before
     public void openBrowser() throws MalformedURLException {
         if (System.getProperty("os.name").contains("Mac") || System.getProperty("os.name").contains("mac"))
-            System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver");
+            System.setProperty("webdriver.edge.driver", libWithDriversLocation + "edgedriver");
         else
-            System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver.exe");
-        driver = new ChromeDriver();
+            System.setProperty("webdriver.edge.driver", libWithDriversLocation + "msedgedriver.exe");
+
+        EdgeOptions options = new EdgeOptions();
+        options.setAcceptInsecureCerts(true);
+        driver = new EdgeDriver(options);
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
+        driver.manage().window().maximize();
+
+        //while certificate is not available
+//        driver.findElement(By.cssSelector(".interstitial-wrapper .nav-wrapper #details-button")).click();
+//        driver.findElement(By.cssSelector("#final-paragraph #proceed-link")).click();
     }
+//    @Before
+//    public void openBrowser() throws MalformedURLException {
+//        if (System.getProperty("os.name").contains("Mac") || System.getProperty("os.name").contains("mac"))
+//            System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver");
+//        else
+//            System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver.exe");
+////        ChromeOptions options = new ChromeOptions();
+////        options.addArguments("--remote-allow-origins=*");
+////        options.addArguments("--ignore-certificate-errors");
+////        options.addArguments("--ignore-ssl-errors");
+//        driver = new ChromeDriver();
+//        driver.manage().deleteAllCookies();
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        driver.get("https://www.demoshop24.com/");
+//        driver.manage().window().maximize();
+//
+//    }
 
     @After
     public void embedScreenshot(Scenario scenario) {
