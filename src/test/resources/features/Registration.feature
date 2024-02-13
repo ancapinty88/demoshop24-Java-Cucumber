@@ -19,7 +19,7 @@ Scenario Outline: User is able to register a new account
     | FirstName | LastName |  Email              | Telephone | Password   | PasswordConfirm | Subscribe |
     | Ank       | Pin      |  ank@gmail33.com    | 145265542 | 1Password7 | 1Password7      | No        |
     | Mar       | Leo      |  mar@gmail1.com     | 458255588 | 123#Pass   | 123#Pass        | Yes       |
-
+    | Ion       | Dan      |  dan@gmail1.com     | 458678988 | Pass#12    | Pass#12         | No        |
 
   #QESDEMO-2753
 Scenario Outline: E-mail address field validation
