@@ -4,7 +4,6 @@ import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pages_sample.LoginPage;
-import pages_sample.RegistrationPage;
 
 public class LoginSteps {
     private WebDriver driver;
@@ -20,6 +19,7 @@ public class LoginSteps {
         loginPage.enterEmailLogin(email);
         loginPage.enterPasswordLogin(password);
     }
+
     @Then("Click on the Login button")
     public void clickOnTheLoginButton() {
         loginPage.clickLoginButton();

@@ -1,13 +1,11 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pages_sample.RegistrationPage;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RegistrationSteps {
@@ -52,8 +50,8 @@ public class RegistrationSteps {
     }
 
     @Then("Fill all input fields in register account page {string} {string} {string}{string} {string} {string} {string}:")
-    public void fillAllInputFieldsInRegisterAccountPage(String firstname , String lastname, String email,
-                                                        String telephone, String password, String confirmpassword, String subscribe) throws InterruptedException{
+    public void fillAllInputFieldsInRegisterAccountPage(String firstname, String lastname, String email,
+                                                        String telephone, String password, String confirmpassword, String subscribe) throws InterruptedException {
         registrationPage.enterFirstName(firstname);
         registrationPage.enterLastName(lastname);
         //registrationPage.enterEmail(email);
@@ -80,6 +78,7 @@ public class RegistrationSteps {
         Thread.sleep(1000);
 
     }
+
     @Then("Assert and check the page")
     public void assertAndCheckThePage() {
         String currentURL = driver.getCurrentUrl();
@@ -88,7 +87,7 @@ public class RegistrationSteps {
 
 
     @Then("Fill all input fields in register account page, existing email address {string} {string} {string}{string} {string} {string} {string}:")
-    public void fillAllInputFieldsInRegisterAccountPageExistingEmailAddress(String firstname , String lastname, String email,
+    public void fillAllInputFieldsInRegisterAccountPageExistingEmailAddress(String firstname, String lastname, String email,
                                                                             String telephone, String password, String confirmpassword, String subscribe) throws InterruptedException {
 
         registrationPage.enterFirstName(firstname);

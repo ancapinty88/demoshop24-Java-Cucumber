@@ -1,38 +1,31 @@
 package pages_sample;
 
-import io.cucumber.java.bs.A;
+import java.time.Duration;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import stepDefinitions.Hooks;
-
-import javax.xml.xpath.XPath;
-
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static stepDefinitions.Hooks.driver;
 
 public class RegistrationPage {
    //preconditions:
-    public static String getRegistrationPageUrl(){return "https://www.demoshop24.com/index.php?route=account/register";}
+    public static String getRegistrationPageUrl() { return "https://www.demoshop24.com/index.php?route=account/register"; }
 
-    public static void verifyThatUserIsOnRegistrationPage(){
+    public static void verifyThatUserIsOnRegistrationPage() {
+
         String expectedUrl = RegistrationPage.getRegistrationPageUrl();
         assertEquals(expectedUrl, driver.getCurrentUrl());
     }
 
     //navigation header bar icons: valuta, contact,my account, wish list, shopping cart, checkout
+
     @FindBy(how = How.ID, using = "top")
     private WebElement headerNavigationBar;
+
     @FindBy(xpath = "//*[@id=\"form-currency\"]/div/button")
     private WebElement valutaIcon;
     @FindBy(how = How.CLASS_NAME, using = "fa-phone")
@@ -83,43 +76,51 @@ public class RegistrationPage {
     private WebElement warningRegMsg;
 
 
-    public void navigationHeaderBarIsVisible(){
-        Assertions.assertTrue(headerNavigationBar.isDisplayed());
+    public void navigationHeaderBarIsVisible() {
+        assertTrue(headerNavigationBar.isDisplayed());
     }
-    public void valutaIconIsVisible(){
-        Assertions.assertTrue(valutaIcon.isDisplayed());
+
+    public void valutaIconIsVisible() {
+        assertTrue(valutaIcon.isDisplayed());
     }
-    public void contactIconIsVisible(){
-        Assertions.assertTrue(contactIcon.isDisplayed());
+
+
+    public void contactIconIsVisible() {
+        assertTrue(contactIcon.isDisplayed());
     }
-    public void myAccountIconIsVisible(){
-        Assertions.assertTrue(myAccountIcon.isDisplayed());
+
+    public void myAccountIconIsVisible() {
+        assertTrue(myAccountIcon.isDisplayed());
     }
-    public void wishListIconIsVisible(){
-        Assertions.assertTrue(wishListIcon.isDisplayed());
+
+    public void wishListIconIsVisible() {
+        assertTrue(wishListIcon.isDisplayed());
     }
-    public void shoppingCartIconIsVisible(){
-        Assertions.assertTrue(shoppingCartIcon.isDisplayed());
+
+    public void shoppingCartIconIsVisible() {
+        assertTrue(shoppingCartIcon.isDisplayed());
     }
-    public void checkoutIconIsVisible(){
+
+    public void checkoutIconIsVisible() {
         Assertions.assertTrue(contactIcon.isDisplayed());
     }
 
 
     public static WebDriverWait wait;
+
     public static void clickElement(WebElement element) {
         wait = new WebDriverWait(driver,  Duration.ofMillis(500L));
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
 
-    public void clickMyAccountIcon(){
+    public void clickMyAccountIcon() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(myAccountIcon));
         clickElement(myAccountIcon);
     }
 
-    public void clickRegisterOption(){
+    public void clickRegisterOption() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(registerOption));
         clickElement(registerOption);
@@ -140,11 +141,13 @@ public class RegistrationPage {
         secondNameElement.sendKeys(lastname);
     }
 
+
     public void enterEmail(String email) {
         waitForElementToBePresent(emailElement);
         emailElement.sendKeys(email);
 
     }
+
     public void enterTelephone(String telephone) {
         telephoneElement.sendKeys(telephone);
     }
@@ -153,6 +156,8 @@ public class RegistrationPage {
         passwordElement.clear();
         passwordElement.sendKeys(password);
     }
+
+
     public void confirmPassword(String confirmpassword) {
         confirmPasswordElement.clear();
         confirmPasswordElement.sendKeys(confirmpassword);
@@ -180,9 +185,11 @@ public class RegistrationPage {
     public void continueButton() {
         //WebElement continueButton = driver.findElement(By.cssSelector("input[value='Continue']"));
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         wait.until(ExpectedConditions.elementToBeClickable(continueElement));
         clickElement(continueElement);
     }
+
     public void assertEmailError() {
         assertEquals("Warning: E-Mail Address is already registered!",
                 driver.findElement(By.cssSelector("#account-register > div.alert.alert-danger.alert-dismissible")).getText());
@@ -195,16 +202,18 @@ public class RegistrationPage {
 
     public void assertPasswordLengthError() {
         try {
+
             WebElement parentElement = confirmPasswordElement.findElement(By.xpath(".."));
             assertEquals("Password must be between 4 and 20 characters!",
                     parentElement.findElement(By.className("text-danger")).getText());
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
             System.out.println("Expected Result: Registration fails, the user should receive relevant error message." +
                     "Actual Result : Registration success");
             //  throw new RuntimeException("No Error Element");
             assertFalse(true);
+
         }
     }
 
@@ -216,20 +225,25 @@ public class RegistrationPage {
 
     public void phonenumberErrorMessage() {
         try {
+
             WebElement parentElement = telephoneElement.findElement(By.xpath(".."));
             assertEquals("Telephone must be between 3 and 32 characters!",
                     parentElement.findElement(By.className("text-danger")).getText());
 
-        }catch (Exception e){
+        }
+        catch  (Exception e) {
 
             System.out.println("Expected Result: Registration fails, the user should receive relevant error message." +
+
                     "Actual Result : Registration success");
             //  throw new RuntimeException("No Error Element");
             assertFalse(true);
+
         }
 
-
     }
+
+
     public void uncheckprivacypolicy() {
         checkBoxElement.click();
     }

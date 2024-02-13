@@ -5,7 +5,6 @@ import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pages_sample.*;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SampleSteps {
@@ -25,6 +24,6 @@ public class SampleSteps {
     @And("I see {string} title")
     public void iSeeTitle(String titleExpected) {
         String titleActual = driver.getTitle();
-        assertEquals(titleExpected,titleActual);
+        assertEquals(titleExpected, titleActual);
     }
 }
