@@ -1,0 +1,16 @@
+#driver path
+driverPath="C:\Users\anca.pintilie\IdeaProjects\Cucumber-Java-Basic\lib\msedgedriver.exe"
+
+#wait
+implicitlyWait=10
+
+#pageURL:
+
+Home=https://www.demoshop24.com/index.php?route=common/home
+Registration=https://www.demoshop24.com/index.php?route=account/register
+Login=https://www.demoshop24.com/index.php?route=account/login
+MyAccount=https://www.demoshop24.com/index.php?route=account/account
+
+#valid login credentials:
+emailLogin=ank@gmail.com
+passwordLogin=1Password7
