@@ -6,18 +6,13 @@ Feature: Login
     When user clicks "My account" button
     * user clicks "Login" button
 
-  Scenario: check navigation menu items are visible
-    When user is on "Login" page
-    #Then navigation useheader bar icons are displayed
-
     #QESDEMO-2750
   Scenario: Login into system
-
     Then user login with valid credentials
       | E-Mail Address   | ank@gmail.com   |
       | Password         | 1Password7      |
     Then user clicks "Login" button
-#    And Check that all sections are visible on page
+    And user is on "MyAccount" page
 
 
       |                     |                 |

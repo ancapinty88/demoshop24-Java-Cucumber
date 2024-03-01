@@ -7,8 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @Getter
 @Setter
 public class EditAccountPage extends BasePage {
@@ -35,15 +33,6 @@ public class EditAccountPage extends BasePage {
     private WebElement successMessage;
     @FindBy(css = ".form-group.required")
     private List<WebElement> requiredElements;
-
-
-    public void checkIfInputValueIsPresent(String text, WebElement element){
-        String typedText = element.getAttribute("value");
-        if(typedText.equals(text)){
-            assertEquals(text,  typedText);
-        }
-    }
-
 
 
 }

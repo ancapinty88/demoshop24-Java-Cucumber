@@ -28,10 +28,10 @@ Feature: Registration
     And user clicks "Continue" button
     Then user see "<error message>" for invalid "<input field>"
     Examples:
-      | First Name | Last Name | E-Mail           | Telephone  | Password                                    | Password Confirm                           | input field      | error message                                  |
-      | Acc1      | Com1     | acc1@email.com   | 235486652  | Pom                                         | Pom                                        | Password         | Password must be between 4 and 20 characters!  |
-      | Acc2       | Com2      | acc2@email.com  | 245486652  | fLaQnrsb3C6fqZrIJUbH21  | fLaQnrsb3C6fqZrIJUbH21 | Password         | Password must be between 4 and 20 characters!  |
-      | Acc3       | Com3      | acc3@email.com  | 287486652  | nowhere                                  | nowherez                                   | Password Confirm | Password confirmation does not match password! |
+      | First Name | Last Name| E-Mail           | Telephone  | Password                                    | Password Confirm                           | input field      | error message                                  |
+      | Acc1      | Com1      | acc1@email.com   | 235486652  | Pom                                         | Pom                                        | Password         | Password must be between 4 and 20 characters!  |
+      | Acc2      | Com2      | acc2@email.com   | 245486652  | fLaQnrsb3C6fqZrIJUbH21  | fLaQnrsb3C6fqZrIJUbH21 | Password         | Password must be between 4 and 20 characters!  |
+      | Acc3      | Com3      | acc3@email.com   | 287486652  | nowhere                                  | nowherez                                   | Password Confirm | Password confirmation does not match password! |
 
 
     #  #QESDEMO-2743

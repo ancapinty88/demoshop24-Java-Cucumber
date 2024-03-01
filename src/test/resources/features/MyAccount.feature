@@ -9,7 +9,7 @@ Feature: My Account Page
     Then user is on "MyAccount" page
 
 
-  Scenario Outline: Check if all sub menu links are present on the right side of My Account page and is clickable
+  Scenario Outline: Check "My Account" right side sub-menu links are present and clickable
     When user is on "MyAccount" page
     Then user see sub menu on the right side of the page
     When user click on "<Link>" link in sub menu
@@ -29,7 +29,28 @@ Feature: My Account Page
       | Transactions        | Your Transactions          |
       | Newsletter          | Newsletter Subscription    |
       | Logout              | Account Logout             |
-##
+
+  Scenario Outline: Check "My Account" left side sub-menu links are present and clickable
+    When user is on "My Account" page
+    Then user see "<Section Name>" section on the left side of the page
+    When user click on "<Link>" link below the section
+    Then user see "<Page Title>" page title
+    Examples:
+      | Section Name        | Link                                  | Page Title                    |
+      | My Account          | Edit your account information         | My Account Information        |
+      | My Account          | Change your password                  | Change Password               |
+      | My Account          | Modify your address book entries      | Address Book                  |
+      | My Account          | Modify your wish list                 | My Wish List                  |
+      | My Orders           | View your order history               | Order History                 |
+      | My Orders           | Downloads                             | Account Downloads             |
+      | My Orders           | Your Reward Points                    | Your Reward Points            |
+      | My Orders           | View your return requests             | Product Returns               |
+      | My Orders           | Your Transactions                     | Your Transactions             |
+      | My Orders           | Recurring payments                    | Recurring Payments            |
+      | My Affiliate Account| Register for an affiliate account     | Your Affiliate Information    |
+      | Newsletter          | Subscribe / unsubscribe to newsletter | Newsletter Subscription       |
+
+
 #Scenario: Check the sub-menu on the LEFT side on "My account" page
 #  Then Check the sub-menu on the LEFT side on My account page
 #  And Check My account section links on the left sub-menu are visible

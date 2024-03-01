@@ -113,6 +113,15 @@ public class BasePageAction extends BasePage {
         waitFunctionForTitle(driver, title);
         assertEquals(element,  title);}
 
+    public void compareElementText(WebElement name, String element){
+        String title = name.getText();
+        assertEquals(element,  title);
+    }
+    public void compareElementAtributeText(WebElement name, String element){
+        String title = name.getAttribute("innerText");
+        assertEquals(element,  title);
+    }
+
         //new Explicit Wait function to wait until web element is present
         public void WaitFunction(WebDriver webDriver, WebElement element){
             WebDriverWait wait = new WebDriverWait(webDriver,TIMEOUT_DURATION);

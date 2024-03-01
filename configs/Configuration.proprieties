@@ -11,6 +11,7 @@ Registration=https://www.demoshop24.com/index.php?route=account/register
 Login=https://www.demoshop24.com/index.php?route=account/login
 MyAccount=https://www.demoshop24.com/index.php?route=account/account
 
+
 #valid login credentials:
 emailLogin=ank@gmail.com
 passwordLogin=1Password7

@@ -9,7 +9,7 @@ Feature: Change password form mandatory fields check
       | ank@gmail.com       | 1Password7      |
     And user clicks "Login" button
 
-  Scenario Outline: Check if all Change Password form mandatory information fields are present
+  Scenario Outline: Check mandatory information fields are present on "Change Password" form
     Then user is on "MyAccount" page
     And user click on "<Link>" link in sub menu
     Then user see "<Page Title>" page title
