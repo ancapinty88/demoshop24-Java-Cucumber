@@ -1,6 +1,29 @@
 Feature: Login
 
-#  #QESDEMO-2759
+  Background:
+    Given user is on "Home" page
+    And "Testing Demo Shop" is displayed
+    When user clicks "My account" button
+    * user clicks "Login" button
+
+  Scenario: check navigation menu items are visible
+    When user is on "Login" page
+    #Then navigation useheader bar icons are displayed
+
+    #QESDEMO-2750
+  Scenario: Login into system
+
+    Then user login with valid credentials
+      | E-Mail Address   | ank@gmail.com   |
+      | Password         | 1Password7      |
+    Then user clicks "Login" button
+#    And Check that all sections are visible on page
+
+
+      |                     |                 |
+
+
+    #  #QESDEMO-2759
 # Background: Pre-condition: User is on "Login Page"
 #    Given open home page
 #    Then check that navigation header bar is visible with following icons: valuta, contact, my account, wish list, shopping cart, checkout
@@ -17,12 +40,3 @@ Feature: Login
 #      | email               | password        |
 #      | ank@gmail.com       | 1Password7      |
 #      |                     |                 |
-  Background:
-    Given user is on "Home" page
-    * "Testing Demo Shop" is displayed
-    When user clicks "My account" button
-    * user clicks "Login" button
-
-  Scenario: check navigation menu items are visible
-    When user is on "Login" page
-    Then navigation header bar icons are displayed

@@ -1,22 +1,15 @@
 package stepDefinitions;
 
-import pages.HomePage;
-import utils.Helper;
-import action.HomePageAction;
-import utils.ConfigFileReader;
-import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.PageFactory;
-
-import java.util.concurrent.TimeUnit;
-
-import static action.HomePageAction.navigateTo_HomePage;
+import pages.HomePage;
+import utils.ConfigFileReader;
+import utils.Helper;
 
 public class HomeSteps {
 
 
-    private WebDriver driver;
+    WebDriver driver;
     public static HomePage homePage;
 
     ConfigFileReader configFileReader;

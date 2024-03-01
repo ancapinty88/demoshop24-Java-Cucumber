@@ -6,11 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
-
-
-import lombok.Getter;
-import lombok.Setter;
+import org.openqa.selenium.support.PageFactory;
+import stepDefinitions.Hooks;
+import utils.ConfigFileReader;
 
 import java.util.List;
 
@@ -20,27 +18,17 @@ import java.util.List;
 //only locators
 public class MyAccountPage extends BasePage{
 
-    //WebElement accountLink = driver.findElement(By.cssSelector("li > a[href*='route=account/account']"));
+    public static WebDriver driver;
+    ConfigFileReader configFileReader;
+
+    public void MyAccountPagePage(){
+        this.driver = Hooks.driver;
+        PageFactory.initElements(driver, this);
+        configFileReader= new ConfigFileReader();
+    }
 
 //    //elements:
-
-    @FindBy(how = How.XPATH, using = "//*[@id=\"content\"]/h2[1]")
-    private WebElement myAccountSection;
-
-    @FindBy(how = How.XPATH, using = "//*[@id=\"content\"]/h2[2]")
-    private WebElement myOrdersSection;
-
-    @FindBy(how = How.XPATH, using = "//*[@id=\"content\"]/h2[3]")
-    private WebElement myAffiliateAccountSection;
-
-    @FindBy(how = How.XPATH, using = "//*[@id=\"content\"]/h2[4]")
-    private WebElement newsletterSection;
-
-
     //new locators:
-
-    @FindBy(xpath = "//div[@id='content']/ul/li/a[@href]")
-    private List<WebElement> allMyAccountLeftSideBlocksLinks;
 
     //right menu
     @FindBy(id = "column-right")
@@ -61,9 +49,11 @@ public class MyAccountPage extends BasePage{
     @FindBy(xpath = "//div[@id='content']/ul[4]/li/a[@href]")
     private List<WebElement> newsletterBlockLinks;
 
-    //
-//        //methods:
-//
+
+
+    @FindBy(xpath = "//div[@id='content']/ul/li/a[@href]")
+    private List<WebElement> allMyAccountLeftSideBlocksLinks;
+
     public List<WebElement> myAccountLeftSideBlocksLinks(WebDriver driver) {
         int i = 1;
         WebElement element2 = driver.findElement(By.xpath("//div[@id='content']/ul[3]/li/a[@href]"));
@@ -99,4 +89,18 @@ public class MyAccountPage extends BasePage{
 
         return myAccountMenuBlocksOnLeftSideHedersList;
     }
+
+
+
+//    @FindBy(how = How.XPATH, using = "//*[@id=\"content\"]/h2[1]")
+//    private WebElement myAccountSection;
+//
+//    @FindBy(how = How.XPATH, using = "//*[@id=\"content\"]/h2[2]")
+//    private WebElement myOrdersSection;
+//
+//    @FindBy(how = How.XPATH, using = "//*[@id=\"content\"]/h2[3]")
+//    private WebElement myAffiliateAccountSection;
+//
+//    @FindBy(how = How.XPATH, using = "//*[@id=\"content\"]/h2[4]")
+//    private WebElement newsletterSection;
 }

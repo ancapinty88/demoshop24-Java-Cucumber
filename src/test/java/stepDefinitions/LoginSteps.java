@@ -1,39 +1,42 @@
 package stepDefinitions;
 
+import action.BasePageAction;
 import action.LoginPageAction;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
+import action.MyAccountPageAction;
+import action.PasswordPageAction;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 import pages.LoginPage;
-
-import static action.LoginPageAction.*;
-import static utils.Helper.clickElement;
+import pages.MyAccountPage;
+import pages.PasswordPage;
+import utils.Helper;
 
 public class LoginSteps {
-    private WebDriver driver;
+    WebDriver driver;
+
+    public static BasePage basePage;
+    public static BasePageAction basePageAction;
     public static LoginPage loginPage;
     public static LoginPageAction loginPageAction;
+    public static MyAccountPage myAccountPage;
+    public static MyAccountPageAction myAccountPageAction;
+    public static Helper helper;
+    public static PasswordPageAction passwordPageAction;
+    public static PasswordPage passwordPage;
 
     public LoginSteps() {
         this.driver = Hooks.driver;
         loginPage = PageFactory.initElements(Hooks.driver, LoginPage.class);
         loginPageAction = PageFactory.initElements(Hooks.driver, LoginPageAction.class);
+        myAccountPage = PageFactory.initElements(Hooks.driver, MyAccountPage.class);
+        myAccountPageAction = PageFactory.initElements(Hooks.driver, MyAccountPageAction.class);
+        helper = PageFactory.initElements(Hooks.driver, Helper.class);
+        basePage = PageFactory.initElements(Hooks.driver, BasePage.class);
+        basePageAction = PageFactory.initElements(Hooks.driver, BasePageAction.class);
+        passwordPageAction = PageFactory.initElements(Hooks.driver, PasswordPageAction.class);
+        passwordPage = PageFactory.initElements(Hooks.driver, PasswordPage.class);
     }
-
-    @When("Fill input {string} and {string} fields in the Returning Customer section")
-    public void fillInputAndFieldsInTheReturningCustomerSection(String email, String password) {
-        loginPageAction.enterEmailLogin(email,loginPage.getEmailLogin());
-        loginPageAction.enterPasswordLogin(password,loginPage.getPasswordLogin());
-    }
-
-    @Then("Click on the Login button")
-    public void clickOnTheLoginButton() {
-        clickElement((By) loginPage.getLoginButton());
-    }
-
-
 
 }
+

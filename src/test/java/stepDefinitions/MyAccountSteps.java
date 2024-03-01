@@ -1,29 +1,41 @@
 package stepDefinitions;
 
-import io.cucumber.java.en.And;
+import action.BasePageAction;
+import action.LoginPageAction;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
+import pages.LoginPage;
 import pages.MyAccountPage;
 
-import static action.LoginPageAction.*;
+import java.util.Map;
 
 
 public class MyAccountSteps {
-    private WebDriver driver;
+    WebDriver driver;
     public static MyAccountPage myAccountPage;
+    BasePageAction basePageAction;
+    BasePage basePage;
+    LoginPage loginPage;
+    LoginPageAction loginPageAction;
 
     public MyAccountSteps() {
         this.driver = Hooks.driver;
         myAccountPage = PageFactory.initElements(Hooks.driver, MyAccountPage.class);
+        basePageAction = PageFactory.initElements(Hooks.driver, BasePageAction.class);
+        basePage = PageFactory.initElements(Hooks.driver, BasePage.class);
+        loginPage = PageFactory.initElements(Hooks.driver, LoginPage.class);
+        loginPageAction = PageFactory.initElements(Hooks.driver, LoginPageAction.class);
     }
 
-//    @And("Check that all sections are visible on page")
-//    public void checkThatAllSectionsAreVisibleOnPage() {
-//        myAccountSectionIsVisible(myAccountPage.getMyAccountSection());
-//        myOrdersSectionIsVisible(myAccountPage.getMyOrdersSection());
-//        myAffiliateAccountSectionIsVisible(myAccountPage.getMyAffiliateAccountSection());
-//        newsletterSectionIsVisible(myAccountPage.getNewsletterSection());
-//    }
-}
+    @Then("user see sub menu on the right side of the page")
+    public void userSeeSubMenuOnTheRightSideOfThePage() {
+
+    }
+
+    @Then("user login with valid credentials")
+    public void userLoginWithValidCredentials(Map<String, String> valuesToEnter) throws InterruptedException {
+        basePageAction.enterRandomEmail(valuesToEnter.get("E-Mail Address"), "@email.com", loginPage.getEMailAddressInput(), "email");
+        basePageAction.enterRandomString(valuesToEnter.get("Password"), "random", loginPage.getPasswordInputField(), "password");
+}}

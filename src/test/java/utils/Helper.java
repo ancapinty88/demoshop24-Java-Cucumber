@@ -1,15 +1,20 @@
 package utils;
 
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
 import static stepDefinitions.Hooks.driver;
 
-import org.openqa.selenium.WebElement;
-
-
+@Getter
+@Setter
 //only common methods
 public class Helper {
 
@@ -17,6 +22,10 @@ public class Helper {
 
     public static void clickElement(By locator) {
         WebElement element = driver.findElement(locator);
+        element.click();
+    }
+
+    public static void clickGivenElement(WebDriver driver, WebElement element) {
         element.click();
     }
     public void inputDataToField(WebElement element, String text){
@@ -27,6 +36,10 @@ public class Helper {
     public void navigateToUrl(String url) {
         driver.get(url);
     }
+
+    //function to get page title and compare to the value in feature Example table with Explicit Wait
+
+
 
 //assert methods:
     public void assertElementIsDisplayed(WebElement element) {

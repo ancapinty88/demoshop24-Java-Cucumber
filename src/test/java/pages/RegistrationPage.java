@@ -1,84 +1,99 @@
 package pages;
 
-import java.time.Duration;
-import java.util.List;
-
 import lombok.Getter;
 import lombok.Setter;
-import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static utils.Helper.clickElement;
-import static org.junit.jupiter.api.Assertions.*;
-import static stepDefinitions.Hooks.driver;
+import java.util.List;
 
 //only locators
 @Getter
 @Setter
-public class RegistrationPage {
-    //preconditions:
-
-    public static String getRegistrationPageUrl() {
-        return "https://www.demoshop24.com/index.php?route=account/register";
-    }
-
-    public static void verifyThatUserIsOnRegistrationPage() {
-
-        String expectedUrl = RegistrationPage.getRegistrationPageUrl();
-        assertEquals(expectedUrl, driver.getCurrentUrl());
-    }
-
-    //navigation header bar icons: valuta, contact,my account, wish list, shopping cart, checkout
-
+public class RegistrationPage extends BasePage{
 
     //elements:
 
-//    @FindBy(xpath = "//*[@id=\"top-links\"]/ul/li[2]/ul/li[1]/a")
-//    private WebElement registerOption;
-
+    @FindBy(how = How.ID, using = "input-firstname")
+    private WebElement firstNameInput;
+    @FindBy(id = "input-lastname")
+    private WebElement lastNameInput;
+    @FindBy(id = "input-email")
+    private WebElement emailAddressInput;
+    @FindBy(id = "input-telephone")
+    private WebElement telephoneNumberInput;
+    @FindBy(id = "input-password")
+    private WebElement passwordInput;
+    @FindBy(id = "input-confirm")
+    private WebElement passwordConfirmInput;
+    @FindBy(css = "input[name='newsletter'][checked='checked']")
+    private WebElement radioButtonNoOption;
+    @FindBy(name = "agree")
+    private WebElement checkboxToAgreeWithPrivacyPolicy;
+    @FindBy(css = "input[value='Continue']")
+    private WebElement continueButtonInRegistrationField;
+    @FindBy(css= ".dropdown a i")
+    private WebElement myAccountDropdown;
     @FindBy(xpath = "//li[@class='dropdown open']/ul/li[1]/a")
     private WebElement registerLink;
-
-    @FindBy(how = How.ID, using = "input-firstname")
-    private WebElement firstNameElement;
-
-    @FindBy(how = How.ID, using = "input-lastname")
-    private WebElement secondNameElement;
-
-    @FindBy(how = How.ID, using = "input-email")
-    private WebElement emailElement;
-
-    @FindBy(how = How.ID, using = "input-telephone")
-    private WebElement telephoneElement;
-
-    @FindBy(how = How.ID, using = "input-password")
-    private WebElement passwordElement;
-
-    @FindBy(how = How.ID, using = "input-confirm")
-    private WebElement confirmPasswordElement;
-
     @FindBy(css = ".form-group.required")
     private List<WebElement> requiredFieldElements;
+    @FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
+    private WebElement alertMessage;
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"content\"]/form/fieldset[3]/div/div/label[1]/input")
-    private WebElement subscribeYesLocator;
 
-    @FindBy(css = "input[name='newsletter'][checked='checked']")
-    private WebElement subscribeNoLocator;
+//    public static String getRegistrationPageUrl() {
+//        return "https://www.demoshop24.com/index.php?route=account/register";
+//    }
+//
+//    public static void verifyThatUserIsOnRegistrationPage() {
+//
+//        String expectedUrl = RegistrationPage.getRegistrationPageUrl();
+//        assertEquals(expectedUrl, driver.getCurrentUrl());
+//    }
 
-    @FindBy(how = How.NAME, using = "agree")
-    private WebElement checkBoxElement;
-
-    @FindBy(how = How.CSS, using = "input[value='Continue']")
-    private WebElement continueElement;
-
-    @FindBy(how = How.XPATH, using = "//div[@class='alert alert-danger alert-dismissible']")
-    private WebElement warningRegMsg;
+//    @FindBy(xpath = "//*[@id=\"top-links\"]/ul/li[2]/ul/li[1]/a")
+//    private WebElement registerOption;
+//
+//    @FindBy(xpath = "//li[@class='dropdown open']/ul/li[1]/a")
+//    private WebElement registerLink;
+//
+//    @FindBy(how = How.ID, using = "input-firstname")
+//    private WebElement firstNameElement;
+//
+//    @FindBy(how = How.ID, using = "input-lastname")
+//    private WebElement secondNameElement;
+//
+//    @FindBy(how = How.ID, using = "input-email")
+//    private WebElement emailElement;
+//
+//    @FindBy(how = How.ID, using = "input-telephone")
+//    private WebElement telephoneElement;
+//
+//    @FindBy(how = How.ID, using = "input-password")
+//    private WebElement passwordElement;
+//
+//    @FindBy(how = How.ID, using = "input-confirm")
+//    private WebElement confirmPasswordElement;
+//
+//    @FindBy(css = ".form-group.required")
+//    private List<WebElement> requiredFieldElements;
+//
+//    @FindBy(how = How.XPATH, using = "//*[@id=\"content\"]/form/fieldset[3]/div/div/label[1]/input")
+//    private WebElement subscribeYesLocator;
+//
+//    @FindBy(css = "input[name='newsletter'][checked='checked']")
+//    private WebElement subscribeNoLocator;
+//
+//    @FindBy(how = How.NAME, using = "agree")
+//    private WebElement checkBoxElement;
+//
+//    @FindBy(how = How.CSS, using = "input[value='Continue']")
+//    private WebElement continueElement;
+//
+//    @FindBy(how = How.XPATH, using = "//div[@class='alert alert-danger alert-dismissible']")
+//    private WebElement warningRegMsg;
 
 
 //    public void emailErrorMessage(String eMail) {

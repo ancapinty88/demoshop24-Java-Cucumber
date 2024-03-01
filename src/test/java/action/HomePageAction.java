@@ -1,11 +1,9 @@
 package action;
 
-import pages.BasePage;
-import pages.HomePage;
-import utils.ConfigFileReader;
 import org.openqa.selenium.WebDriver;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import pages.BasePage;
+import stepDefinitions.Hooks;
+import utils.ConfigFileReader;
 
 
 public class HomePageAction extends BasePage {
@@ -13,21 +11,16 @@ public class HomePageAction extends BasePage {
     static ConfigFileReader configFileReader;
 
     public HomePageAction(WebDriver driver) {
-        this.driver = driver;
+        this.driver = Hooks.driver;
     }
 
 //    public static String getHomePageUrl() {
 //        return "https://www.demoshop24.com/index.php?route=common/home";
 //    }
 
-    public static void verifyThatUserIsOnHomePage() {
-        String expectedUrl = configFileReader.getHomePageUrl();
-        assertEquals(expectedUrl, driver.getCurrentUrl());
-    }
-
-    public static void navigateTo_HomePage(){
-        driver.get(configFileReader.getHomePageUrl());
-    }
+//    public static void navigateTo_HomePage() {
+//        driver.get(configFileReader.getHomePageUrl());
+//    }
 
 
 }

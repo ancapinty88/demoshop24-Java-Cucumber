@@ -6,8 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-import static stepDefinitions.Hooks.driver;
-
 //configuration.proprieties file reader class
 public class ConfigFileReader {
 
