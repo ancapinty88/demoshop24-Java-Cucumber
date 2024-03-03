@@ -18,10 +18,8 @@ import pages.MyAccountPage;
 import pages.PasswordPage;
 import utils.ConfigFileReader;
 import utils.Helper;
-
 import java.util.List;
 import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static utils.Helper.clickElement;
 
@@ -38,10 +36,10 @@ public class PasswordSteps  {
     BasePageAction basePageAction;
     PasswordPageAction passwordPageAction;
 
-    public PasswordSteps(){
+    public PasswordSteps() {
         this.driver = Hooks.driver;
-        PageFactory.initElements(driver, this);
-        configFileReader= new ConfigFileReader();
+        PageFactory.initElements (driver, this);
+        configFileReader = new ConfigFileReader();
         loginPageAction = new LoginPageAction();
         loginPage = new LoginPage();
         myAccountPage = new MyAccountPage();
@@ -54,8 +52,8 @@ public class PasswordSteps  {
 
     @When("Fill input {string} and {string} fields in the Returning Customer section")
     public void fillInputAndFieldsInTheReturningCustomerSection(String email, String password, DataTable dataTable) {
-        loginPageAction.enterEmailLogin(email,loginPage.getEMailAddressInput());
-        loginPageAction.enterPasswordLogin(password,loginPage.getPasswordInputField());
+        loginPageAction.enterEmailLogin(email, loginPage.getEMailAddressInput());
+        loginPageAction.enterPasswordLogin(password, loginPage.getPasswordInputField());
     }
 
     @Then("Click on the Login button")
@@ -66,8 +64,8 @@ public class PasswordSteps  {
 
     @And("user click on {string} link in sub menu")
     public void userClickOnLinkInSubMenu(String link) {
-        for (WebElement element: myAccountPage.myAccountRightSideSubMenuLinks(driver) ){
-            if (element.getText().equals(link)){
+        for (WebElement element: myAccountPage.myAccountRightSideSubMenuLinks(driver) ) {
+            if (element.getText().equals(link)) {
                 Helper.clickGivenElement(driver, element);
                 break;
             }
@@ -79,8 +77,10 @@ public class PasswordSteps  {
     public void userSeePageTitle(String arg0) {
         basePageAction.getPageTitle(driver, arg0);
     }
+
     @And("user see {string} page subtitle")
     public void userSeePageSubtitle(String arg0) {
+
         basePageAction.getPageTitle(driver, arg0);
     }
 
@@ -92,9 +92,13 @@ public class PasswordSteps  {
 
     @And("user click on Back button at the bottom of Change Password form")
     public void userClickOnBackButtonAtTheBottomOfChangePasswordForm() {
+
         Helper.clickGivenElement(driver, passwordPage.getChangePasswordBackButton());
-    } @When("user enter new credentials to the Change Password form fields")
+    }
+
+    @When("user enter new credentials to the Change Password form fields")
     public void userEnterNewCredentialsToTheChangePasswordFormFields(Map<String, String> valuesToEnter) {
+
         basePageAction.enterRandomString(valuesToEnter.get("Password"), "random", passwordPage.getPasswordInput(), "password");
         basePageAction.enterRandomString(valuesToEnter.get("Password Confirm"), "password", passwordPage.getPasswordConfirmInput(), "passwordConfirm");
     }

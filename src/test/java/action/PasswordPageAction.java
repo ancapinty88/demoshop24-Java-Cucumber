@@ -10,11 +10,9 @@ import pages.BasePage;
 import pages.MyAccountPage;
 import stepDefinitions.Hooks;
 import utils.ConfigFileReader;
-
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PasswordPageAction extends BasePage {

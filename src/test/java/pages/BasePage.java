@@ -11,21 +11,21 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import stepDefinitions.Hooks;
 import utils.ConfigFileReader;
-
 import java.util.List;
-
 
 @Getter
 @Setter
+
 public class BasePage {
     private WebDriver driver;
     private WebDriverWait wait;
     ConfigFileReader configFileReader;
 
-    public BasePage(){
-        this.driver = Hooks.driver;
+    public BasePage() {
+
+        this.driver =  Hooks.driver;
         PageFactory.initElements(driver, this);
-        configFileReader= new ConfigFileReader();
+        configFileReader = new ConfigFileReader();
     }
 
     //elements:

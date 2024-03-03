@@ -10,9 +10,7 @@ import pages.BasePage;
 import pages.LoginPage;
 import stepDefinitions.Hooks;
 import utils.ConfigFileReader;
-
 import java.time.Duration;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static utils.Helper.clickElement;
 

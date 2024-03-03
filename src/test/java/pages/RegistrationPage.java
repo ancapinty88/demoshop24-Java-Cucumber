@@ -5,13 +5,12 @@ import lombok.Setter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-
 import java.util.List;
 
 //only locators
 @Getter
 @Setter
-public class RegistrationPage extends BasePage{
+public class RegistrationPage extends BasePage {
 
     //elements:
 
@@ -33,7 +32,7 @@ public class RegistrationPage extends BasePage{
     private WebElement checkboxToAgreeWithPrivacyPolicy;
     @FindBy(css = "input[value='Continue']")
     private WebElement continueButtonInRegistrationField;
-    @FindBy(css= ".dropdown a i")
+    @FindBy(css = ".dropdown a i")
     private WebElement myAccountDropdown;
     @FindBy(xpath = "//li[@class='dropdown open']/ul/li[1]/a")
     private WebElement registerLink;

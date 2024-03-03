@@ -13,7 +13,6 @@ import pages.LoginPage;
 import pages.RegistrationPage;
 import utils.ConfigFileReader;
 import utils.Helper;
-
 import java.util.Objects;
 
 public class BaseSteps {
@@ -30,11 +29,11 @@ public class BaseSteps {
     //constructor
     public static BasePage basePage;
 
-    public BaseSteps(){
+    public BaseSteps() {
         this.driver = Hooks.driver;
         PageFactory.initElements(driver, this);
-        configFileReader= new ConfigFileReader();
-        this.basePage = new BasePage();
+        configFileReader = new ConfigFileReader();
+        this.basePage =  new BasePage();
         helper = new Helper();
         loginPage = new LoginPage();
         loginPageAction = new LoginPageAction();
@@ -48,13 +47,14 @@ public class BaseSteps {
 //    }
 
     @Given("user is on {string} page")
-    public void userIsOnPage (String PageName){
+    public void userIsOnPage (String PageName) {
         String pageURL = configFileReader.getConfigVariable(PageName);
         helper.navigateToUrl(pageURL);
 
     }
+
     @And("{string} is displayed")
-    public void isDisplayed (String text){
+    public void isDisplayed (String text) {
         helper.assertElementIsDisplayed(basePage.TDStext);
     }
 
@@ -78,7 +78,8 @@ public class BaseSteps {
 //pass string text
             }
 
-        }}
+        }
+    }
 
 
 }

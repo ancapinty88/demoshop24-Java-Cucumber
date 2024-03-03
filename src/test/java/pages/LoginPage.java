@@ -12,15 +12,16 @@ import utils.ConfigFileReader;
 @Getter
 @Setter
 //only locators
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
     public static WebDriver driver;
     ConfigFileReader configFileReader;
 
-    public LoginPage(){
-        this.driver = Hooks.driver;
+    public LoginPage() {
+
+        this.driver =  Hooks.driver;
         PageFactory.initElements(driver, this);
-        configFileReader= new ConfigFileReader();
+        configFileReader = new ConfigFileReader();
     }
 
 

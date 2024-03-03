@@ -11,11 +11,8 @@ import pages.BasePage;
 import pages.LoginPage;
 import pages.MyAccountPage;
 import utils.Helper;
-
 import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 public class MyAccountSteps {
     WebDriver driver;
@@ -48,10 +45,11 @@ public class MyAccountSteps {
     @Then("user see {string} section on the left side of the page")
     public void userSeeSectionOnTheLeftSideOfThePage(String name) {
         for (WebElement element: myAccountPage.myAccountMenuBlocksOnLeftSideHedersList(driver)) {
-            if (element.getText().equals(name)){
+            if (element.getText().equals(name)) {
                 assertEquals(name, element.getText());
                 break;
             }
+
 
         }
 }
@@ -59,10 +57,10 @@ public class MyAccountSteps {
     @When("user click on {string} link below the section")
     public void userClickOnLinkBelowTheSection(String link) {
         for (WebElement element: myAccountPage.myAccountLeftSideBlocksLinks(driver)) {
-            if (element.getText().equals(link)){
+            if (element.getText().equals(link)) {
+            }
                 Helper.clickGivenElement(driver, element);
                 break;
-            }
 
         }
 

@@ -11,11 +11,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
 import stepDefinitions.Hooks;
 import utils.ConfigFileReader;
-
 import java.time.Duration;
 import java.util.Objects;
 import java.util.Random;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Getter
@@ -43,11 +41,12 @@ public class BasePageAction extends BasePage {
 
     // Gets table data from feature file checks if there is certain word in the table to look up in order to generate
     // new random credentials using faker color words random function and fills the form input fields with the data.
-    public void enterRandomString(String text, String text1, WebElement element, String text3){
+    public void enterRandomString (String text, String text1, WebElement element, String text3) {
         Faker faker = new Faker();
-        if (Objects.equals(text, text1)){
+        if (Objects.equals(text, text1)) {
             text3 = faker.color().name();
-        }else {
+        }
+        else {
             text3 = text;
         }
         inputDataToTheField(element, text3);
@@ -108,31 +107,40 @@ public class BasePageAction extends BasePage {
     }
 
     //get page title and compare to the value in feature Example table with Explicit Wait
-    public void getPageTitle(WebDriver driver, String element){
+    public void getPageTitle(WebDriver driver, String element) {
+
         String title = driver.getTitle();
         waitFunctionForTitle(driver, title);
-        assertEquals(element,  title);}
-
-    public void compareElementText(WebElement name, String element){
-        String title = name.getText();
-        assertEquals(element,  title);
+        assertEquals(element, title);
     }
-    public void compareElementAtributeText(WebElement name, String element){
+
+
+    public void compareElementText(WebElement name, String element) {
+        String title = name.getText();
+        assertEquals(element, title);
+    }
+
+    public void compareElementAtributeText(WebElement name, String element) {
         String title = name.getAttribute("innerText");
         assertEquals(element,  title);
     }
 
+
         //new Explicit Wait function to wait until web element is present
-        public void WaitFunction(WebDriver webDriver, WebElement element){
-            WebDriverWait wait = new WebDriverWait(webDriver,TIMEOUT_DURATION);
-            wait.until(ExpectedConditions.visibilityOf(element));}
+        public void WaitFunction (WebDriver webDriver,  WebElement element) {
+
+            WebDriverWait wait = new WebDriverWait(webDriver, TIMEOUT_DURATION);
+            wait.until(ExpectedConditions.visibilityOf(element));
+    }
 
 ////new Explicit Wait function to wait until web title is present using assertEquals
-        public void waitFunctionForTitle(WebDriver webDriver, String element){
+        public void waitFunctionForTitle(WebDriver webDriver, String element) {
+
             WebDriverWait wait = new WebDriverWait(webDriver, TIMEOUT_DURATION);
             wait.until(ExpectedConditions.titleContains(element));
         }
-    public static final Duration TIMEOUT_DURATION = Duration.ofSeconds(40);
+
+        public static final Duration TIMEOUT_DURATION = Duration.ofSeconds(40);
 
 
 }

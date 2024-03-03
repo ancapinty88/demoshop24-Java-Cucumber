@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static stepDefinitions.Hooks.driver;
@@ -28,7 +27,9 @@ public class Helper {
     public static void clickGivenElement(WebDriver driver, WebElement element) {
         element.click();
     }
-    public void inputDataToField(WebElement element, String text){
+
+    public void inputDataToField(WebElement element, String text) {
+
         element.clear();
         element.sendKeys(text);
     }
@@ -43,15 +44,21 @@ public class Helper {
 
 //assert methods:
     public void assertElementIsDisplayed(WebElement element) {
+
       assertTrue(element.isDisplayed(), "Element is not displayed!");
     }
+
     public static void assertFoundElementIsALink(WebElement element) {
+
         assertTrue(element.getTagName().equalsIgnoreCase("a"), "Element is not a link!");
     }
 
     public void assertElementIsEnabled(WebElement element) {
+
         assertTrue(element.isEnabled(), "Element is not enabled!");
+
     }
+
     public static void assertElementTextMatchesInput(String inputTitle, WebElement element) {
         assertEquals(inputTitle, element.getText(), "Element Text doesn't match input!");
         }

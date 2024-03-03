@@ -11,10 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 import pages.EditAccountPage;
 import utils.ConfigFileReader;
 import utils.Helper;
-
 import java.util.List;
 import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EditAccountSteps {
@@ -26,7 +24,9 @@ public class EditAccountSteps {
     EditAccountPage editAccountPage;
     EditAccountAction editAccountAction;
     BasePageAction basePageAction;
+
     public EditAccountSteps() {
+
         this.driver = Hooks.driver;
         PageFactory.initElements(driver, this);
         configFileReader = new ConfigFileReader();
@@ -44,7 +44,7 @@ public class EditAccountSteps {
 
     @Then("{string} title is present on the page.")
     public void titleIsPresentOnThePage(String arg0) {
-        basePageAction.getPageTitle(driver,arg0);
+        basePageAction.getPageTitle(driver, arg0);
     }
 
     @When("user enter new credentials to the Edit Account form fields")
@@ -64,7 +64,7 @@ public class EditAccountSteps {
 
     @Then("user is back at the {string} page with success message {string}")
     public void userIsBackAtThePageWithSuccessMessage(String arg0, String arg1) {
-        basePageAction.getPageTitle(driver,arg0);
+        basePageAction.getPageTitle(driver, arg0);
         basePageAction.compareElementText(editAccountPage.getSuccessMessage(), arg1);
 
     }

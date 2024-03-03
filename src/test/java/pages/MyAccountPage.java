@@ -9,22 +9,21 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import stepDefinitions.Hooks;
 import utils.ConfigFileReader;
-
 import java.util.List;
-
 
 @Getter
 @Setter
 //only locators
-public class MyAccountPage extends BasePage{
+public class MyAccountPage extends BasePage {
 
     public static WebDriver driver;
     ConfigFileReader configFileReader;
 
-    public void MyAccountPagePage(){
+    public void MyAccountPagePage() {
+
         this.driver = Hooks.driver;
         PageFactory.initElements(driver, this);
-        configFileReader= new ConfigFileReader();
+        configFileReader = new ConfigFileReader();
     }
 
 //    //elements:

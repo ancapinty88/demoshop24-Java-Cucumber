@@ -15,10 +15,11 @@ public class HomePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public HomePage(WebDriver driver){
-        this.driver = Hooks.driver;
+    public HomePage(WebDriver driver) {
+
+        this.driver =  Hooks.driver;
         PageFactory.initElements(driver, this);
-        configFileReader= new ConfigFileReader();
+        configFileReader = new ConfigFileReader();
     }
 
     //elements:

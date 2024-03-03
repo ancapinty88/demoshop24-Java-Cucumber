@@ -10,10 +10,8 @@ import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
 import pages.RegistrationPage;
 import utils.Helper;
-
 import java.util.List;
 import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RegistrationSteps {
@@ -37,12 +35,12 @@ public class RegistrationSteps {
     }
 
     @Then("user see {string} title")
-    public void userSeeTitle (String arg0){
+    public void userSeeTitle (String arg0) {
         basePageAction.getPageTitle(driver, arg0);
     }
 
     @When("user enter valid data in registration fields:")
-    public void userEnterValidDataInRegistrationFields (Map<String,String> valuesToEnter)
+    public void userEnterValidDataInRegistrationFields (Map<String, String> valuesToEnter)
     {
         basePageAction.enterRandomString(valuesToEnter.get("First Name"), "random", registrationPage.getFirstNameInput(), "firstName");
         basePageAction.enterRandomString(valuesToEnter.get("Last Name"), "random", registrationPage.getLastNameInput(), "lastName");
@@ -64,8 +62,10 @@ public class RegistrationSteps {
             basePageAction.enterRandomString(row.get("Password Confirm"), "random", registrationPage.getPasswordConfirmInput(), "password-confirm");
         }
 }
+
     @Then("user see {string} for invalid {string}")
     public void userSeeForInvalid(String errorMessage, String inputFieldName) {
+
         for (WebElement inputField : registrationPage.getRequiredFieldElements()) {
             String label = basePageAction.getElementLabel(inputField);
             if (label.equals(inputFieldName)) {
