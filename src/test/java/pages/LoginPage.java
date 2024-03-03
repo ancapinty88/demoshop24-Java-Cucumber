@@ -24,7 +24,6 @@ public class LoginPage extends BasePage{
     }
 
 
-
     //elements:
 
     @FindBy(xpath = "//li[@class='dropdown open']/ul/li[2]/a")
@@ -35,17 +34,5 @@ public class LoginPage extends BasePage{
     private WebElement passwordInputField;
     @FindBy(css = "input[value='Login']")
     private WebElement logInButtonInLoginForm;
-
-//    @FindBy(how = How.CSS, using = "input[value='Login']") //edited
-//    private WebElement loginButton;
-//
-//    @FindBy(how = How.ID, using = "input-email")
-//    private WebElement emailLogin;
-//
-//    @FindBy(how = How.ID, using = "input-password")
-//    private WebElement passwordLogin;
-
-
-
 
 }

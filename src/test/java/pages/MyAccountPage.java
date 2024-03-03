@@ -91,7 +91,6 @@ public class MyAccountPage extends BasePage{
     }
 
 
-
 //    @FindBy(how = How.XPATH, using = "//*[@id=\"content\"]/h2[1]")
 //    private WebElement myAccountSection;
 //

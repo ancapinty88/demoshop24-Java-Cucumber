@@ -2,19 +2,16 @@ package pages;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import stepDefinitions.Hooks;
 import utils.ConfigFileReader;
 
-import java.time.Duration;
 import java.util.List;
 
 
@@ -73,12 +70,6 @@ public class BasePage {
     private String urlBase = "https://www.demoshop24.com/index.php?route=";
 
 
-//methods common:
-
-//    public void clickTopMenuItem(String item) {
-//    String cssSelector = String.format("#top-links a[title^='%s']", item);
-//    Driver.get().findElement(By.cssSelector(cssSelector)).click();
-//}
 
     public void clickMyAccountMenu(String button) {
        myAccountIcon.click();

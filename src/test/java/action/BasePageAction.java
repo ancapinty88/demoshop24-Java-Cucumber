@@ -65,7 +65,7 @@ public class BasePageAction extends BasePage {
         return email.replace("@", emailString + "@");
     }
 
-    // function meant to get password if it is random and enter to the confirmation field or get the
+    // get random password and enter to the confirmation field or get the
     //password confirmation string from the data table.
     public void enterPasswordConfirmation
     (String dataTableName, String valueToCampare, WebElement FieldToInputData,
@@ -79,7 +79,7 @@ public class BasePageAction extends BasePage {
         inputDataToTheField(FieldToInputData, variableName);
     }
 
-    // function generating random phone number using faker phone number function
+    //  random phone number using faker phone number function
     public void enterRandomPhoneNumber(String text, String text1, WebElement element, String text3) {
         Faker faker = new Faker();
         if (Objects.equals(text, text1)) {
@@ -107,7 +107,7 @@ public class BasePageAction extends BasePage {
         return error.getText();
     }
 
-    //function to get page title and compare to the value in feature Example table with Explicit Wait
+    //get page title and compare to the value in feature Example table with Explicit Wait
     public void getPageTitle(WebDriver driver, String element){
         String title = driver.getTitle();
         waitFunctionForTitle(driver, title);

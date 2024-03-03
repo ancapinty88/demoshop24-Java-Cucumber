@@ -20,6 +20,7 @@ import utils.ConfigFileReader;
 import utils.Helper;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static utils.Helper.clickElement;
@@ -92,5 +93,23 @@ public class PasswordSteps  {
     @And("user click on Back button at the bottom of Change Password form")
     public void userClickOnBackButtonAtTheBottomOfChangePasswordForm() {
         Helper.clickGivenElement(driver, passwordPage.getChangePasswordBackButton());
+    } @When("user enter new credentials to the Change Password form fields")
+    public void userEnterNewCredentialsToTheChangePasswordFormFields(Map<String, String> valuesToEnter) {
+        basePageAction.enterRandomString(valuesToEnter.get("Password"), "random", passwordPage.getPasswordInput(), "password");
+        basePageAction.enterRandomString(valuesToEnter.get("Password Confirm"), "password", passwordPage.getPasswordConfirmInput(), "passwordConfirm");
     }
+
+    @Then("user see {string} for invalid Password Change {string} field")
+    public void userSeeForInvalidPasswordChangeField(String arg0, String arg1) {
+        for (WebElement inputField : passwordPage.getRequiredElements()) {
+            String label = basePageAction.getElementLabel(inputField);
+            if (label.equals(arg1)) {
+                String fieldErrorMessage = basePageAction.getElementErrorMessage(inputField);
+                assertEquals(arg0, fieldErrorMessage);
+                break;
+            }
+        }
+    }
+
 }
+

@@ -22,3 +22,18 @@ Feature: Change password form mandatory fields check
     Examples:
       | Link            | Page Title          | Sub Title      |
       | Password        | Change Password     | Your Password  |
+
+  Scenario Outline: Check Password and Password Confirm fields validation with incorrect data
+    When user click on "<Link>" link in sub menu
+    Then user see "<Page Title>" page title
+    And user see "<Sub Title>" page subtitle
+    When user enter new credentials to the Change Password form fields
+      |  Password   | Password Confirm  |
+      | <Password> | <Password Confirm> |
+    And user clicks "Continue" button
+    Then user see "<Error message>" for invalid Password Change "<Input field>" field
+    Examples:
+      | Password                                    | Password Confirm                           | Input field      | Error message                                  | Link           | Page Title          | Sub Title      |
+      | pom                                         | pom                                        | Password         | Password must be between 4 and 20 characters!  |Password        | Change Password     | Your Password  |
+      | pvTMXuBS0XyVN1n6TnuI333556677               | pvTMXuBS0XyVN1n6TnuI333556677              | Password         | Password must be between 4 and 20 characters!  |Password        | Change Password     | Your Password  |
+      | lithuania                                   | lithuania2024                              | Password Confirm | Password confirmation does not match password! |Password        | Change Password     | Your Password  |
