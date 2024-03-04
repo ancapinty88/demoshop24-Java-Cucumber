@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import java.util.Map;
 import action.BasePageAction;
 import action.LoginPageAction;
 import io.cucumber.java.en.Then;
@@ -11,7 +12,6 @@ import pages.BasePage;
 import pages.LoginPage;
 import pages.MyAccountPage;
 import utils.Helper;
-import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MyAccountSteps {

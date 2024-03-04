@@ -1,5 +1,7 @@
 package stepDefinitions;
 
+import java.util.List;
+import java.util.Map;
 import action.BasePageAction;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -10,8 +12,6 @@ import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
 import pages.RegistrationPage;
 import utils.Helper;
-import java.util.List;
-import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RegistrationSteps {

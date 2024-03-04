@@ -1,5 +1,7 @@
 package stepDefinitions;
 
+import java.util.List;
+import java.util.Map;
 import action.BasePageAction;
 import action.EditAccountAction;
 import io.cucumber.java.en.And;
@@ -11,8 +13,6 @@ import org.openqa.selenium.support.PageFactory;
 import pages.EditAccountPage;
 import utils.ConfigFileReader;
 import utils.Helper;
-import java.util.List;
-import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EditAccountSteps {

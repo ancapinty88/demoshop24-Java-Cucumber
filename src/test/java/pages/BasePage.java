@@ -1,5 +1,6 @@
 package pages;
 
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +12,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import stepDefinitions.Hooks;
 import utils.ConfigFileReader;
-import java.util.List;
 
 @Getter
 @Setter

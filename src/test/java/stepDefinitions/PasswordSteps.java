@@ -98,7 +98,6 @@ public class PasswordSteps  {
 
     @When("user enter new credentials to the Change Password form fields")
     public void userEnterNewCredentialsToTheChangePasswordFormFields(Map<String, String> valuesToEnter) {
-
         basePageAction.enterRandomString(valuesToEnter.get("Password"), "random", passwordPage.getPasswordInput(), "password");
         basePageAction.enterRandomString(valuesToEnter.get("Password Confirm"), "password", passwordPage.getPasswordConfirmInput(), "passwordConfirm");
     }

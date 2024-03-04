@@ -1,5 +1,6 @@
 package action;
 
+import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,7 +11,6 @@ import pages.BasePage;
 import pages.LoginPage;
 import stepDefinitions.Hooks;
 import utils.ConfigFileReader;
-import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static utils.Helper.clickElement;
 
