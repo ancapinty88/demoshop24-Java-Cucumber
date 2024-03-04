@@ -2,8 +2,8 @@ package stepDefinitions;
 
 import action.BasePageAction;
 import action.LoginPageAction;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
+import java.util.Map;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -11,7 +11,6 @@ import pages.BasePage;
 import pages.LoginPage;
 import pages.MyAccountPage;
 import utils.Helper;
-import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MyAccountSteps {

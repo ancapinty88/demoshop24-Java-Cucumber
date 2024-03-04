@@ -1,13 +1,10 @@
 package stepDefinitions;
 
-import action.BasePageAction;
-import action.LoginPageAction;
-import action.MyAccountPageAction;
-import action.PasswordPageAction;
+import action.*;
 import cucumber.api.DataTable;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
+import java.util.List;
+import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,10 +15,9 @@ import pages.MyAccountPage;
 import pages.PasswordPage;
 import utils.ConfigFileReader;
 import utils.Helper;
-import java.util.List;
-import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static utils.Helper.clickElement;
+
 
 public class PasswordSteps  {
     WebDriver driver;

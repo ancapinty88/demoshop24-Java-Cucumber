@@ -1,12 +1,10 @@
 package pages;
 
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import java.util.List;
-
-
 
 
 @Getter

@@ -1,17 +1,15 @@
 package stepDefinitions;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
+import io.cucumber.java.*;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.util.concurrent.TimeUnit;
 
 public class Hooks {
     public static WebDriver driver;

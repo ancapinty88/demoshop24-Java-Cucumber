@@ -1,10 +1,8 @@
 package stepDefinitions;
 
-import action.LoginPageAction;
-import action.RegistrationPageAction;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
+import action.*;
+import io.cucumber.java.en.*;
+import java.util.Objects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -13,7 +11,6 @@ import pages.LoginPage;
 import pages.RegistrationPage;
 import utils.ConfigFileReader;
 import utils.Helper;
-import java.util.Objects;
 
 public class BaseSteps {
 
