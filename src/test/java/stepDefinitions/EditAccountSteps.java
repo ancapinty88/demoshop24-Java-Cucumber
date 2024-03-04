@@ -1,12 +1,8 @@
 package stepDefinitions;
 
-import java.util.List;
-import java.util.Map;
-import action.BasePageAction;
-import action.EditAccountAction;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import action.*;
+import io.cucumber.java.en.*;
+import java.util.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
