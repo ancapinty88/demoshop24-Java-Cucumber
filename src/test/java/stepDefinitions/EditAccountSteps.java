@@ -65,10 +65,7 @@ public class EditAccountSteps {
 
     }
 
-    @When("user is back at My Account page I press on {string} link again")
-    public void userIsBackAtMyAccountPageIPressOnLinkAgain(String arg0) {
-        Helper.clickGivenElement(driver, editAccountPage.getEditAccountLink());
-    }
+
 
     @Then("user enter previous credentials")
     public void userEnterPreviousCredentials(Map<String, String> valuesToEnter) {

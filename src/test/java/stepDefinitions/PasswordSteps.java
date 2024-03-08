@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
+import pages.EditAccountPage;
 import pages.LoginPage;
 import pages.MyAccountPage;
 import pages.PasswordPage;
@@ -17,6 +18,7 @@ import utils.ConfigFileReader;
 import utils.Helper;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static utils.Helper.clickElement;
+
 
 public class PasswordSteps  {
     WebDriver driver;
@@ -30,6 +32,7 @@ public class PasswordSteps  {
     BasePage basePage;
     BasePageAction basePageAction;
     PasswordPageAction passwordPageAction;
+    EditAccountPage editAccountPage;
 
     public PasswordSteps() {
         this.driver = Hooks.driver;
@@ -42,6 +45,7 @@ public class PasswordSteps  {
         basePage = new BasePage();
         basePageAction = new BasePageAction();
         passwordPageAction = new PasswordPageAction();
+        editAccountPage = new EditAccountPage();
     }
 
 
@@ -109,5 +113,27 @@ public class PasswordSteps  {
         }
     }
 
+    @When("user is back at My Account page I press on {string} link again")
+    public void userIsBackAtMyAccountPageIPressOnLinkAgain(String linkName) {
+        Helper.clickGivenElement(driver, editAccountPage.getEditAccountLink());
+        switch (linkName.toLowerCase()) {
+            case "password":
+                Helper.clickGivenElement(driver, passwordPage.getPasswordChangeLink());
+                break;
+//            case "someOtherLink":
+//                // Handle the case for some other link if needed
+//                break;
+            default:
+                // Handle the default case or any other specific cases
+                break;
+        }
+
+    }
+
+    @Then("user enter previous password credentials")
+    public void userEnterPreviousPasswordCredentials(Map<String, String> valuesToEnter) {
+        basePageAction.enterRandomString(valuesToEnter.get("Password"), "random", passwordPage.getPasswordInput(), "password");
+        basePageAction.enterRandomString(valuesToEnter.get("Password Confirm"), "password", passwordPage.getPasswordConfirmInput(), "passwordConfirm");
+    }
 }
 
