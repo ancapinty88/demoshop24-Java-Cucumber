@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static action.PasswordPageAction.TIMEOUT_DURATION;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static stepDefinitions.Hooks.driver;
@@ -26,6 +28,13 @@ public class Helper {
 
     public static void clickGivenElement(WebDriver driver, WebElement element) {
         element.click();
+    }
+
+    //new Explicit Wait function to wait until web element is present
+    public void WaitFunction (WebDriver webDriver,  WebElement element) {
+
+        WebDriverWait wait = new WebDriverWait(webDriver, TIMEOUT_DURATION);
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public void inputDataToField(WebElement element, String text) {

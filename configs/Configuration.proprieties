@@ -10,6 +10,7 @@ Home=https://www.demoshop24.com/index.php?route=common/home
 Registration=https://www.demoshop24.com/index.php?route=account/register
 Login=https://www.demoshop24.com/index.php?route=account/login
 MyAccount=https://www.demoshop24.com/index.php?route=account/account
+WishList=https://www.demoshop24.com/index.php?route=account/wishlist
 
 
 #valid login credentials:

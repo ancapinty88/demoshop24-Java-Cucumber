@@ -134,5 +134,10 @@ public class PasswordSteps  {
         basePageAction.enterRandomString(valuesToEnter.get("Password"), "random", passwordPage.getPasswordInput(), "password");
         basePageAction.enterRandomString(valuesToEnter.get("Password Confirm"), "password", passwordPage.getPasswordConfirmInput(), "passwordConfirm");
     }
+
+    @And("user clicks {string} button in Change Password page")
+    public void userClicksButtonInChangePasswordPage() {
+        Helper.clickGivenElement(driver, passwordPage.getChangePasswordContinueButton());
+    }
 }
 

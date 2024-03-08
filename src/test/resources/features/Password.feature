@@ -32,7 +32,7 @@ Feature: Change password form mandatory fields check
     When user enter new credentials to the Change Password form fields
       |  Password   | Password Confirm  |
       | <Password> | <Password Confirm> |
-    And user clicks "Continue" button
+    And user clicks "Continue" button in Change Password page
     Then user see "<Error message>" for invalid Password Change "<Input field>" field
     Examples:
       | Password                                    | Password Confirm                           | Input field      | Error message                                  | Link           | Page Title          | Sub Title      |

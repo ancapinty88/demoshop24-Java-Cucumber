@@ -2,6 +2,8 @@ package action;
 
 import com.github.javafaker.Faker;
 import java.time.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 import lombok.Getter;
@@ -127,12 +129,7 @@ public class BasePageAction extends BasePage {
     }
 
 
-        //new Explicit Wait function to wait until web element is present
-        public void WaitFunction (WebDriver webDriver,  WebElement element) {
 
-            WebDriverWait wait = new WebDriverWait(webDriver, TIMEOUT_DURATION);
-            wait.until(ExpectedConditions.visibilityOf(element));
-    }
 
 ////new Explicit Wait function to wait until web title is present using assertEquals
         public void waitFunctionForTitle(WebDriver webDriver, String element) {
@@ -141,7 +138,27 @@ public class BasePageAction extends BasePage {
             wait.until(ExpectedConditions.titleContains(element));
         }
 
-        public static final Duration TIMEOUT_DURATION = Duration.ofSeconds(40);
+    public static final Duration TIMEOUT_DURATION = Duration.ofSeconds(40);
 
+    public void compareSuccessMessage(WebElement name, String element){
+        String title = name.getText();
+        String result = title.replaceAll("\\h*\\R+\\h*", " ").trim();
+        String finalResult = result.replaceAll("[^a-zA-Z0-9:!?*]", " ").trim();
+        assertEquals(element, finalResult);
+    }
 
+    public List<String> getMandatoryTableFields(List<WebElement> requiredElements) {
+        List<String> mandatoryFields = new ArrayList<>();
+        for (WebElement element : requiredElements) {
+            if (!element.getAttribute("style").contains("display: none")) {
+                mandatoryFields.add(getTableText(element));
+            }
+        }
+        return mandatoryFields;
+    }
+
+    public String getTableText(WebElement inputField) {
+        WebElement label = inputField;
+        return label.getText();
+    }
 }

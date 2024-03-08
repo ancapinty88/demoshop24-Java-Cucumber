@@ -10,6 +10,7 @@ import pages.BasePage;
 import pages.LoginPage;
 import pages.PasswordPage;
 import pages.RegistrationPage;
+import pages.WishListPage;
 import utils.ConfigFileReader;
 import utils.Helper;
 
@@ -24,6 +25,7 @@ public class BaseSteps {
     RegistrationPage registrationPage;
     RegistrationPageAction registrationPageAction;
     PasswordPage passwordPage;
+    WishListPage wishListPage;
 
     //constructor
     public static BasePage basePage;
@@ -39,6 +41,7 @@ public class BaseSteps {
         registrationPage = new RegistrationPage();
         registrationPageAction = new RegistrationPageAction();
         passwordPage = new PasswordPage();
+        wishListPage = new WishListPage();
     }
 
 //    @Given("user navigates to home page")
@@ -77,9 +80,12 @@ public class BaseSteps {
         if (Objects.equals(button, "Continue"))
             element = passwordPage.getChangePasswordContinueButton();
 
+        assert element != null;
         Helper.clickGivenElement(driver, element);
 
             }
+
+
 }
 
 
