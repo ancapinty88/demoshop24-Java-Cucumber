@@ -34,14 +34,14 @@ public class PasswordPageAction extends BasePage {
     }
 
 
-    // updated click event function implementing Explicit Wait
+    // updated click event function implementing Explicit Wait//
     public void getClickEvent(WebDriver de, WebElement element) {
         WaitFunction(de, element);
         element.click();
     }
 
 
-    //method for success message because of enormous white spaces in the text
+    //method for success message because of enormous white spaces in the text//
     public void compareSuccessMessage(WebElement name, String element) {
         String title = name.getText();
         String result = title.replaceAll("\\h*\\R+\\h*", " ").trim();

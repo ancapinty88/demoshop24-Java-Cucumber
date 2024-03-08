@@ -36,4 +36,5 @@ public class PasswordPage extends BasePage {
     private List<WebElement> requiredElements;
     @FindBy(xpath = "//aside[@id='column-right']/div/a[3]")
     private WebElement passwordChangeLink;
+
 }

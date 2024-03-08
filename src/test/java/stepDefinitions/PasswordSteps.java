@@ -22,7 +22,6 @@ import static utils.Helper.clickElement;
 
 public class PasswordSteps  {
     WebDriver driver;
-
     static PasswordPage passwordPage;
     static ConfigFileReader configFileReader;
     LoginPageAction loginPageAction;
