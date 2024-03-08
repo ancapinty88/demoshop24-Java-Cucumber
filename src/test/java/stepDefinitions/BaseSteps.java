@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
 import pages.LoginPage;
+import pages.PasswordPage;
 import pages.RegistrationPage;
 import utils.ConfigFileReader;
 import utils.Helper;
@@ -22,6 +23,7 @@ public class BaseSteps {
     LoginPageAction loginPageAction;
     RegistrationPage registrationPage;
     RegistrationPageAction registrationPageAction;
+    PasswordPage passwordPage;
 
     //constructor
     public static BasePage basePage;
@@ -36,6 +38,7 @@ public class BaseSteps {
         loginPageAction = new LoginPageAction();
         registrationPage = new RegistrationPage();
         registrationPageAction = new RegistrationPageAction();
+        passwordPage = new PasswordPage();
     }
 
 //    @Given("user navigates to home page")
@@ -67,19 +70,22 @@ public class BaseSteps {
         }
         if (Objects.equals(button, "My Account")) {
             element = basePage.getMyAccountIcon();
-
-            if (Objects.equals(button, "Continue")) {
-                element = registrationPage.getContinueButtonInRegistrationField();
-//click method
-                Helper.clickGivenElement(driver, element);
-//pass string text
-            }
-
         }
-    }
+        if (Objects.equals(button, "Continue")) {
+            element = registrationPage.getContinueButtonInRegistrationField();
+        }
+        if (Objects.equals(button, "Continue"))
+            element = passwordPage.getChangePasswordContinueButton();
 
+        Helper.clickGivenElement(driver, element);
 
+            }
 }
+
+
+
+
+
 
 //    @When("user is on {string} page")
 //    public void userIsOnPage(String PageName) {
