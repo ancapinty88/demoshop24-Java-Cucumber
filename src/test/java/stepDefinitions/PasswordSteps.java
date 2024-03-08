@@ -113,6 +113,7 @@ public class PasswordSteps  {
             }
         }
     }
+
     @When("user is back at My Account page I press on {string} link again")
     public void userIsBackAtMyAccountPageIPressOnLinkAgain(String linkName) {
         Helper.clickGivenElement(driver, editAccountPage.getEditAccountLink());
