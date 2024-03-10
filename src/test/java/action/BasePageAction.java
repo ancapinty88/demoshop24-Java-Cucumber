@@ -140,7 +140,7 @@ public class BasePageAction extends BasePage {
 
     public static final Duration TIMEOUT_DURATION = Duration.ofSeconds(40);
 
-    public void compareSuccessMessage(WebElement name, String element){
+    public void compareSuccessMessage(WebElement name, String element) {
         String title = name.getText();
         String result = title.replaceAll("\\h*\\R+\\h*", " ").trim();
         String finalResult = result.replaceAll("[^a-zA-Z0-9:!?*]", " ").trim();

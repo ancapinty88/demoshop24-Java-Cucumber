@@ -1,13 +1,8 @@
 package stepDefinitions;
 
-import action.BasePageAction;
-import action.LoginPageAction;
-import action.MyAccountPageAction;
-import action.PasswordPageAction;
-import gherkin.lexer.He;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import action.*;
+import io.cucumber.java.en.*;
+import java.util.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.WebDriver;
@@ -20,14 +15,12 @@ import pages.PasswordPage;
 import pages.WishListPage;
 import utils.ConfigFileReader;
 import utils.Helper;
-
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Getter
 @Setter
-public class WishListSteps extends BasePage{
+
+public class WishListSteps extends BasePage {
     WebDriver driver;
     static PasswordPage passwordPage;
     static ConfigFileReader configFileReader;
