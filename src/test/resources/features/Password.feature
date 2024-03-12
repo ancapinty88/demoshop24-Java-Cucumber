@@ -5,9 +5,9 @@ Feature: Change password form mandatory fields check
     When user clicks "My account" button
     * user clicks "Login" button
     Then user login with valid credentials
-      | email               | password        |
-      | mt@xmail.com        | manual12345      |
-    And user clicks "Login" button
+      | email               | password       |
+      | at@xmail.com        | auto12345      |
+    And user clicks "LoginAccount" button
 
     #QESDEMO-2810
   Scenario Outline: Check mandatory information fields are present on "Change Password" form
@@ -53,8 +53,8 @@ Feature: Change password form mandatory fields check
     Then user is back at the "MyAccount" page with success message "<Message>"
     When user is back at My Account page I press on "Password" link again
     Then user enter previous password credentials
-      | Password        | manual12345  |
-      | Password Confirm| manual12345  |
+      | Password        | auto12345  |
+      | Password Confirm| auto12345  |
     And user clicks "Continue" button
     Examples:
       | Password       | Password Confirm | Message                                             | Link            | Page Title          | Sub Title      |

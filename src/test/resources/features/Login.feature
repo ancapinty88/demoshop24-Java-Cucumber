@@ -3,15 +3,15 @@ Feature: Login
   Background:
     Given user is on "Home" page
     And "Testing Demo Shop" is displayed
-    When user clicks "My account" button
+    When user clicks "My Account" button
     * user clicks "Login" button
 
     #QESDEMO-2750
   Scenario: Login into system
     Then user login with valid credentials
-      | E-Mail Address   | ank@gmail.com   |
-      | Password         | 1Password7      |
-    Then user clicks "Login" button
+      | E-Mail Address   | at@xmail.com   |
+      | Password         | auto12345      |
+    Then user clicks "LoginAccount" button
     And user is on "MyAccount" page
 
 

@@ -66,15 +66,18 @@ public class BaseSteps {
         WebElement element = null;
 //pass web element
         if (Objects.equals(button, "Login")) {
-            element = loginPage.getLogInButtonInLoginForm();
+            element = loginPage.getLogInLink();
         }
+        if (Objects.equals(button, "LoginAccount")) {
+            element = loginPage.getLoginPageButton();
+        {
         if (Objects.equals(button, "Register")) {
             element = registrationPage.getRegisterLink();
         }
         if (Objects.equals(button, "My Account")) {
             element = basePage.getMyAccountIcon();
         }
-        if (Objects.equals(button, "Continue")) {
+        if (Objects.equals(button, "ContinueReg")) {
             element = registrationPage.getContinueButtonInRegistrationField();
         }
         if (Objects.equals(button, "Continue"))
@@ -86,6 +89,8 @@ public class BaseSteps {
             }
 
 
+        }
+    }
 }
 
 

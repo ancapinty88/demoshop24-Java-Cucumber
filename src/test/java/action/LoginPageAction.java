@@ -1,7 +1,6 @@
 package action;
 
 import java.time.Duration;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -12,7 +11,6 @@ import pages.LoginPage;
 import stepDefinitions.Hooks;
 import utils.ConfigFileReader;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static utils.Helper.clickElement;
 
 public class LoginPageAction extends BasePage {
 
@@ -50,14 +48,14 @@ public class LoginPageAction extends BasePage {
         passwordLogin.sendKeys(password);
     }
 
-    public void clickLoginButton(WebElement element) {
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        clickElement((By) loginPage.getLogInButtonInLoginForm());
-
-
-    }
+//    public void clickLoginButton(WebElement element) {
+//
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        wait.until(ExpectedConditions.elementToBeClickable(element));
+//        clickElement((By) loginPage.getLogInButtonInLoginForm());
+//
+//
+//    }
 
 
 //    public static void myAccountSectionIsVisible(WebElement myAccountSection) {

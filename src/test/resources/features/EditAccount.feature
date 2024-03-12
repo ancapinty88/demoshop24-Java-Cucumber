@@ -3,8 +3,8 @@ Feature: Edit Account page
   Background: User is on "My Account Page"
     Given user is on "Login" page
     Then user login with valid credentials
-      | E-Mail Address   | ank@gmail.com   |
-      | Password         | 1Password7      |
+      | E-Mail Address   | at@xmail.com   |
+      | Password         | auto12345      |
     And user clicks "Login" button
     Then user is on "MyAccount" page
 
@@ -20,10 +20,10 @@ Feature: Edit Account page
     Then user is back at the "My Account" page with success message "<message>"
     When user is back at My Account page I press on "Edit Account" link again
     Then user enter previous credentials
-      | First Name       | Ank           |
-      | Last Name        | Pin           |
-      | E-Mail           | ank@gmail.com |
-      | Telephone        | 235486652     |
+      | First Name       | automation       |
+      | Last Name        | testing          |
+      | E-Mail           | at@xmail.com     |
+      | Telephone        | +37122334455     |
     And user clicks "Continue" button
     Examples:
       | First Name | Last Name | E-Mail                | Telephone | message                                            |

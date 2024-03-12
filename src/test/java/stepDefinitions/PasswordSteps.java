@@ -5,7 +5,6 @@ import cucumber.api.DataTable;
 import io.cucumber.java.en.*;
 import java.util.List;
 import java.util.Map;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -17,7 +16,6 @@ import pages.PasswordPage;
 import utils.ConfigFileReader;
 import utils.Helper;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static utils.Helper.clickElement;
 
 
 public class PasswordSteps  {
@@ -54,10 +52,10 @@ public class PasswordSteps  {
         loginPageAction.enterPasswordLogin(password, loginPage.getPasswordInputField());
     }
 
-    @Then("Click on the Login button")
-    public void clickOnTheLoginButton() {
-        clickElement((By) loginPage.getLogInButtonInLoginForm());
-    }
+//    @Then("Click on the Login button")
+//    public void clickOnTheLoginButton() {
+//        clickElement((By) loginPage.getLogInButtonInLoginForm());
+//    }
 
 
     @And("user click on {string} link in sub menu")

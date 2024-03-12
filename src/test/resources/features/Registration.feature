@@ -13,12 +13,12 @@ Feature: Registration
     When user enter valid data in registration fields:
       | First Name       | random               |
       | Last Name        | random               |
-      | E-Mail           | @email.com            |
+      | E-Mail           | @xmail.com            |
       | Telephone        | random               |
       | Password         | random               |
       | Password Confirm | password             |
     And user mark Privacy Policy checkbox
-    And user clicks "Continue" button
+    And user clicks "ContinueReg" button
     Then user see "<Your Account Has Been Created!>" title
 
   Scenario Outline: Check if new account registration fails if password or confirm password is invalid

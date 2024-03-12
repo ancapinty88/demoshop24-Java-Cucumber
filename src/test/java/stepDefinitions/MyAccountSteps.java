@@ -38,7 +38,7 @@ public class MyAccountSteps {
 
     @Then("user login with valid credentials")
     public void userLoginWithValidCredentials(Map<String, String> valuesToEnter) throws InterruptedException {
-        basePageAction.enterRandomEmail(valuesToEnter.get("E-Mail Address"), "@email.com", loginPage.getEMailAddressInput(), "email");
+        basePageAction.enterRandomEmail(valuesToEnter.get("E-Mail Address"), "@xmail.com", loginPage.getEMailAddressInput(), "email");
         basePageAction.enterRandomString(valuesToEnter.get("Password"), "random", loginPage.getPasswordInputField(), "password");
 }
 
