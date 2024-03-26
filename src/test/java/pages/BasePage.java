@@ -1,6 +1,7 @@
 package pages;
 
 import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.WebDriver;
@@ -22,8 +23,7 @@ public class BasePage {
     ConfigFileReader configFileReader;
 
     public BasePage() {
-
-        this.driver =  Hooks.driver;
+        this.driver = Hooks.driver;
         PageFactory.initElements(driver, this);
         configFileReader = new ConfigFileReader();
     }
@@ -60,22 +60,12 @@ public class BasePage {
     @FindBy(xpath = "//*[@id=\"top-links\"]/ul/li[2]/ul/li[2]/a")
     public WebElement loginOption;
 
-    @FindBy(css = "#logo > h1 > a")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"logo\"]/h1/a")
     public WebElement TDStext;
 
     @Getter
     @FindAll(@FindBy(how = How.TAG_NAME, using = "i"))
     private List<WebElement> iconElements;
 
-    private String urlBase = "https://www.demoshop24.com/index.php?route=";
-
-
-
-    public void clickMyAccountMenu(String button) {
-       myAccountIcon.click();
-    }
-
-
-
-
 }
+

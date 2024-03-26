@@ -2,7 +2,9 @@ package stepDefinitions;
 
 import action.*;
 import io.cucumber.java.en.*;
+
 import java.util.*;
+
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +17,7 @@ import pages.PasswordPage;
 import pages.WishListPage;
 import utils.ConfigFileReader;
 import utils.Helper;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Getter
@@ -36,7 +39,7 @@ public class WishListSteps extends BasePage {
 
     public WishListSteps() {
         this.driver = Hooks.driver;
-        PageFactory.initElements (driver, this);
+        PageFactory.initElements(driver, this);
         configFileReader = new ConfigFileReader();
         loginPageAction = new LoginPageAction();
         loginPage = new LoginPage();

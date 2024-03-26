@@ -19,8 +19,6 @@ public class LoginPage extends BasePage {
     ConfigFileReader configFileReader;
 
     public LoginPage() {
-
-        this.driver =  Hooks.driver;
         PageFactory.initElements(driver, this);
         configFileReader = new ConfigFileReader();
     }
@@ -36,6 +34,10 @@ public class LoginPage extends BasePage {
     private WebElement passwordInputField;
     @FindBy(xpath = "//*[@value='Login']")
     private WebElement loginPageButton;
+
+    private String logEmail = configFileReader.getEmailLogin();
+    private String logPassword = configFileReader.getPasswordLogin();
+
 //    @FindBy(css = "input[type='submit'][value='Login']")
 //    private WebElement loginPageButton;
 //    @FindBy(css = "input[type='submit'].btn.btn-primary")

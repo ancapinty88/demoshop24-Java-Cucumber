@@ -1,6 +1,7 @@
 package pages;
 
 import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +20,6 @@ public class PasswordPage extends BasePage {
     ConfigFileReader configFileReader;
 
     public PasswordPage() {
-        this.driver = Hooks.driver;
         PageFactory.initElements(driver, this);
         configFileReader = new ConfigFileReader();
     }

@@ -2,7 +2,9 @@ package stepDefinitions;
 
 import action.*;
 import io.cucumber.java.en.*;
+
 import java.util.Objects;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -34,7 +36,7 @@ public class BaseSteps {
         this.driver = Hooks.driver;
         PageFactory.initElements(driver, this);
         configFileReader = new ConfigFileReader();
-        this.basePage =  new BasePage();
+        this.basePage = new BasePage();
         helper = new Helper();
         loginPage = new LoginPage();
         loginPageAction = new LoginPageAction();
@@ -50,14 +52,14 @@ public class BaseSteps {
 //    }
 
     @Given("user is on {string} page")
-    public void userIsOnPage (String PageName) {
+    public void userIsOnPage(String PageName) {
         String pageURL = configFileReader.getConfigVariable(PageName);
         helper.navigateToUrl(pageURL);
 
     }
 
     @And("{string} is displayed")
-    public void isDisplayed (String text) {
+    public void isDisplayed(String text) {
         helper.assertElementIsDisplayed(basePage.TDStext);
     }
 
@@ -70,21 +72,21 @@ public class BaseSteps {
         }
         if (Objects.equals(button, "LoginAccount")) {
             element = loginPage.getLoginPageButton();
-        {
-        if (Objects.equals(button, "Register")) {
-            element = registrationPage.getRegisterLink();
-        }
-        if (Objects.equals(button, "My Account")) {
-            element = basePage.getMyAccountIcon();
-        }
-        if (Objects.equals(button, "ContinueReg")) {
-            element = registrationPage.getContinueButtonInRegistrationField();
-        }
-        if (Objects.equals(button, "Continue"))
-            element = passwordPage.getChangePasswordContinueButton();
+            {
+                if (Objects.equals(button, "Register")) {
+                    element = registrationPage.getRegisterLink();
+                }
+                if (Objects.equals(button, "My Account")) {
+                    element = basePage.getMyAccountIcon();
+                }
+                if (Objects.equals(button, "ContinueReg")) {
+                    element = registrationPage.getContinueButtonInRegistrationField();
+                }
+                if (Objects.equals(button, "Continue"))
+                    element = passwordPage.getChangePasswordContinueButton();
 
-        assert element != null;
-        Helper.clickGivenElement(driver, element);
+                assert element != null;
+                Helper.clickGivenElement(driver, element);
 
             }
 
@@ -92,10 +94,6 @@ public class BaseSteps {
         }
     }
 }
-
-
-
-
 
 
 //    @When("user is on {string} page")

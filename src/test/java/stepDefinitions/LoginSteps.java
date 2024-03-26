@@ -4,6 +4,7 @@ import action.BasePageAction;
 import action.LoginPageAction;
 import action.MyAccountPageAction;
 import action.PasswordPageAction;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
@@ -11,6 +12,8 @@ import pages.LoginPage;
 import pages.MyAccountPage;
 import pages.PasswordPage;
 import utils.Helper;
+
+import java.util.Map;
 
 public class LoginSteps {
     WebDriver driver;
@@ -36,6 +39,12 @@ public class LoginSteps {
         basePageAction = PageFactory.initElements(Hooks.driver, BasePageAction.class);
         passwordPageAction = PageFactory.initElements(Hooks.driver, PasswordPageAction.class);
         passwordPage = PageFactory.initElements(Hooks.driver, PasswordPage.class);
+    }
+
+    @Then("user login with valid credentials")
+    public void userLoginWithValidCredentials(Map<String, String> valuesToEnter) throws InterruptedException {
+        basePageAction.enterRandomEmail(valuesToEnter.get("E-Mail Address"), "@xmail.com", loginPage.getEMailAddressInput(), "email");
+        basePageAction.enterRandomString(valuesToEnter.get("Password"), "random", loginPage.getPasswordInputField(), "password");
     }
 
 }

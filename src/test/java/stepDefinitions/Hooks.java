@@ -1,9 +1,11 @@
 package stepDefinitions;
 
 import io.cucumber.java.*;
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;

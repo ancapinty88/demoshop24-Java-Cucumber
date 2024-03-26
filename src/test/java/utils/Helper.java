@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import static action.PasswordPageAction.TIMEOUT_DURATION;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -30,7 +31,7 @@ public class Helper {
     }
 
     //new Explicit Wait function to wait until web element is present
-    public void WaitFunction (WebDriver webDriver,  WebElement element) {
+    public void WaitFunction(WebDriver webDriver, WebElement element) {
 
         WebDriverWait wait = new WebDriverWait(webDriver, TIMEOUT_DURATION);
         wait.until(ExpectedConditions.visibilityOf(element));
@@ -49,11 +50,10 @@ public class Helper {
     //function to get page title and compare to the value in feature Example table with Explicit Wait
 
 
-
-//assert methods:
+    //assert methods:
     public void assertElementIsDisplayed(WebElement element) {
 
-      assertTrue(element.isDisplayed(), "Element is not displayed!");
+        assertTrue(element.isDisplayed(), "Element is not displayed!");
     }
 
     public static void assertFoundElementIsALink(WebElement element) {
@@ -69,9 +69,9 @@ public class Helper {
 
     public static void assertElementTextMatchesInput(String inputTitle, WebElement element) {
         assertEquals(inputTitle, element.getText(), "Element Text doesn't match input!");
-        }
+    }
 
-//wait methods:
+    //wait methods:
     public static void waitForElementToBeVisible(WebElement element, WebDriverWait wait) {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
@@ -85,13 +85,7 @@ public class Helper {
     }
 
 
-
-
-
-
-
-
-                //wait methods:
+    //wait methods:
 //    public static void waitForElementToBeVisible(WebElement element, WebDriverWait wait) {
 //        wait.until(ExpectedConditions.visibilityOf(element));
 //    }

@@ -32,8 +32,23 @@ public class ConfigFileReader {
         public String getConfigVariable(String keyValue) {
         String value = properties.getProperty(keyValue);
         return value;
-
         }
+
+    public String getEmailLogin() {
+        String email = properties.getProperty("emailLogin");
+        if (email == null) {
+            throw new RuntimeException("emailLogin not specified in the Configuration.properties file.");
+        }
+        return email;
+    }
+
+    public String getPasswordLogin() {
+        String password = properties.getProperty("passwordLogin");
+        if (password == null) {
+            throw new RuntimeException("passwordLogin not specified in the Configuration.properties file.");
+        }
+        return password;
+    }
 
         public String getDriverPath() {
             String driverPath = properties.getProperty("driverPath");

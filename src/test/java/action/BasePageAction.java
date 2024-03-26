@@ -1,11 +1,13 @@
 package action;
 
 import com.github.javafaker.Faker;
+
 import java.time.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.By;
@@ -16,6 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
 import stepDefinitions.Hooks;
 import utils.ConfigFileReader;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -44,12 +47,11 @@ public class BasePageAction extends BasePage {
 
     // Gets table data from feature file checks if there is certain word in the table to look up in order to generate
     // new random credentials using faker color words random function and fills the form input fields with the data.
-    public void enterRandomString (String text, String text1, WebElement element, String text3) {
+    public void enterRandomString(String text, String text1, WebElement element, String text3) {
         Faker faker = new Faker();
         if (Objects.equals(text, text1)) {
             text3 = faker.color().name();
-        }
-        else {
+        } else {
             text3 = text;
         }
         inputDataToTheField(element, text3);
@@ -125,18 +127,16 @@ public class BasePageAction extends BasePage {
 
     public void compareElementAtributeText(WebElement name, String element) {
         String title = name.getAttribute("innerText");
-        assertEquals(element,  title);
+        assertEquals(element, title);
     }
 
 
+    ////new Explicit Wait function to wait until web title is present using assertEquals
+    public void waitFunctionForTitle(WebDriver webDriver, String element) {
 
-
-////new Explicit Wait function to wait until web title is present using assertEquals
-        public void waitFunctionForTitle(WebDriver webDriver, String element) {
-
-            WebDriverWait wait = new WebDriverWait(webDriver, TIMEOUT_DURATION);
-            wait.until(ExpectedConditions.titleContains(element));
-        }
+        WebDriverWait wait = new WebDriverWait(webDriver, TIMEOUT_DURATION);
+        wait.until(ExpectedConditions.titleContains(element));
+    }
 
     public static final Duration TIMEOUT_DURATION = Duration.ofSeconds(40);
 

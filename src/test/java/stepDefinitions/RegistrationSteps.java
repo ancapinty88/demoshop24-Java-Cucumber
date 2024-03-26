@@ -2,14 +2,17 @@ package stepDefinitions;
 
 import action.BasePageAction;
 import io.cucumber.java.en.*;
+
 import java.util.List;
 import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
 import pages.RegistrationPage;
 import utils.Helper;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RegistrationSteps {
@@ -28,18 +31,17 @@ public class RegistrationSteps {
     }
 
     @And("user mark Privacy Policy checkbox")
-    public void userMarkPrivacyPolicyCheckbox () {
+    public void userMarkPrivacyPolicyCheckbox() {
         Helper.clickGivenElement(driver, registrationPage.getCheckboxToAgreeWithPrivacyPolicy());
     }
 
     @Then("user see {string} title")
-    public void userSeeTitle (String arg0) {
+    public void userSeeTitle(String arg0) {
         basePageAction.getPageTitle(driver, arg0);
     }
 
     @When("user enter valid data in registration fields:")
-    public void userEnterValidDataInRegistrationFields (Map<String, String> valuesToEnter)
-    {
+    public void userEnterValidDataInRegistrationFields(Map<String, String> valuesToEnter) {
         basePageAction.enterRandomString(valuesToEnter.get("First Name"), "random", registrationPage.getFirstNameInput(), "firstName");
         basePageAction.enterRandomString(valuesToEnter.get("Last Name"), "random", registrationPage.getLastNameInput(), "lastName");
         basePageAction.enterRandomEmail(valuesToEnter.get("E-Mail"), "@email.com", registrationPage.getEmailAddressInput(), "email");
@@ -59,7 +61,7 @@ public class RegistrationSteps {
             basePageAction.enterRandomString(row.get("Password"), "random", registrationPage.getPasswordInput(), "password");
             basePageAction.enterRandomString(row.get("Password Confirm"), "random", registrationPage.getPasswordConfirmInput(), "password-confirm");
         }
-}
+    }
 
     @Then("user see {string} for invalid {string}")
     public void userSeeForInvalid(String errorMessage, String inputFieldName) {

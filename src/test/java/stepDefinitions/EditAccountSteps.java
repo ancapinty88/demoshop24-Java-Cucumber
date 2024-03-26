@@ -2,13 +2,16 @@ package stepDefinitions;
 
 import action.*;
 import io.cucumber.java.en.*;
+
 import java.util.*;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import pages.EditAccountPage;
 import utils.ConfigFileReader;
 import utils.Helper;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EditAccountSteps {
@@ -33,12 +36,12 @@ public class EditAccountSteps {
 
     }
 
-    @And("user click on {string} link in sub menu.")
+    @And("user clicks on {string} link in sub menu")
     public void userClickOnLinkInSubMenu(String arg0) {
         Helper.clickGivenElement(driver, editAccountPage.getEditAccountLink());
     }
 
-    @Then("{string} title is present on the page.")
+    @Then("{string} title is present on the page")
     public void titleIsPresentOnThePage(String arg0) {
         basePageAction.getPageTitle(driver, arg0);
     }
@@ -51,7 +54,7 @@ public class EditAccountSteps {
             basePageAction.enterRandomEmail(row.get("E-Mail"), "@email.com", editAccountPage.getEmailInput(), "email");
             basePageAction.enterRandomPhoneNumber(row.get("Telephone"), "random", editAccountPage.getTelephoneInput(), "phone-number");
         }
-}
+    }
 
     @And("Page subtitle is {string}")
     public void pageSubtitleIs(String arg0) {
@@ -66,14 +69,13 @@ public class EditAccountSteps {
     }
 
 
-
     @Then("user enter previous credentials")
     public void userEnterPreviousCredentials(Map<String, String> valuesToEnter) {
-            basePageAction.enterRandomString(valuesToEnter.get("First Name"), "random", editAccountPage.getFirstNameInput(), "firstName");
-            basePageAction.enterRandomString(valuesToEnter.get("Last Name"), "random", editAccountPage.getLastNameInput(), "lastName");
-            basePageAction.enterRandomEmail(valuesToEnter.get("E-Mail"), "@email.com", editAccountPage.getEmailInput(), "email");
-            basePageAction.enterRandomPhoneNumber(valuesToEnter.get("Telephone"), "random", editAccountPage.getTelephoneInput(), "phone-number");
-        }
+        basePageAction.enterRandomString(valuesToEnter.get("First Name"), "random", editAccountPage.getFirstNameInput(), "firstName");
+        basePageAction.enterRandomString(valuesToEnter.get("Last Name"), "random", editAccountPage.getLastNameInput(), "lastName");
+        basePageAction.enterRandomEmail(valuesToEnter.get("E-Mail"), "@email.com", editAccountPage.getEmailInput(), "email");
+        basePageAction.enterRandomPhoneNumber(valuesToEnter.get("Telephone"), "random", editAccountPage.getTelephoneInput(), "phone-number");
+    }
 
     @When("user clear all the fields inputs")
     public void userClearAllTheFieldsInputs() {

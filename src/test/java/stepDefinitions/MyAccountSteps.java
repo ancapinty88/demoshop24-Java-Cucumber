@@ -3,7 +3,9 @@ package stepDefinitions;
 import action.BasePageAction;
 import action.LoginPageAction;
 import io.cucumber.java.en.*;
+
 import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -11,7 +13,9 @@ import pages.BasePage;
 import pages.LoginPage;
 import pages.MyAccountPage;
 import utils.Helper;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static stepDefinitions.LoginSteps.myAccountPageAction;
 
 
 public class MyAccountSteps {
@@ -36,15 +40,10 @@ public class MyAccountSteps {
 
     }
 
-    @Then("user login with valid credentials")
-    public void userLoginWithValidCredentials(Map<String, String> valuesToEnter) throws InterruptedException {
-        basePageAction.enterRandomEmail(valuesToEnter.get("E-Mail Address"), "@xmail.com", loginPage.getEMailAddressInput(), "email");
-        basePageAction.enterRandomString(valuesToEnter.get("Password"), "random", loginPage.getPasswordInputField(), "password");
-}
 
     @Then("user see {string} section on the left side of the page")
     public void userSeeSectionOnTheLeftSideOfThePage(String name) {
-        for (WebElement element: myAccountPage.myAccountMenuBlocksOnLeftSideHedersList(driver)) {
+        for (WebElement element : myAccountPageAction.myAccountMenuBlocksOnLeftSideHedersList(driver)) {
             if (element.getText().equals(name)) {
                 assertEquals(name, element.getText());
                 break;
@@ -52,15 +51,15 @@ public class MyAccountSteps {
 
 
         }
-}
+    }
 
     @When("user click on {string} link below the section")
     public void userClickOnLinkBelowTheSection(String link) {
-        for (WebElement element: myAccountPage.myAccountLeftSideBlocksLinks(driver)) {
+        for (WebElement element : myAccountPageAction.myAccountLeftSideBlocksLinks(driver)) {
             if (element.getText().equals(link)) {
             }
-                Helper.clickGivenElement(driver, element);
-                break;
+            Helper.clickGivenElement(driver, element);
+            break;
 
         }
 

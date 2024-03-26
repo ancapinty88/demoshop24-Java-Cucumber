@@ -3,8 +3,10 @@ package stepDefinitions;
 import action.*;
 import cucumber.api.DataTable;
 import io.cucumber.java.en.*;
+
 import java.util.List;
 import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -15,10 +17,11 @@ import pages.MyAccountPage;
 import pages.PasswordPage;
 import utils.ConfigFileReader;
 import utils.Helper;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class PasswordSteps  {
+public class PasswordSteps {
     WebDriver driver;
     static PasswordPage passwordPage;
     static ConfigFileReader configFileReader;
@@ -33,7 +36,7 @@ public class PasswordSteps  {
 
     public PasswordSteps() {
         this.driver = Hooks.driver;
-        PageFactory.initElements (driver, this);
+        PageFactory.initElements(driver, this);
         configFileReader = new ConfigFileReader();
         loginPageAction = new LoginPageAction();
         loginPage = new LoginPage();
@@ -60,7 +63,7 @@ public class PasswordSteps  {
 
     @And("user click on {string} link in sub menu")
     public void userClickOnLinkInSubMenu(String link) {
-        for (WebElement element: myAccountPage.myAccountRightSideSubMenuLinks(driver) ) {
+        for (WebElement element : myAccountPageAction.myAccountRightSideSubMenuLinks(driver)) {
             if (element.getText().equals(link)) {
                 Helper.clickGivenElement(driver, element);
                 break;
