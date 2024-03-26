@@ -4,6 +4,7 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,25 +36,19 @@ public class MyAccountPage extends BasePage {
     //left menu
     @FindBy(xpath = "//div[@id='content']/h2")
     private List<WebElement> myAccountMenuBlocksOnLeftSideHedersList;
-    @FindBy(xpath = "//div[@id='content']/ul[1]/li/a[@href]")
-    private List<WebElement> myAccountBlockLinks;
-    @FindBy(xpath = "//div[@id='content']/ul[2]/li/a[@href]")
-    private List<WebElement> myOrdersBlockLinks;
-    @FindBy(xpath = "//div[@id='content']/ul[3]/li/a[@href]")
-    private List<WebElement> myAffiliateAccountBlockLinks;
-    @FindBy(xpath = "//div[@id='content']/ul[4]/li/a[@href]")
-    private List<WebElement> newsletterBlockLinks;
-//    @FindBy(xpath = "//div[@id='content']/ul/li/a[@href]")
-//    private List<WebElement> allMyAccountLeftSideBlocksLinks;
-
-    @FindBy(xpath = "//div[@id='content']/ul")
+//    @FindBy(xpath = "//div[@id='content']/ul[1]/li/a[@href]")
+//    private List<WebElement> myAccountBlockLinks;
+//    @FindBy(xpath = "//div[@id='content']/ul[2]/li/a[@href]")
+//    private List<WebElement> myOrdersBlockLinks;
+//    @FindBy(xpath = "//div[@id='content']/ul[3]/li/a[@href]")
+//    private List<WebElement> myAffiliateAccountBlockLinks;
+//    @FindBy(xpath = "//div[@id='content']/ul[4]/li/a[@href]")
+//    private List<WebElement> newsletterBlockLinks;
+    @FindBy(xpath = "//div[@id='content']/ul/li/a[@href]")
     private List<WebElement> allMyAccountLeftSideBlocksLinks;
 
-    public WebElement getAllMyAccountLeftSideBlocksLinksByIndex(int index){
-        if (index >= 0 && index < allMyAccountLeftSideBlocksLinks.size()) {
-            return allMyAccountLeftSideBlocksLinks.get(index);
-        } else {
-            throw new IndexOutOfBoundsException("Index is out of bounds.");
-        }
+    public List<WebElement> getMyAccountLinks(int index){
+        String xpathMyAccount = "//div[@id='content']/ul[" +index + "]/li/a[@href]";
+        return driver.findElements(By.xpath(xpathMyAccount));
     }
 }
