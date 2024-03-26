@@ -9,8 +9,6 @@ Feature: Login
     #QESDEMO-2750
   Scenario: Login into system
     Then user login with valid credentials
-      | E-Mail Address   | at@xmail.com   |
-      | Password         | auto12345      |
     Then user clicks "LoginAccount" button
     And user is on "MyAccount" page
 

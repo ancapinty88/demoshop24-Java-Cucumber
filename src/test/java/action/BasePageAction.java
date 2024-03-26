@@ -97,18 +97,9 @@ public class BasePageAction extends BasePage {
     //gets the text from the feature table and WebElement of the field you want to input information
     public void inputDataToTheField(WebElement element, String text) {
         element.clear();
+        if (text != null) {
         element.sendKeys(text);
-
-    }
-
-    public String getElementLabel(WebElement inputField) {
-        WebElement label = inputField.findElement(By.tagName("label"));
-        return label.getText();
-    }
-
-    public String getElementErrorMessage(WebElement inputField) {
-        WebElement error = inputField.findElement(By.cssSelector(".text-danger"));
-        return error.getText();
+        }
     }
 
     //get page title and compare to the value in feature Example table with Explicit Wait

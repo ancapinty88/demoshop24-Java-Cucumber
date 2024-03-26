@@ -42,9 +42,12 @@ public class LoginSteps {
     }
 
     @Then("user login with valid credentials")
-    public void userLoginWithValidCredentials(Map<String, String> valuesToEnter) throws InterruptedException {
-        basePageAction.enterRandomEmail(valuesToEnter.get("E-Mail Address"), "@xmail.com", loginPage.getEMailAddressInput(), "email");
-        basePageAction.enterRandomString(valuesToEnter.get("Password"), "random", loginPage.getPasswordInputField(), "password");
+    public void userLoginWithValidCredentials(){
+        basePageAction.inputDataToTheField(loginPage.getEMailAddressInput(), loginPage.getLogEmail());
+        basePageAction.inputDataToTheField(loginPage.getPasswordInputField(), loginPage.getLogPassword());
+//            (Map<String, String> valuesToEnter) throws InterruptedException {
+//        basePageAction.enterRandomEmail(valuesToEnter.get("E-Mail Address"), "@xmail.com", loginPage.getEMailAddressInput(), "email");
+//        basePageAction.enterRandomString(valuesToEnter.get("Password"), "random", loginPage.getPasswordInputField(), "password");
     }
 
 }

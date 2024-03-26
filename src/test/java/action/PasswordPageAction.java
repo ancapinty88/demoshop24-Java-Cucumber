@@ -60,16 +60,6 @@ public class PasswordPageAction extends BasePage {
         assertEquals(element, finalResult);
     }
 
-    public String getElementLabel(WebElement inputField) {
-        WebElement label = inputField.findElement(By.tagName("label"));
-        return label.getText();
-    }
-
-    public String getElementErrorMessage(WebElement inputField) {
-        WebElement error = inputField.findElement(By.cssSelector(".text-danger"));
-        return error.getText();
-    }
-
     public String getValidationErrorMessage(WebDriver webDriver, WebElement inputField) {
         String errorValidationMessage = new WebDriverWait(webDriver, TIMEOUT_DURATION).until(ExpectedConditions.elementToBeClickable(inputField)).getAttribute("validationMessage");
         return errorValidationMessage;

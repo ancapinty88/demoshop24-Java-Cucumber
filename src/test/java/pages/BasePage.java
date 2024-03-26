@@ -4,6 +4,7 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -67,5 +68,14 @@ public class BasePage {
     @FindAll(@FindBy(how = How.TAG_NAME, using = "i"))
     private List<WebElement> iconElements;
 
+    public String getElementLabel(WebElement inputField) {
+        WebElement label = inputField.findElement(By.tagName("label"));
+        return label.getText();
+    }
+
+    public String getElementErrorMessage(WebElement inputField) {
+        WebElement error = inputField.findElement(By.cssSelector(".text-danger"));
+        return error.getText();
+    }
 }
 

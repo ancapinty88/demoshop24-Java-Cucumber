@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import stepDefinitions.Hooks;
 import utils.ConfigFileReader;
 
 @Getter
@@ -17,10 +16,14 @@ public class LoginPage extends BasePage {
 
     public static WebDriver driver;
     ConfigFileReader configFileReader;
+    private String logEmail;
+    private String logPassword;
 
     public LoginPage() {
         PageFactory.initElements(driver, this);
         configFileReader = new ConfigFileReader();
+        logEmail = configFileReader.getEmailLogin(); // Initialize logEmail here
+        logPassword = configFileReader.getPasswordLogin(); // Initialize logPassword here
     }
 
 
@@ -35,8 +38,6 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//*[@value='Login']")
     private WebElement loginPageButton;
 
-    private String logEmail = configFileReader.getEmailLogin();
-    private String logPassword = configFileReader.getPasswordLogin();
 
 //    @FindBy(css = "input[type='submit'][value='Login']")
 //    private WebElement loginPageButton;

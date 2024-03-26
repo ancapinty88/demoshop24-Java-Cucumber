@@ -9,8 +9,6 @@ Feature: My Account Page
   Scenario: User is on "My Account Page"
     Given user is on "Login" page
     Then user login with valid credentials
-      | E-Mail Address | at@xmail.com |
-      | Password       | auto12345    |
     And user clicks "LoginAccount" button
     Then user is on "MyAccount" page
 
