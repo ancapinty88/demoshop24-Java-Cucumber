@@ -2,20 +2,16 @@ package stepDefinitions;
 
 import action.*;
 import io.cucumber.java.en.*;
-
 import java.util.*;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import pages.EditAccountPage;
 import utils.ConfigFileReader;
 import utils.Helper;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EditAccountSteps {
-
 
     WebDriver driver;
     ConfigFileReader configFileReader;

@@ -7,7 +7,6 @@ import pages.BasePage;
 import pages.EditAccountPage;
 import stepDefinitions.Hooks;
 import utils.ConfigFileReader;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EditAccountAction extends BasePage {

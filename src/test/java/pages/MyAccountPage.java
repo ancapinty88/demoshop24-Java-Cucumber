@@ -1,7 +1,6 @@
 package pages;
 
 import java.util.List;
-
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.By;
@@ -47,8 +46,8 @@ public class MyAccountPage extends BasePage {
     @FindBy(xpath = "//div[@id='content']/ul/li/a[@href]")
     private List<WebElement> allMyAccountLeftSideBlocksLinks;
 
-    public List<WebElement> getMyAccountLinks(int index){
-        String xpathMyAccount = "//div[@id='content']/ul[" +index + "]/li/a[@href]";
+    public List<WebElement> getMyAccountLinks(int index) {
+        String xpathMyAccount = "//div[@id='content']/ul[" + index + "]/li/a[@href]";
         return driver.findElements(By.xpath(xpathMyAccount));
     }
 }

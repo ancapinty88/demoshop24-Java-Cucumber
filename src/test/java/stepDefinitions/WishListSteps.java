@@ -2,9 +2,7 @@ package stepDefinitions;
 
 import action.*;
 import io.cucumber.java.en.*;
-
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +15,6 @@ import pages.PasswordPage;
 import pages.WishListPage;
 import utils.ConfigFileReader;
 import utils.Helper;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Getter

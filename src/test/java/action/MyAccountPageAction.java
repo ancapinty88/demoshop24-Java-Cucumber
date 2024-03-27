@@ -1,5 +1,7 @@
 package action;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,9 +10,6 @@ import pages.BasePage;
 import pages.MyAccountPage;
 import stepDefinitions.Hooks;
 import utils.ConfigFileReader;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MyAccountPageAction extends BasePage {
     static WebDriver driver;
@@ -58,6 +57,7 @@ public class MyAccountPageAction extends BasePage {
         }
         return elementsList;
     }
+
     public List<WebElement> myAccountRightSideSubMenuLinks(WebDriver driver) {
         String baseXPath = "//aside[@id='column-right']/div/a";
         List<WebElement> subMenuElementsList = myAccountPage.getSubMenuElementsList();

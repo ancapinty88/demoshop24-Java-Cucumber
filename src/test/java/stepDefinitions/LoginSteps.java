@@ -13,8 +13,6 @@ import pages.MyAccountPage;
 import pages.PasswordPage;
 import utils.Helper;
 
-import java.util.Map;
-
 public class LoginSteps {
     WebDriver driver;
 
@@ -42,7 +40,7 @@ public class LoginSteps {
     }
 
     @Then("user login with valid credentials")
-    public void userLoginWithValidCredentials(){
+    public void userLoginWithValidCredentials() {
         basePageAction.inputDataToTheField(loginPage.getEMailAddressInput(), loginPage.getLogEmail());
         basePageAction.inputDataToTheField(loginPage.getPasswordInputField(), loginPage.getLogPassword());
 //            (Map<String, String> valuesToEnter) throws InterruptedException {

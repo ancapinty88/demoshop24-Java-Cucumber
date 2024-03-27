@@ -3,10 +3,8 @@ package stepDefinitions;
 import action.*;
 import cucumber.api.DataTable;
 import io.cucumber.java.en.*;
-
 import java.util.List;
 import java.util.Map;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -17,9 +15,7 @@ import pages.MyAccountPage;
 import pages.PasswordPage;
 import utils.ConfigFileReader;
 import utils.Helper;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 public class PasswordSteps {
     WebDriver driver;
