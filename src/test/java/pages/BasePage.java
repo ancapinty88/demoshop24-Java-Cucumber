@@ -23,7 +23,6 @@ public class BasePage {
     ConfigFileReader configFileReader;
 
     public BasePage() {
-        this.driver = Hooks.driver;
         PageFactory.initElements(driver, this);
         configFileReader = new ConfigFileReader();
     }

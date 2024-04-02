@@ -24,14 +24,14 @@ public class MyAccountPageAction extends BasePage {
     }
 
     public List<WebElement> myAccountLeftSideBlocksLinks(WebDriver driver) {
-            List<WebElement> allMyAccountLeftSideBlocksLinks = new ArrayList<>();
-            int maxIndex = 4; //the maximum index is 4
-            for (int i = 1; i <= maxIndex; i++) {
-                List<WebElement> elements = myAccountPage.getMyAccountLinks(i);
-                allMyAccountLeftSideBlocksLinks.addAll(elements);
-            }
-            return allMyAccountLeftSideBlocksLinks;
+        List<WebElement> allMyAccountLeftSideBlocksLinks = new ArrayList<>();
+        int maxIndex = 4; //the maximum index is 4
+        for (int i = 1; i <= maxIndex; i++) {
+            List<WebElement> elements = myAccountPage.getMyAccountLinks(i);
+            allMyAccountLeftSideBlocksLinks.addAll(elements);
         }
+        return allMyAccountLeftSideBlocksLinks;
+    }
 
 //        int i = 1;
 //        WebElement element2 = driver.findElement(By.xpath("//div[@id='content']/ul[3]/li/a[@href]"));

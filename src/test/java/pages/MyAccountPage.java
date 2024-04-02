@@ -35,14 +35,6 @@ public class MyAccountPage extends BasePage {
     //left menu
     @FindBy(xpath = "//div[@id='content']/h2")
     private List<WebElement> myAccountMenuBlocksOnLeftSideHedersList;
-//    @FindBy(xpath = "//div[@id='content']/ul[1]/li/a[@href]")
-//    private List<WebElement> myAccountBlockLinks;
-//    @FindBy(xpath = "//div[@id='content']/ul[2]/li/a[@href]")
-//    private List<WebElement> myOrdersBlockLinks;
-//    @FindBy(xpath = "//div[@id='content']/ul[3]/li/a[@href]")
-//    private List<WebElement> myAffiliateAccountBlockLinks;
-//    @FindBy(xpath = "//div[@id='content']/ul[4]/li/a[@href]")
-//    private List<WebElement> newsletterBlockLinks;
     @FindBy(xpath = "//div[@id='content']/ul/li/a[@href]")
     private List<WebElement> allMyAccountLeftSideBlocksLinks;
 

@@ -1,6 +1,5 @@
 package action;
 
-import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -10,6 +9,7 @@ import pages.BasePage;
 import pages.LoginPage;
 import stepDefinitions.Hooks;
 import utils.ConfigFileReader;
+import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginPageAction extends BasePage {
