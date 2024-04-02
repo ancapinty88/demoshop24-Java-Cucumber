@@ -1,6 +1,11 @@
 package action;
 
 import com.github.javafaker.Faker;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Random;
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.WebDriver;
@@ -10,11 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
 import stepDefinitions.Hooks;
 import utils.ConfigFileReader;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Getter
