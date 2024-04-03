@@ -6,8 +6,6 @@ Feature: Logged in user navigates to "My wish list" page and adds items to the W
     When user clicks "My Account" button
     * user clicks "Login" button
     Then user login with valid credentials
-      | email        | password  |
-      | at@xmail.com | auto12345 |
     And user clicks "LoginAccount" button
 
   Scenario Outline: Check if user can navigate to the Wish List

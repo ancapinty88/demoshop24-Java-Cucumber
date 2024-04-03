@@ -6,8 +6,6 @@ Feature: Change password form mandatory fields check
     When user clicks "My account" button
     * user clicks "Login" button
     Then user login with valid credentials
-      | email        | password  |
-      | at@xmail.com | auto12345 |
     And user clicks "LoginAccount" button
 
     #QESDEMO-2810
