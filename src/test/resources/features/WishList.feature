@@ -8,7 +8,8 @@ Feature: Logged in user navigates to "My wish list" page and adds items to the W
     Then user login with valid credentials
     And user clicks "LoginAccount" button
 
-  Scenario Outline: Check if user can navigate to the Wish List
+#QESDEMO-2822, #QESDEMO-2823, #QESDEMO-2824
+  Scenario Outline: Check if user can navigate to the Wish List, Add and Remove Item
     When user clicks on Testing Demo Shop logo link
     Then user is on "Home" page
     And  user see "Your Store" title
@@ -33,7 +34,7 @@ Feature: Logged in user navigates to "My wish list" page and adds items to the W
       | Success message                                    | Message                                                | Update message                             |
       | Success: You have added MacBook to your wish list! | Success: You have added MacBook to your shopping cart! | Success: You have modified your wish list! |
 
-
+##QESDEMO-2837, #QESDEMO-2839, #QESDEMO-2841
   Scenario Outline:
     When user is on "MyAccount" page
     And  user click on "<Link>" link in sub menu

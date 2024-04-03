@@ -10,6 +10,7 @@ import pages.BasePage;
 import pages.LoginPage;
 import pages.PasswordPage;
 import pages.RegistrationPage;
+import pages.ShoppingCartPage;
 import pages.WishListPage;
 import utils.ConfigFileReader;
 import utils.Helper;
@@ -26,6 +27,7 @@ public class BaseSteps {
     RegistrationPageAction registrationPageAction;
     PasswordPage passwordPage;
     WishListPage wishListPage;
+    ShoppingCartPage shoppingCartPage;
 
     //constructor
     public static BasePage basePage;
@@ -42,6 +44,7 @@ public class BaseSteps {
         registrationPageAction = new RegistrationPageAction();
         passwordPage = new PasswordPage();
         wishListPage = new WishListPage();
+        shoppingCartPage = new ShoppingCartPage();
     }
 
 //    @Given("user navigates to home page")
@@ -70,20 +73,57 @@ public class BaseSteps {
         }
         if (Objects.equals(button, "LoginAccount")) {
             element = loginPage.getLoginPageButton();
-            {
-                if (Objects.equals(button, "Register")) {
-                    element = registrationPage.getRegisterLink();
-                }
-                if (Objects.equals(button, "My Account")) {
-                    element = basePage.getMyAccountIcon();
-                }
-                if (Objects.equals(button, "ContinueReg")) {
-                    element = registrationPage.getContinueButtonInRegistrationField();
-                }
-                if (Objects.equals(button, "Continue"))
-                    element = passwordPage.getChangePasswordContinueButton();
+        {
+        if (Objects.equals(button, "Register")) {
+            element = registrationPage.getRegisterLink();
+        }
+        if (Objects.equals(button, "My Account")) {
+            element = basePage.getMyAccountIcon();
+        }
+        if (Objects.equals(button, "ContinueReg")) {
+            element = registrationPage.getContinueButtonInRegistrationField();
+        }
+         if (Objects.equals(button, "Add macBook To Cart")) {
+             element = shoppingCartPage.getItemsAddToCartLinkButton();
+         }
+         if (Objects.equals(button, "Black DropDown")) {
+             element = shoppingCartPage.getBlackCartDropdownButton();
+         }
+         if (Objects.equals(button, "RemoveItemDropDown")) {
+             element = shoppingCartPage.getRemoveButtonInBlackShoppingCartButtonDropdown();
+         }
+         if (Objects.equals(button, "View Cart")) {
+             element = shoppingCartPage.getViewCartButtonInDropdown();
+         }
+         if (Objects.equals(button, "Shopping Cart")) {
+             element = shoppingCartPage.getShoppingCartTopMenuLink();
+         }
+         if (Objects.equals(button, "Checkout DropDown")) {
+             element = shoppingCartPage.getCheckoutButtonDropdown();
+         }
+         if (Objects.equals(button, "Update")) {
+             element = shoppingCartPage.getUpdateButtonInQuantityItemsRow();
+         }
+         if (Objects.equals(button, "Breadcrumb Shopping Cart")) {
+             element = shoppingCartPage.getBreadcrumbShoppingCartLink();
+         }
+         if (Objects.equals(button, "Checkout")) {
+             element = shoppingCartPage.getCheckoutButtonInShoppingCartPage();
+         }
+         if (Objects.equals(button, "Remove item")) {
+             element = shoppingCartPage.getRemoveButtonInQuantityItemsRow();
+         }
+         if (Objects.equals(button, "Continue Shopping")) {
+             element = shoppingCartPage.getContinueShoppingButton();
+         }
+         if (Objects.equals(button, "Add iPhone to Cart")) {
+             element = shoppingCartPage.getIPhoneAddToCartLinkButton();
+         }
 
-                assert element != null;
+         if (Objects.equals(button, "Continue"))
+             element = passwordPage.getChangePasswordContinueButton();
+
+         assert element != null;
                 Helper.clickGivenElement(driver, element);
 
             }
