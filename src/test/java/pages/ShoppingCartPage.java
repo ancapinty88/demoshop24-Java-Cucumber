@@ -1,15 +1,14 @@
 package pages;
 
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-
 @Getter
 @Setter
-public class ShoppingCartPage extends BasePage{
+public class ShoppingCartPage extends BasePage {
     @FindBy(xpath = "//div[@class='button-group']/button[1]")
     private WebElement itemsAddToCartLinkButton;
     @FindBy(xpath = "//div[2]/div/div[@class='button-group']/button[1]")
@@ -48,11 +47,11 @@ public class ShoppingCartPage extends BasePage{
     private WebElement removeButtonInBlackShoppingCartButtonDropdown;
     @FindBy(css = "header div div div div button #cart-total")
     private WebElement blackShoppingCartEmptyCounterMessage;
-    @FindBy(css= "div .alert")
+    @FindBy(css = "div .alert")
     private WebElement successMessage;
-    @FindBy(css ="#top-links .list-inline li a[title = 'Shopping Cart']")
+    @FindBy(css = "#top-links .list-inline li a[title = 'Shopping Cart']")
     private WebElement shoppingCartTopMenuLink;
-    @FindBy(css ="#content h1")
+    @FindBy(css = "#content h1")
     private WebElement shoppingCartSubtitle;
     @FindBy(css = "table thead tr td")
     private List<WebElement> requiredFirstTableFields;
